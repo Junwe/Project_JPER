@@ -23,6 +23,7 @@ public class PlayerMove : MonoBehaviour
     public float JumpPower;
     public float JumpHeight;
     //public Rigidbody2D myRigidbody;
+    //asdf
 
     public JoyStickButton leftMoveBtn;
     public JoyStickButton RightMoveBtn;
