@@ -42,6 +42,17 @@ public class PlayerMove : MonoBehaviour
     }
 #endif
 
+    private IEnumerator FallingCheck()
+    {
+        while (true)
+        {
+            if (isInAir == true && isJumpUp == false)
+                yield return Falling();
+
+            yield return null;
+        }
+    }
+
     public void LeftMove()
     {
         lastMoveSpeed = Vector3.left * MoveSpeed * Time.deltaTime;
@@ -67,6 +78,7 @@ public class PlayerMove : MonoBehaviour
         if (isInAir == true)
             return;
 
+        isInAir = true;
         StartCoroutine(JumpUp());
     }
 
@@ -85,21 +97,13 @@ public class PlayerMove : MonoBehaviour
         isJumpUp = false;
     }
 
-    private IEnumerator FallingCheck()
-    {
-        while (true)
-        {
-            if (isInAir == true && isJumpUp == false)
-                yield return Falling();
-
-            yield return null;
-        }
-    }
-
     public IEnumerator Falling()
     {
         Vector3 fallSpeed = Vector3.down * MoveSpeed * Time.deltaTime;
         Vector3 groundLocation = FindGround();
+
+        if(transform.localPosition.y < groundLocation.y)
+            yield break;
 
         while (transform.localPosition.y > groundLocation.y)
         {
@@ -128,6 +132,13 @@ public class PlayerMove : MonoBehaviour
         Debug.DrawRay(rightPoint, Vector2.down, Color.red);
 #endif
 
-        return hitLeft.distance < hitRight.distance ? hitLeft.point : hitRight.point;
+        Vector2 temp = Vector2.zero;
+
+        if (hitLeft.distance < hitRight.distance)
+            temp = new Vector2(0, hitLeft.collider.GetComponent<GroundCollider>().GroundHeight);
+        else
+            temp = new Vector2(0, hitRight.collider.GetComponent<GroundCollider>().GroundHeight);
+
+        return temp;//hitLeft.distance < hitRight.distance ? hitLeft.point : hitRight.point;
     }
 }
