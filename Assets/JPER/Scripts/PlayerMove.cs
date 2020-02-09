@@ -5,10 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public float MoveSpeed;
-    [Tooltip("Not use.")]
-    public float JumpPower;
     public float JumpHeight;
-    //public Rigidbody2D myRigidbody;
 
     public JoyStickButton leftMoveBtn;
     public JoyStickButton RightMoveBtn;
@@ -70,7 +67,6 @@ public class PlayerMove : MonoBehaviour
         if (isInAir == true)
             return;
 
-        //myRigidbody.AddForce(Vector2.up * JumpPower);
         StartCoroutine(JumpUp());
     }
 
