@@ -13,15 +13,20 @@ public class PlayerMove : MonoBehaviour
     public JoyStickButton leftMoveBtn;
     public JoyStickButton RightMoveBtn;
 
+    private BoxCollider2D boxCollider = null;
     private Vector3 lastMoveSpeed = Vector3.zero;
-    private bool isOnGround = true;
+    private bool isInAir = false;
+    private bool isJumpUp = false;
 
     void Start()
     {
         leftMoveBtn.SetMoveEvent(LeftMove);
         RightMoveBtn.SetMoveEvent(RightMove);
 
+        boxCollider = GetComponent<BoxCollider2D>();
+
         transform.localPosition = FindGround();
+        StartCoroutine(FallingCheck());
     }
 
 #if UNITY_EDITOR
@@ -46,8 +51,8 @@ public class PlayerMove : MonoBehaviour
         transform.localPosition += lastMoveSpeed;
         transform.localScale = new Vector3(-1f, 1f, 1f);
 
-        //if (FindGround().y < transform.localPosition.y)
-        //    StartCoroutine(Falling());
+        if (FindGround().y < transform.localPosition.y)
+            isInAir = true;
     }
 
     public void RightMove()
@@ -56,13 +61,13 @@ public class PlayerMove : MonoBehaviour
         transform.localPosition += lastMoveSpeed;
         transform.localScale = new Vector3(1f, 1f, 1f);
 
-        //if (FindGround().y < transform.localPosition.y)
-        //    StartCoroutine(Falling());
+        if (FindGround().y < transform.localPosition.y)
+            isInAir = true;
     }
 
     public void OnJump()
     {
-        if (isOnGround == false)
+        if (isInAir == true)
             return;
 
         //myRigidbody.AddForce(Vector2.up * JumpPower);
@@ -74,14 +79,25 @@ public class PlayerMove : MonoBehaviour
         float maxJumpHeight = transform.localPosition.y + JumpHeight;
         Vector3 jumpSpeed = Vector3.up * MoveSpeed * Time.deltaTime;
 
+        isJumpUp = true;
         while (transform.localPosition.y < maxJumpHeight)
         {
             transform.localPosition += lastMoveSpeed + jumpSpeed;
 
             yield return null;
         }
+        isJumpUp = false;
+    }
 
-        yield return Falling();
+    private IEnumerator FallingCheck()
+    {
+        while (true)
+        {
+            if (isInAir == true && isJumpUp == false)
+                yield return Falling();
+
+            yield return null;
+        }
     }
 
     public IEnumerator Falling()
@@ -98,16 +114,24 @@ public class PlayerMove : MonoBehaviour
 
         transform.localPosition =
             new Vector3(transform.localPosition.x, groundLocation.y, transform.localPosition.z);
+        isInAir = false;
     }
 
     private Vector2 FindGround()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.localPosition, Vector2.down);
+        Vector2 leftPoint = 
+            transform.localPosition + new Vector3(-boxCollider.size.x * 0.5f, 0, 0);
+        Vector2 rightPoint = 
+            transform.localPosition + new Vector3(boxCollider.size.x * 0.5f, 0, 0);
+
+        RaycastHit2D hitLeft = Physics2D.Raycast(leftPoint, Vector2.down);
+        RaycastHit2D hitRight = Physics2D.Raycast(rightPoint, Vector2.down);
 
 #if UNITY_EDITOR
-        Debug.DrawRay(transform.localPosition, Vector2.down, Color.red);
+        Debug.DrawRay(leftPoint, Vector2.down, Color.red);
+        Debug.DrawRay(rightPoint, Vector2.down, Color.red);
 #endif
 
-        return hit.point;
+        return hitLeft.distance < hitRight.distance ? hitLeft.point : hitRight.point;
     }
 }
