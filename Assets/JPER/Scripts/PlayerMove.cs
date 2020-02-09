@@ -4,20 +4,6 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public enum DirectionType
-    {
-        Left,
-        Right
-    }
-    public enum PlayerMoveType
-    {
-
-        MoveInGround,
-        JumppingUp,
-        FallingDown,
-        KnockBack
-    }
-
     public float MoveSpeed;
     [Tooltip("Not use.")]
     public float JumpPower;
@@ -27,52 +13,101 @@ public class PlayerMove : MonoBehaviour
     public JoyStickButton leftMoveBtn;
     public JoyStickButton RightMoveBtn;
 
-    private DirectionType currentDirection = DirectionType.Right;
+    private Vector3 lastMoveSpeed = Vector3.zero;
+    private bool isOnGround = true;
 
     void Start()
     {
         leftMoveBtn.SetMoveEvent(LeftMove);
         RightMoveBtn.SetMoveEvent(RightMove);
 
-        // 플레이어 방향 설정.
-        if (currentDirection == DirectionType.Left)
-            transform.localScale = new Vector3(-1f, 1f, 1f);
-        else if (currentDirection == DirectionType.Right)
-            transform.localScale = new Vector3(1f, 1f, 1f);
+        transform.localPosition = FindGround();
     }
+
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.LeftArrow))
+            LeftMove();
+        else if (Input.GetKey(KeyCode.RightArrow))
+            RightMove();
+        else if (Input.GetKey(KeyCode.LeftArrow) == false &&
+                 Input.GetKey(KeyCode.RightArrow) == false)
+            lastMoveSpeed = Vector3.zero;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            OnJump();
+    }
+#endif
 
     public void LeftMove()
     {
-        transform.localPosition += Vector3.left * MoveSpeed * Time.deltaTime;
+        lastMoveSpeed = Vector3.left * MoveSpeed * Time.deltaTime;
+        transform.localPosition += lastMoveSpeed;
         transform.localScale = new Vector3(-1f, 1f, 1f);
+
+        //if (FindGround().y < transform.localPosition.y)
+        //    StartCoroutine(Falling());
     }
 
     public void RightMove()
     {
-        transform.localPosition += Vector3.right * MoveSpeed * Time.deltaTime;
+        lastMoveSpeed = Vector3.right * MoveSpeed * Time.deltaTime;
+        transform.localPosition += lastMoveSpeed;
         transform.localScale = new Vector3(1f, 1f, 1f);
+
+        //if (FindGround().y < transform.localPosition.y)
+        //    StartCoroutine(Falling());
     }
 
     public void OnJump()
     {
-        //myRigidbody.AddForce(Vector2.up * JumpPower);
+        if (isOnGround == false)
+            return;
 
+        //myRigidbody.AddForce(Vector2.up * JumpPower);
+        StartCoroutine(JumpUp());
     }
 
-    private IEnumerator MoveToAir()
+    private IEnumerator JumpUp()
     {
-        var playerPosition = transform.localPosition;
+        float maxJumpHeight = transform.localPosition.y + JumpHeight;
+        Vector3 jumpSpeed = Vector3.up * MoveSpeed * Time.deltaTime;
 
-        var moveDirection = Vector3.zero;
-        if (currentDirection == DirectionType.Left)
-            moveDirection = Vector3.left;
-        else if (currentDirection == DirectionType.Right)
-            moveDirection = Vector3.right;
-
-        while (playerPosition.y < JumpHeight)
+        while (transform.localPosition.y < maxJumpHeight)
         {
-            
+            transform.localPosition += lastMoveSpeed + jumpSpeed;
+
             yield return null;
         }
+
+        yield return Falling();
+    }
+
+    public IEnumerator Falling()
+    {
+        Vector3 fallSpeed = Vector3.down * MoveSpeed * Time.deltaTime;
+        Vector3 groundLocation = FindGround();
+
+        while (transform.localPosition.y > groundLocation.y)
+        {
+            transform.localPosition += lastMoveSpeed + fallSpeed;
+            yield return null;
+            groundLocation = FindGround();
+        }
+
+        transform.localPosition =
+            new Vector3(transform.localPosition.x, groundLocation.y, transform.localPosition.z);
+    }
+
+    private Vector2 FindGround()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.localPosition, Vector2.down);
+
+#if UNITY_EDITOR
+        Debug.DrawRay(transform.localPosition, Vector2.down, Color.red);
+#endif
+
+        return hit.point;
     }
 }
