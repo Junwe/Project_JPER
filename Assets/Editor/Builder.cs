@@ -8,23 +8,61 @@ using System.Diagnostics;
 
 public class Builder : EditorWindow
 {
+    static string ExecuteProcessTerminal(string argument)
+    {
+        try
+        {
+            UnityEngine.Debug.Log("============== Start Executing [" + argument + "] ===============");
+            ProcessStartInfo startInfo = new ProcessStartInfo()
+            {
+                FileName = "/bin/bash",
+                UseShellExecute = false,
+                RedirectStandardError = true,
+                RedirectStandardInput = true,
+                RedirectStandardOutput = true,
+                CreateNoWindow = false,
+                Arguments = " -c \"" + argument + " \""
+            };
+            Process myProcess = new Process
+            {
+                StartInfo = startInfo
+            };
+            myProcess.Start();
+            string output = myProcess.StandardOutput.ReadToEnd();
+            UnityEngine.Debug.Log(argument);
+            myProcess.WaitForExit();
+            UnityEngine.Debug.Log("============== End ===============");
+ 
+            return output;
+        }
+        catch (System.Exception e)
+        {
+            return null;
+        }
+    }
+
+    static string AddString(string value)
+    {
+        return "\""+ value +"\"";
+    }
     static void SendMessageToDiscore(string fileName,string downloadLink,string version)
     {
         BulidInfomation buildinfo = AssetDatabase.LoadAssetAtPath<BulidInfomation>("Assets/Editor/AndroidInfomation.asset");
         ProcessStartInfo processinfo = new ProcessStartInfo();
         Process pro = new Process();
-        string Arguments = buildinfo.BatFildPath + " " + fileName + " " + downloadLink + " " +  version;
+        string Arguments = buildinfo.BatFildPath + " " + AddString(fileName) + " " + AddString(downloadLink) + " " + AddString(version);
 
-
+#if UNITY_EDITOR_WIN
         processinfo.FileName = "cmd.exe";
         processinfo.RedirectStandardInput = true;
         processinfo.UseShellExecute = false;
         pro.StartInfo = processinfo;
-
         pro.Start();
-
         pro.StandardInput.Write(Arguments + System.Environment.NewLine);
         pro.StandardInput.Close();
+#elif UNITY_EDITOR_OSX
+        ExecuteProcessTerminal(Arguments);
+#endif
     }
     [MenuItem("Bulid/Android")]
     static void AndroidBuild()

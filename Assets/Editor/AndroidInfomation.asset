@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584db477a413bc54cac97f5a308f46b6, type: 3}
   m_Name: AndroidInfomation
   m_EditorClassIdentifier: 
-  path: C:\Users\SHJ\Desktop\SHJBuild
+  path: /Users/shj/Desktop/UnityProject/Project_JPER/build
   ver: 1.0.0.0
   verCode: 1
   pass: shj9505
-  appName: SHJ
-  batFildPath: python C:\Users\SHJ\Desktop\PGBot\main.py
+  appName: JPER
+  batFildPath: python3 /Users/shj/Desktop/UnityProject/Project_JPER/JPER_Bot/PGBot/main.py
   downloadLink: https://drive.google.com/drive/folders/1w8Mi7y03KwHJuoue_tRfeJIfQJqM8nqc
