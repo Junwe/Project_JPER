@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 133254527}
   - component: {fileID: 133254526}
   - component: {fileID: 133254529}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: G_Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -715,7 +715,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.4
+  orthographic size: 10.8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -823,7 +823,7 @@ GameObject:
   - component: {fileID: 1636703834}
   - component: {fileID: 1636703833}
   - component: {fileID: 1636703836}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: G_Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1143,10 +1143,10 @@ Rigidbody2D:
   m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1162,7 +1162,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 1.44}
@@ -1234,7 +1234,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920278279}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -3.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1271,7 +1271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fa81462fa908cc419ea5e63dddd5edb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 5
+  MoveSpeed: 2.5
   JumpHeight: 2
   leftMoveBtn: {fileID: 451143650}
   RightMoveBtn: {fileID: 2011586643}
@@ -1418,7 +1418,7 @@ GameObject:
   - component: {fileID: 2033175188}
   - component: {fileID: 2033175187}
   - component: {fileID: 2033175190}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: G_Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
