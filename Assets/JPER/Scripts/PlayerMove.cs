@@ -38,7 +38,6 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
             OnJump();
-
     }
 
     private void FixedUpdate()
@@ -82,7 +81,6 @@ public class PlayerMove : MonoBehaviour
                     }
                     break;
                 }
-
             case 2: // down
                 {
                     _posY -= _gravity;
