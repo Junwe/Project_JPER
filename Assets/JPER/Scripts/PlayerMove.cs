@@ -47,7 +47,6 @@ public class PlayerMove : MonoBehaviour
 
         CheckHorizontalRaycast();
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, _posY);
-
     }
 #endif
 
@@ -103,16 +102,20 @@ public class PlayerMove : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.matrix = Matrix4x4.TRS(transform.position + new Vector3(0.4f, 0f, 0f), Quaternion.identity, new Vector3(1.5f, 0.2f, 1f));
+        Gizmos.matrix = Matrix4x4.TRS(transform.position + new Vector3(0.4f * transform.localScale.x, 0f, 0f),
+                                      Quaternion.identity, 
+                                      new Vector3(1.5f, 0.2f, 1f));
         Gizmos.color = Color.red;
         Gizmos.DrawCube(Vector3.zero, Vector3.one);
-
     }
 
     private void CheckHorizontalRaycast()
     {
         int layermask = 1 << LayerMask.NameToLayer("wall");
-        Collider2D col = Physics2D.OverlapBox(transform.position + new Vector3(0.4f, 0f, 0f), new Vector3(1.5f, 0.2f, 1f), 0.0f, layermask);
+        Collider2D col = Physics2D.OverlapBox(transform.position + new Vector3(0.4f * transform.localScale.x, 0f, 0f),
+                                              new Vector3(1.5f, 0.2f, 1f), 
+                                              0.0f, 
+                                              layermask);
 
         if (col != null)
         {
