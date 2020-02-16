@@ -17,15 +17,14 @@ public class PlayerMove : MonoBehaviour
 
     public JoyStickButton leftMoveBtn;
     public JoyStickButton RightMoveBtn;
+    public Transform overlapBoxTransform;
 
-    private BoxCollider2D boxCollider = null;
+    private AbstPortal currentPortal = null;
 
     void Start()
     {
         leftMoveBtn.SetMoveEvent(LeftMove);
         RightMoveBtn.SetMoveEvent(RightMove);
-
-        boxCollider = GetComponent<BoxCollider2D>();
     }
 
 #if UNITY_EDITOR
@@ -38,6 +37,12 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
             OnJump();
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if(currentPortal != null)
+                currentPortal.UsePortal(this);
+        }
     }
 
     private void FixedUpdate()
@@ -46,6 +51,15 @@ public class PlayerMove : MonoBehaviour
 
         CheckHorizontalRaycast();
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, _posY);
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.matrix = Matrix4x4.TRS(overlapBoxTransform.position,
+                                      Quaternion.identity,
+                                      overlapBoxTransform.localScale);
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(Vector3.zero, Vector3.one);
     }
 #endif
 
@@ -98,20 +112,11 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    void OnDrawGizmos()
-    {
-        Gizmos.matrix = Matrix4x4.TRS(transform.position + new Vector3(0.4f * transform.localScale.x, 0f, 0f),
-                                      Quaternion.identity, 
-                                      new Vector3(1.5f, 0.2f, 1f));
-        Gizmos.color = Color.red;
-        Gizmos.DrawCube(Vector3.zero, Vector3.one);
-    }
-
     private void CheckHorizontalRaycast()
     {
         int layermask = 1 << LayerMask.NameToLayer("wall");
-        Collider2D col = Physics2D.OverlapBox(transform.position + new Vector3(0.4f * transform.localScale.x, 0f, 0f),
-                                              new Vector3(1.5f, 0.2f, 1f), 
+        Collider2D col = Physics2D.OverlapBox(overlapBoxTransform.position,
+                                              overlapBoxTransform.localScale, 
                                               0.0f, 
                                               layermask);
 
@@ -155,5 +160,15 @@ public class PlayerMove : MonoBehaviour
             _jumpState = 1;
             _gravity = _jump_speed;
         }
+    }
+
+    public void EntryPortal(AbstPortal newPortal)
+    {
+        currentPortal = newPortal;
+    }
+
+    public void ExitPortal()
+    {
+        currentPortal = null;
     }
 }
