@@ -5,9 +5,11 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public float MoveSpeed;
+    public float LimitX;
 
     private JumpInfomation _jumpInfomation = new JumpInfomation();
     private float _posY;        // 플레이어 포지션
+    private float _posX;
 
     public JoyStickButton leftMoveBtn;
     public JoyStickButton RightMoveBtn;
@@ -22,6 +24,8 @@ public class PlayerMove : MonoBehaviour
         leftMoveBtn.SetMoveEvent(LeftMove);
         RightMoveBtn.SetMoveEvent(RightMove);
         JumpBtn.SetMoveEvent(OnJump);
+
+        _posX = transform.position.x;
     }
 
 #if UNITY_EDITOR
@@ -47,7 +51,10 @@ public class PlayerMove : MonoBehaviour
         jumpProcess();
 
         CheckHorizontalRaycast();
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x, _posY);
+
+        _posX = Mathf.Clamp(_posX, -LimitX, LimitX);
+
+        gameObject.transform.position = new Vector3(_posX, _posY);
     }
 
     void OnDrawGizmos()
@@ -138,13 +145,13 @@ public class PlayerMove : MonoBehaviour
 
     public void LeftMove()
     {
-        transform.localPosition += Vector3.left * MoveSpeed * Time.deltaTime; ;
+        _posX += -1f * MoveSpeed * Time.deltaTime;
         transform.localScale = new Vector3(-1f, 1f, 1f);
     }
 
     public void RightMove()
     {
-        transform.localPosition += Vector3.right * MoveSpeed * Time.deltaTime;
+        _posX += 1f * MoveSpeed * Time.deltaTime;
         transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
