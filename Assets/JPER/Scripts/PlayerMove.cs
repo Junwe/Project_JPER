@@ -5,26 +5,23 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public float MoveSpeed;
-    public float JumpHeight;
 
-    private float _gravity;     // 중력 점프 할때 중력을 높여줌
-    private int _jumpState = 0; // 점프 상태(0 : 정지 , 1 : 점프중, 2 : 떨어지는중) 
+    private JumpInfomation _jumpInfomation = new JumpInfomation();
     private float _posY;        // 플레이어 포지션
-    private float _baseY = -4.32f;  // y 최소 좌표
-    const float _jump_speed = 0.2f;  // 점프속도
-    const float _jump_accell = 0.01f; // 점프가속
-    const float _y_base = 0.5f;      // 캐릭터가 서있는 기준점
 
     public JoyStickButton leftMoveBtn;
     public JoyStickButton RightMoveBtn;
+
+    public JoyStickButton JumpBtn;
     public Transform overlapBoxTransform;
 
-    private AbstPortal currentPortal = null;
+    private AbstPortal _currentPortal = null;
 
     void Start()
     {
         leftMoveBtn.SetMoveEvent(LeftMove);
         RightMoveBtn.SetMoveEvent(RightMove);
+        JumpBtn.SetMoveEvent(OnJump);
     }
 
 #if UNITY_EDITOR
@@ -40,8 +37,8 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if(currentPortal != null)
-                currentPortal.UsePortal(this);
+            if (_currentPortal != null)
+                _currentPortal.UsePortal(this);
         }
     }
 
@@ -65,47 +62,47 @@ public class PlayerMove : MonoBehaviour
 
     private void jumpProcess()
     {
-        switch (_jumpState)
+        switch (_jumpInfomation.JumpState)
         {
             case 0: // 가만히 있는 상태
                 {
-                    if (_posY > _baseY) // basey위치로 좌표시키게 한다.
+                    if (_posY > _jumpInfomation.BaseY) // basey위치로 좌표시키게 한다.
                     {
-                        if (_posY >= _jump_accell)
+                        if (_posY >= _jumpInfomation.Jump_accell)
                         {
-                            _posY -= _gravity;
+                            _posY -= _jumpInfomation.Gravity;
                         }
                         else
                         {
-                            _posY = _baseY;
+                            _posY = _jumpInfomation.BaseY;
                         }
                     }
                     break;
                 }
             case 1: // up
                 {
-                    _posY += _gravity;
-                    if (_gravity <= 0.0f)
+                    _posY += _jumpInfomation.Gravity;
+                    if (_jumpInfomation.Gravity <= 0.0f)
                     {
-                        _jumpState = 2;
+                        _jumpInfomation.JumpState = 2;
                     }
                     else
                     {
-                        _gravity -= _jump_accell;   // 점프값이 점점 줄어들게
+                        _jumpInfomation.Gravity -= _jumpInfomation.Jump_accell;   // 점프값이 점점 줄어들게
                     }
                     break;
                 }
             case 2: // down
                 {
-                    _posY -= _gravity;
-                    if (_posY > _baseY)
+                    _posY -= _jumpInfomation.Gravity;
+                    if (_posY > _jumpInfomation.BaseY)
                     {
-                        _gravity += _jump_accell;   // 점프값이 점점 늘어나게
+                        _jumpInfomation.Gravity += _jumpInfomation.Jump_accell;   // 점프값이 점점 늘어나게
                     }
                     else
                     {
-                        _jumpState = 0;
-                        _posY = _baseY;
+                        _jumpInfomation.JumpState = 0;
+                        _posY = _jumpInfomation.BaseY;
                     }
                     break;
                 }
@@ -116,26 +113,25 @@ public class PlayerMove : MonoBehaviour
     {
         int layermask = 1 << LayerMask.NameToLayer("wall");
         Collider2D col = Physics2D.OverlapBox(overlapBoxTransform.position,
-                                              overlapBoxTransform.localScale, 
-                                              0.0f, 
+                                              overlapBoxTransform.localScale,
+                                              0.0f,
                                               layermask);
 
         if (col != null)
         {
-            if (_jumpState == 2)
+            if (_jumpInfomation.JumpState == 2 && transform.position.y >= col.transform.position.y)
             {
-                _baseY = col.transform.position.y + 0.4f;
+                _jumpInfomation.BaseY = col.transform.position.y + 0.4f;
                 _posY = col.transform.position.y + 0.4f;
-                _jumpState = 0;
+                _jumpInfomation.JumpState = 0;
             }
         }
         else
         {
-            if (_jumpState == 0)
+            if (_jumpInfomation.JumpState == 0)
             {
-                Debug.Log("_jumpstate");
-                _baseY = -4.32f;
-                _jumpState = 2;
+                _jumpInfomation.BaseY = -4.32f;
+                _jumpInfomation.JumpState = 2;
             }
         }
     }
@@ -154,21 +150,20 @@ public class PlayerMove : MonoBehaviour
 
     public void OnJump()
     {
-        Debug.Log(_jumpState);
-        if (_jumpState == 0)
+        if (_jumpInfomation.JumpState == 0)
         {
-            _jumpState = 1;
-            _gravity = _jump_speed;
+            _jumpInfomation.JumpState = 1;
+            _jumpInfomation.Gravity = _jumpInfomation.Jump_speed;
         }
     }
 
     public void EntryPortal(AbstPortal newPortal)
     {
-        currentPortal = newPortal;
+        _currentPortal = newPortal;
     }
 
     public void ExitPortal()
     {
-        currentPortal = null;
+        _currentPortal = null;
     }
 }
