@@ -22,14 +22,24 @@ public class PlayerMove : MonoBehaviour
     // 넉백 데이터
     private bool _knuckbackFlag = false;
     private KnockbackInfomation knockbackInfomation = new KnockbackInfomation();
+    private Animator _animator;
 
     void Start()
     {
         leftMoveBtn.SetMoveEvent(LeftMove);
         RightMoveBtn.SetMoveEvent(RightMove);
+
+        leftMoveBtn.SetUpEvent(UpMoveBtn);
+        RightMoveBtn.SetUpEvent(UpMoveBtn);
         JumpBtn.SetMoveEvent(OnJump);
 
         _posX = transform.position.x;
+        _animator = GetComponent<Animator>();
+    }
+
+    void UpMoveBtn()
+    {
+        _animator.SetBool("move", false);
     }
 
 #if UNITY_EDITOR
@@ -41,6 +51,15 @@ public class PlayerMove : MonoBehaviour
                 LeftMove();
             else if (Input.GetKey(KeyCode.RightArrow))
                 RightMove();
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            UpMoveBtn();
+        }
+        else if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            UpMoveBtn();
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -118,6 +137,7 @@ public class PlayerMove : MonoBehaviour
                     }
                     else
                     {
+                        _animator.SetBool("jump", false);
                         _jumpInfomation.JumpState = 0;
                         _posY = _jumpInfomation.BaseY;
                     }
@@ -141,6 +161,7 @@ public class PlayerMove : MonoBehaviour
                 _jumpInfomation.BaseY = col.transform.position.y + 0.4f;
                 _posY = col.transform.position.y + 0.4f;
                 _jumpInfomation.JumpState = 0;
+                _animator.SetBool("jump", false);
             }
         }
         else
@@ -157,12 +178,14 @@ public class PlayerMove : MonoBehaviour
     {
         _posX += -1f * MoveSpeed * Time.deltaTime;
         transform.localScale = new Vector3(-1f, 1f, 1f);
+        _animator.SetBool("move", true);
     }
 
     public void RightMove()
     {
         _posX += 1f * MoveSpeed * Time.deltaTime;
         transform.localScale = new Vector3(1f, 1f, 1f);
+        _animator.SetBool("move", true);
     }
 
     public void OnJump()
@@ -171,6 +194,7 @@ public class PlayerMove : MonoBehaviour
         {
             _jumpInfomation.JumpState = 1;
             _jumpInfomation.Gravity = _jumpInfomation.Jump_speed;
+            _animator.SetBool("jump", true);
         }
     }
 
