@@ -19,6 +19,10 @@ public class PlayerMove : MonoBehaviour
 
     private AbstPortal _currentPortal = null;
 
+    // 넉백 데이터
+    private bool _knuckbackFlag = false;
+    private KnockbackInfomation knockbackInfomation = new KnockbackInfomation();
+
     void Start()
     {
         leftMoveBtn.SetMoveEvent(LeftMove);
@@ -31,10 +35,13 @@ public class PlayerMove : MonoBehaviour
 #if UNITY_EDITOR
     private void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
-            LeftMove();
-        else if (Input.GetKey(KeyCode.RightArrow))
-            RightMove();
+        if (_knuckbackFlag == false)
+        {
+            if (Input.GetKey(KeyCode.LeftArrow))
+                LeftMove();
+            else if (Input.GetKey(KeyCode.RightArrow))
+                RightMove();
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
             OnJump();
@@ -46,17 +53,6 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        jumpProcess();
-
-        CheckHorizontalRaycast();
-
-        _posX = Mathf.Clamp(_posX, -LimitX, LimitX);
-
-        gameObject.transform.position = new Vector3(_posX, _posY);
-    }
-
     void OnDrawGizmos()
     {
         Gizmos.matrix = Matrix4x4.TRS(overlapBoxTransform.position,
@@ -66,6 +62,20 @@ public class PlayerMove : MonoBehaviour
         Gizmos.DrawCube(Vector3.zero, Vector3.one);
     }
 #endif
+
+    private void FixedUpdate()
+    {
+        if (_knuckbackFlag == true)
+            KnockbackProcess();
+        else
+            jumpProcess();
+
+        CheckHorizontalRaycast();
+
+        _posX = Mathf.Clamp(_posX, -LimitX, LimitX);
+
+        gameObject.transform.position = new Vector3(_posX, _posY);
+    }
 
     private void jumpProcess()
     {
@@ -161,6 +171,44 @@ public class PlayerMove : MonoBehaviour
         {
             _jumpInfomation.JumpState = 1;
             _jumpInfomation.Gravity = _jumpInfomation.Jump_speed;
+        }
+    }
+
+    public void KnockbackProcess()
+    {
+        _posX += (knockbackInfomation.horizontalAcceleration - knockbackInfomation.fraction) * knockbackInfomation.direction;
+        _posY += knockbackInfomation.verticalAcceleration;
+        knockbackInfomation.verticalAcceleration -= knockbackInfomation.gravity; // 올라가는 속도 점점 느려지게 수직 가속도 감소.
+
+        if (knockbackInfomation.isUp == true)
+        {
+            if (knockbackInfomation.verticalAcceleration <= 0.0f)
+                knockbackInfomation.isUp = false;
+        }
+        else
+        {
+            if (_posY <= knockbackInfomation.groundY)
+            {
+                _posY = knockbackInfomation.groundY;
+                _knuckbackFlag = false;
+            }
+        }
+    }
+
+    public void OnKnockback(int direction, float gravity = 0.1f, float fraction = 0.1f)
+    {
+        if (_knuckbackFlag == false)
+        {
+            Debug.Log("PlayerMove.OnKnockback() : Start knockback.");
+
+            knockbackInfomation.direction = direction;
+            knockbackInfomation.verticalAcceleration = knockbackInfomation.horizontalSpeed;
+            knockbackInfomation.horizontalAcceleration = knockbackInfomation.verticalSpeed;
+            knockbackInfomation.gravity = gravity;
+            knockbackInfomation.fraction = fraction;
+            knockbackInfomation.groundY = _posY;
+            knockbackInfomation.isUp = true;
+            _knuckbackFlag = true;
         }
     }
 
