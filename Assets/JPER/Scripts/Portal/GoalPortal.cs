@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GoalPortal : AbstPortal
 {
-    public override void UsePortal(PlayerMove calledPlayer)
+    public override void UsePortal(PortalExecuter calledExecuter)
     {
         Debug.Log("GoalPortal.UsePortal() : Goal in!");
     }

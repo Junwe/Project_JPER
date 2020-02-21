@@ -17,12 +17,13 @@ public class PlayerMove : MonoBehaviour
     public JoyStickButton JumpBtn;
     public Transform overlapBoxTransform;
 
-    private AbstPortal _currentPortal = null;
+    private PortalExecuter _portalExecuter = null;
 
     // 넉백 데이터
-    private bool _knuckbackFlag = false;
     private KnockbackInfomation knockbackInfomation = new KnockbackInfomation();
     private Animator _animator;
+
+    public bool KnuckbackFlag { get; private set; }
 
     void Start()
     {
@@ -34,7 +35,9 @@ public class PlayerMove : MonoBehaviour
         JumpBtn.SetMoveEvent(OnJump);
 
         _posX = transform.position.x;
+        KnuckbackFlag = false;
         _animator = GetComponent<Animator>();
+        _portalExecuter = GetComponent<PortalExecuter>();
     }
 
     void UpMoveBtn()
@@ -45,7 +48,7 @@ public class PlayerMove : MonoBehaviour
 #if UNITY_EDITOR
     private void Update()
     {
-        if (_knuckbackFlag == false)
+        if (KnuckbackFlag == false)
         {
             if (Input.GetKey(KeyCode.LeftArrow))
                 LeftMove();
@@ -67,8 +70,7 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (_currentPortal != null)
-                _currentPortal.UsePortal(this);
+            _portalExecuter.ExecutePortal();
         }
     }
 
@@ -84,7 +86,7 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_knuckbackFlag == true)
+        if (KnuckbackFlag == true)
             KnockbackProcess();
         else
             jumpProcess();
@@ -205,9 +207,9 @@ public class PlayerMove : MonoBehaviour
 
     public void KnockbackProcess()
     {
-        _posX += (knockbackInfomation.horizontalAcceleration - knockbackInfomation.fraction) * knockbackInfomation.direction;
+        _posX += (knockbackInfomation.horizontalAcceleration - KnockbackInfomation.FRACTION) * knockbackInfomation.direction;
         _posY += knockbackInfomation.verticalAcceleration;
-        knockbackInfomation.verticalAcceleration -= knockbackInfomation.gravity; // 올라가는 속도 점점 느려지게 수직 가속도 감소.
+        knockbackInfomation.verticalAcceleration -= KnockbackInfomation.GRAVITY; // 올라가는 속도 점점 느려지게 수직 가속도 감소.
 
         if (knockbackInfomation.isUp == true)
         {
@@ -219,35 +221,21 @@ public class PlayerMove : MonoBehaviour
             if (_posY <= knockbackInfomation.groundY)
             {
                 _posY = knockbackInfomation.groundY;
-                _knuckbackFlag = false;
+                KnuckbackFlag = false;
             }
         }
     }
 
-    public void OnKnockback(int direction, float gravity = 0.1f, float fraction = 0.1f)
+    public void OnKnockback(int direction, float verticalAcceleration = KnockbackInfomation.DEFAULT_VERTICAL_SPEED, float horizontalAcceleration = KnockbackInfomation.DEFAULT_HORIZONTAL_SPEED)
     {
-        if (_knuckbackFlag == false)
+        if (KnuckbackFlag == false)
         {
-            Debug.Log("PlayerMove.OnKnockback() : Start knockback.");
-
             knockbackInfomation.direction = direction;
-            knockbackInfomation.verticalAcceleration = knockbackInfomation.horizontalSpeed;
-            knockbackInfomation.horizontalAcceleration = knockbackInfomation.verticalSpeed;
-            knockbackInfomation.gravity = gravity;
-            knockbackInfomation.fraction = fraction;
+            knockbackInfomation.verticalAcceleration = verticalAcceleration;
+            knockbackInfomation.horizontalAcceleration = horizontalAcceleration;
             knockbackInfomation.groundY = _posY;
             knockbackInfomation.isUp = true;
-            _knuckbackFlag = true;
+            KnuckbackFlag = true;
         }
-    }
-
-    public void EntryPortal(AbstPortal newPortal)
-    {
-        _currentPortal = newPortal;
-    }
-
-    public void ExitPortal()
-    {
-        _currentPortal = null;
     }
 }

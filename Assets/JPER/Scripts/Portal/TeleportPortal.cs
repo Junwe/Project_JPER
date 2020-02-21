@@ -6,8 +6,8 @@ public class TeleportPortal : AbstPortal
 {
     public Transform destination;
 
-    public override void UsePortal(PlayerMove calledPlayer)
+    public override void UsePortal(PortalExecuter calledExecuter)
     {
-        calledPlayer.transform.position = destination.position;
+        calledExecuter.transform.position = destination.position;
     }
 }

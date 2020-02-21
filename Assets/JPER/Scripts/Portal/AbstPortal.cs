@@ -4,19 +4,19 @@ using UnityEngine;
 
 public abstract class AbstPortal : MonoBehaviour
 {
-    public abstract void UsePortal(PlayerMove calledPlayer);
+    public abstract void UsePortal(PortalExecuter calledExecuter);
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var player = collision.GetComponent<PlayerMove>();
-        if (player != null)
-            player.EntryPortal(this);
+        var portalExecuter = collision.GetComponent<PortalExecuter>();
+        if (portalExecuter != null)
+            portalExecuter.EntryPortal(this);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        var player = collision.GetComponent<PlayerMove>();
-        if (player != null)
-            player.ExitPortal();
+        var portalExecuter = collision.GetComponent<PortalExecuter>();
+        if (portalExecuter != null)
+            portalExecuter.ExitPortal();
     }
 }
