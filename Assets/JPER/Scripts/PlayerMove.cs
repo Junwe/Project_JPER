@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public float MoveSpeed;
-    public float LimitX;
+    public float MoveSpeed;     // 이동 속도
+    public float LimitX;        // 플레이어 맵 범위
 
     private JumpInfomation _jumpInfomation = new JumpInfomation();
     private float _posY;        // 플레이어 포지션
@@ -179,6 +179,8 @@ public class PlayerMove : MonoBehaviour
         _posX += -1f * MoveSpeed * Time.deltaTime;
         transform.localScale = new Vector3(-1f, 1f, 1f);
         _animator.SetBool("move", true);
+
+        Sound.Instance.PlayEffSound(SOUND.S_MOVE, 1f, false, false);
     }
 
     public void RightMove()
@@ -186,6 +188,7 @@ public class PlayerMove : MonoBehaviour
         _posX += 1f * MoveSpeed * Time.deltaTime;
         transform.localScale = new Vector3(1f, 1f, 1f);
         _animator.SetBool("move", true);
+        Sound.Instance.PlayEffSound(SOUND.S_MOVE, 1f, false, false);
     }
 
     public void OnJump()
@@ -195,6 +198,8 @@ public class PlayerMove : MonoBehaviour
             _jumpInfomation.JumpState = 1;
             _jumpInfomation.Gravity = _jumpInfomation.Jump_speed;
             _animator.SetBool("jump", true);
+
+            Sound.Instance.PlayEffSound(SOUND.S_JUMP);
         }
     }
 

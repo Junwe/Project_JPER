@@ -25,7 +25,7 @@ public class ClickBtnTween : MonoBehaviour,IPointerDownHandler, IPointerUpHandle
     public void OnPointerDown(PointerEventData eventData)
     {
         _clickTween.StartTween();
-        Sound.Instance.PlayEffSound(SOUND.S_BTN);
+        // Sound.Instance.PlayEffSound(SOUND.S_BTN);
     }
     public void OnPointerUp(PointerEventData eventDate)
     {

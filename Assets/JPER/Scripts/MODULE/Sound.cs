@@ -5,22 +5,9 @@ using UnityEngine.SceneManagement;
 
 public enum SOUND
 {
-    S_PISTOL_SHOT = 0,
-    S_SHOTGUN_SHOT,
-    S_SNIPER_SHOT,
-    S_JUMP_HOT,
-    S_JUMP_SFX,
     S_BGM,
-    S_COIN,
-    S_Grenade,
-    S_Flamethrower,
-    S_BOOMERANG,
-    S_BTN,
-    S_SHOT_BUBBLE,
-    S_POP_BUBBLE,
-    S_SHOT_LASER,
-    S_SHOT_Revolver,
-    
+    S_JUMP,
+    S_MOVE,
 }
 
 public class Sound : MonoSingleton<Sound>
@@ -37,8 +24,8 @@ public class Sound : MonoSingleton<Sound>
         {
             _soundDictionary.Add((SOUND)i, audioClips[i]);
         }
-        SetMute(PlayerPrefs.GetInt("SoundEff", 1),"SoundEff");
-        SetMute(PlayerPrefs.GetInt("SoundBgm", 1),"SoundBgm");
+        SetMute(PlayerPrefs.GetInt("SoundEff", 1), "SoundEff");
+        SetMute(PlayerPrefs.GetInt("SoundBgm", 1), "SoundBgm");
 
         //PlayBGMSound(SOUND.S_BGM);
 
@@ -47,7 +34,7 @@ public class Sound : MonoSingleton<Sound>
 
     private void Start()
     {
-        PlayBGMSound(SOUND.S_BGM);
+        PlayBGMSound(SOUND.S_BGM, 0.5f);
     }
 
     void offAllEffSound(Scene arg0, LoadSceneMode arg1)
@@ -62,7 +49,7 @@ public class Sound : MonoSingleton<Sound>
         }
     }
     // 0이면 뮤트, 1이면 활성화
-    public void SetMute(int mute,string type)
+    public void SetMute(int mute, string type)
     {
         bool isMute = mute == 0 ? true : false;
         if (type.Equals("SoundEff"))
@@ -72,15 +59,33 @@ public class Sound : MonoSingleton<Sound>
                 effSource[i].mute = isMute;
             }
         }
-        else if(type.Equals("SoundBgm"))
+        else if (type.Equals("SoundBgm"))
         {
             bgmSource.mute = isMute;
         }
         PlayerPrefs.SetInt(type, mute);
     }
 
-    public void PlayEffSound(SOUND idx, float volume = 1f, bool loop = false)
+    private bool checkOverLap(SOUND idx)
     {
+        for (int i = 0; i < effSource.Length; ++i)
+        {
+            if (effSource[i].isPlaying && effSource[i].clip.Equals(_soundDictionary[idx]))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void PlayEffSound(SOUND idx, float volume = 1f, bool loop = false, bool overlap = true)
+    {
+        if (!overlap)
+        {
+            if (checkOverLap(idx))
+                return;
+        }
+
         for (int i = 0; i < effSource.Length; ++i)
         {
             if (loop == false)
@@ -118,9 +123,10 @@ public class Sound : MonoSingleton<Sound>
         }
     }
 
-    public void PlayBGMSound(SOUND idx)
+    public void PlayBGMSound(SOUND idx, float volume = 1f)
     {
         bgmSource.clip = _soundDictionary[idx];
+        bgmSource.volume = volume;
         bgmSource.loop = true;
         bgmSource.Play();
     }
