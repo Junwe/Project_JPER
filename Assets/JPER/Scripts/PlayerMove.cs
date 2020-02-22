@@ -6,6 +6,7 @@ public class PlayerMove : MonoBehaviour
 {
     public float MoveSpeed;     // 이동 속도
     public float LimitX;        // 플레이어 맵 범위
+    public float LimitY;        // 플레이어 맵 범위
 
     private JumpInfomation _jumpInfomation = new JumpInfomation();
     private float _posY;        // 플레이어 포지션
@@ -170,7 +171,7 @@ public class PlayerMove : MonoBehaviour
         {
             if (_jumpInfomation.JumpState == 0)
             {
-                _jumpInfomation.BaseY = -4.32f;
+                _jumpInfomation.BaseY = LimitY;
                 _jumpInfomation.JumpState = 2;
             }
         }
