@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class PortalExecuter : MonoBehaviour
 {
-    private AbstPortal _currentPortal = null;
+    public AbstPortal CurrentPortal { get; private set; }
 
     public void EntryPortal(AbstPortal newPortal)
     {
-        _currentPortal = newPortal;
+        CurrentPortal = newPortal;
     }
 
     public void ExitPortal()
     {
-        _currentPortal = null;
+        CurrentPortal = null;
     }
 
     public void ExecutePortal()
     {
-        if (_currentPortal == null)
+        if (CurrentPortal == null)
             return;
 
-        _currentPortal.UsePortal(this);
+        CurrentPortal.UsePortal(this);
     }
 }

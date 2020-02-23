@@ -68,11 +68,6 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
             OnJump();
-
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            _portalExecuter.ExecutePortal();
-        }
     }
 
     void OnDrawGizmos()
@@ -196,6 +191,12 @@ public class PlayerMove : MonoBehaviour
 
     public void OnJump()
     {
+        if (_portalExecuter.CurrentPortal != null)
+        {
+            _portalExecuter.ExecutePortal();
+            return;
+        }
+
         if (_jumpInfomation.JumpState == 0)
         {
             _jumpInfomation.JumpState = 1;
