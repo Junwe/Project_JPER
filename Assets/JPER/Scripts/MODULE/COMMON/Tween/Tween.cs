@@ -14,7 +14,7 @@ public class Tween : MonoSingleton<Tween>
         AnimationCurve animationCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
         while (t < 1.0f)
         {
-            t = Mathf.Clamp01(t + Time.unscaledDeltaTime   / time);
+            t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
             spr.SetAlpha(Mathf.Lerp(startAlpha, EndAlpha, animationCurve.Evaluate(t)));
             yield return null;
         }
@@ -27,7 +27,7 @@ public class Tween : MonoSingleton<Tween>
         AnimationCurve animationCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
         while (t < 1.0f)
         {
-            t = Mathf.Clamp01(t + Time.unscaledDeltaTime   / time);
+            t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
             obj.transform.localPosition = Vector3.Lerp(StartPos, EndPos, animationCurve.Evaluate(t));
             yield return null;
         }
@@ -41,7 +41,7 @@ public class Tween : MonoSingleton<Tween>
         obj.transform.localPosition = StartPos;
         while (t < 1.0f)
         {
-            t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+            t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
             obj.transform.localPosition = Vector3.Lerp(StartPos, EndPos, animationCurve.Evaluate(t));
             yield return null;
         }
@@ -57,7 +57,7 @@ public class Tween : MonoSingleton<Tween>
         {
             while (t < 1.0f)
             {
-                t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+                t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
                 obj.transform.localPosition = Vector3.Lerp(StartPos, EndPos, animationCurve.Evaluate(t));
                 yield return null;
             }
@@ -72,7 +72,7 @@ public class Tween : MonoSingleton<Tween>
         bool isdirection = true;
         obj.transform.localPosition = StartPos;
         yield return new WaitForSecondsRealtime(DelayMove);
-        while(true)
+        while (true)
         {
             while (t < 1.0f)
             {
@@ -98,7 +98,7 @@ public class Tween : MonoSingleton<Tween>
 
         while (t < 1.0f)
         {
-            t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+            t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
             obj.transform.localPosition = Vector3.Lerp(StartPos, EndPos, animationCurve.Evaluate(t));
             yield return null;
         }
@@ -114,7 +114,7 @@ public class Tween : MonoSingleton<Tween>
         {
             while (t < 1.0f)
             {
-                t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+                t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
                 obj.transform.localPosition = Vector3.Lerp(StartPos, EndPos, animationCurve.Evaluate(t));
                 yield return null;
             }
@@ -130,7 +130,7 @@ public class Tween : MonoSingleton<Tween>
         yield return new WaitForSecondsRealtime(DelayMove);
         while (t < 1.0f)
         {
-            t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+            t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
             spr.SetAlpha(Mathf.Lerp(startAlpha, EndAlpha, animationCurve.Evaluate(t)));
             yield return null;
         }
@@ -146,7 +146,7 @@ public class Tween : MonoSingleton<Tween>
             yield return new WaitForSecondsRealtime(DelayMove);
             while (t < 1.0f)
             {
-                t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+                t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
                 spr.SetAlpha(Mathf.Lerp(startAlpha, EndAlpha, animationCurve.Evaluate(t)));
                 yield return null;
             }
@@ -158,13 +158,13 @@ public class Tween : MonoSingleton<Tween>
     public IEnumerator SetColor(SpriteRenderer spr, Color StartColor, Color EndColor, float time, float DelayMove)
     {
         float t = 0f;
-        AnimationCurve curve = AnimationCurve.EaseInOut(0f,0f,1f,1f);
+        AnimationCurve curve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
         spr.SetColor(StartColor);
         yield return new WaitForSecondsRealtime(DelayMove);
 
         while (t < 1.0f)
         {
-            t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+            t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
             float r = Mathf.Lerp(StartColor.r, EndColor.r, curve.Evaluate(t));
             float g = Mathf.Lerp(StartColor.g, EndColor.g, curve.Evaluate(t));
             float b = Mathf.Lerp(StartColor.b, EndColor.b, curve.Evaluate(t));
@@ -185,7 +185,7 @@ public class Tween : MonoSingleton<Tween>
         {
             while (t < 1.0f)
             {
-                t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+                t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
                 float r = Mathf.Lerp(StartColor.r, EndColor.r, curve.Evaluate(t));
                 float g = Mathf.Lerp(StartColor.g, EndColor.g, curve.Evaluate(t));
                 float b = Mathf.Lerp(StartColor.b, EndColor.b, curve.Evaluate(t));
@@ -211,7 +211,7 @@ public class Tween : MonoSingleton<Tween>
         yield return new WaitForSecondsRealtime(DelayMove);
         while (t < 1.0f)
         {
-            t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+            t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
             spr.SetAlpha(Mathf.Lerp(startAlpha, EndAlpha, animationCurve.Evaluate(t)));
             yield return null;
         }
@@ -226,7 +226,7 @@ public class Tween : MonoSingleton<Tween>
             yield return new WaitForSecondsRealtime(DelayMove);
             while (t < 1.0f)
             {
-                t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+                t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
                 spr.SetAlpha(Mathf.Lerp(startAlpha, EndAlpha, animationCurve.Evaluate(t)));
                 yield return null;
             }
@@ -241,7 +241,7 @@ public class Tween : MonoSingleton<Tween>
         yield return new WaitForSecondsRealtime(DelayMove);
         while (t < 1.0f)
         {
-            t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+            t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
             spr.SetAlpha(Mathf.Lerp(startAlpha, EndAlpha, animationCurve.Evaluate(t)));
             yield return null;
         }
@@ -258,7 +258,7 @@ public class Tween : MonoSingleton<Tween>
             yield return new WaitForSecondsRealtime(DelayMove);
             while (t < 1.0f)
             {
-                t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+                t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
                 spr.SetAlpha(Mathf.Lerp(startAlpha, EndAlpha, animationCurve.Evaluate(t)));
                 yield return null;
             }
@@ -274,7 +274,7 @@ public class Tween : MonoSingleton<Tween>
 
         while (t < 1.0f)
         {
-            t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+            t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
             spr.sizeDelta = StartScale + (EndScale - StartScale) * animationCurve.Evaluate(t);
             yield return null;
         }
@@ -290,7 +290,7 @@ public class Tween : MonoSingleton<Tween>
             yield return new WaitForSecondsRealtime(DelayMove);
             while (t < 1.0f)
             {
-                t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+                t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
                 spr.sizeDelta = StartScale + (EndScale - StartScale) * animationCurve.Evaluate(t);
                 yield return null;
             }
@@ -307,7 +307,7 @@ public class Tween : MonoSingleton<Tween>
         yield return new WaitForSecondsRealtime(DelayMove);
         while (t < 1.0f)
         {
-            t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+            t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
             line.startWidth = StartScale + (EndScale - StartScale) * animationCurve.Evaluate(t);
             line.endWidth = StartScale + (EndScale - StartScale) * animationCurve.Evaluate(t);
             yield return null;
@@ -324,7 +324,7 @@ public class Tween : MonoSingleton<Tween>
         yield return new WaitForSecondsRealtime(DelayMove);
         while (t < 1.0f)
         {
-            t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+            t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
             spr.localScale = StartScale + (EndScale - StartScale) * animationCurve.Evaluate(t);// Vector2.Lerp(StartScale, EndScale, animationCurve.Evaluate(t));
             yield return null;
         }
@@ -340,7 +340,7 @@ public class Tween : MonoSingleton<Tween>
             yield return new WaitForSecondsRealtime(DelayMove);
             while (t < 1.0f)
             {
-                t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+                t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
                 spr.localScale = StartScale + (EndScale - StartScale) * animationCurve.Evaluate(t);
                 yield return null;
             }
@@ -355,7 +355,7 @@ public class Tween : MonoSingleton<Tween>
         yield return new WaitForSecondsRealtime(Delay);
         while (t < 1.0f)
         {
-            t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+            t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
             txt.text = ((int)(start + (end - start) * t)).ToString();
 
             yield return null;
@@ -378,7 +378,7 @@ public class Tween : MonoSingleton<Tween>
         yield return new WaitForSecondsRealtime(DelayMove);
         while (t < 1.0f)
         {
-            t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+            t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
             camera.orthographicSize = Mathf.Lerp(Startsize, Endsize, animationCurve.Evaluate(t));
             yield return null;
         }
@@ -395,7 +395,7 @@ public class Tween : MonoSingleton<Tween>
         {
             while (t < 1.0f)
             {
-                t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+                t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
                 spriterenderer.sprite = sprites[count];
                 yield return null;
             }
@@ -417,7 +417,7 @@ public class Tween : MonoSingleton<Tween>
             {
                 while (t < 1.0f)
                 {
-                    t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+                    t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
                     spriterenderer.sprite = sprites[count];
                     yield return null;
                 }
@@ -435,10 +435,35 @@ public class Tween : MonoSingleton<Tween>
         yield return new WaitForSecondsRealtime(DelayMove);
         while (t < 1.0f)
         {
-            t = Mathf.Clamp01(t + Time.unscaledDeltaTime  / time);
+            t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
             image.fillAmount = Mathf.Lerp(StartScale, EndScale, animationCurve.Evaluate(t));
             yield return null;
         }
         image.fillAmount = EndScale;
+    }
+
+    public IEnumerator SetRoation(GameObject obj, float startRoation, float EndRoation, float time, float DelayMove, AnimationCurve animationCurve)
+    {
+        float t = 0f;
+        yield return new WaitForSecondsRealtime(DelayMove);
+        while (t < 1.0f)
+        {
+            t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
+            obj.transform.localEulerAngles = new Vector3(obj.transform.localEulerAngles.x, obj.transform.localEulerAngles.y,
+            Mathf.Lerp(startRoation, EndRoation, animationCurve.Evaluate(t)));
+            yield return null;
+        }
+        obj.transform.localEulerAngles = new Vector3(obj.transform.localEulerAngles.x, obj.transform.localEulerAngles.y, EndRoation);
+    }
+
+    public IEnumerator SetRoationLoop(GameObject obj, float startRoation, float roationSpeed, float DelayMove)
+    {
+        obj.transform.localEulerAngles = new Vector3(obj.transform.localEulerAngles.x, obj.transform.localEulerAngles.y, startRoation);
+        yield return new WaitForSecondsRealtime(DelayMove);
+        while (true)
+        {
+            obj.transform.localEulerAngles += new Vector3(0f,0f,roationSpeed * Time.deltaTime);
+            yield return null;
+        }
     }
 }

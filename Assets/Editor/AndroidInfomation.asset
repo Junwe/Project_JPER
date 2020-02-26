@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584db477a413bc54cac97f5a308f46b6, type: 3}
   m_Name: AndroidInfomation
   m_EditorClassIdentifier: 
-  path: /Users/shj/Desktop/UnityProject/Project_JPER/build
+  path: PER/buildj/Desktop/UnityProject/Project_JPER/build
   ver: 1.0.0.0
   verCode: 1
   pass: shj9505
