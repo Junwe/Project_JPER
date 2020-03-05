@@ -91,6 +91,8 @@ public class PlayerMove : MonoBehaviour
 
         _posX = Mathf.Clamp(_posX, -LimitX, LimitX);
 
+        _jumpInfomation.Gravity = Mathf.Clamp(_jumpInfomation.Gravity, -2f, 2f);
+
         gameObject.transform.position = new Vector3(_posX, _posY);
     }
 
