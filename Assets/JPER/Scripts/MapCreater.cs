@@ -22,7 +22,7 @@ public class MapCreater : MonoBehaviour
     {
         string jsonString = string.Empty;
 
-        using (StreamReader reader = new StreamReader(Path.Combine(Application.streamingAssetsPath, JSON_PATH, jsonFileName)+".json"))
+        using (StreamReader reader = new StreamReader(Path.Combine(Application.streamingAssetsPath, JSON_PATH, jsonFileName) + ".json"))
             jsonString = reader.ReadToEnd();
 
         if (string.IsNullOrEmpty(jsonString) == true)
@@ -33,11 +33,11 @@ public class MapCreater : MonoBehaviour
 
         StageData stageData = JsonUtility.FromJson<StageData>(jsonString);
 
-        for (int i = 0; i < stageData.map.GetLength(0); ++i)
+        for (int i = 0; i < stageData.map.Count; ++i)
         {
-            for (int j = 0; j < stageData.map.GetLength(1); ++j)
+            for (int j = 0; j < stageData.map[i].row.Count; ++j)
             {
-                if (map[i, j] == 0)
+                if (stageData.map[i].row[j] == 0)
                     continue;
 
                 float posX = GROUND_WIDTH * j;
