@@ -6,15 +6,17 @@ using UnityEngine;
 public class MapCreater : MonoBehaviour
 {
     private const string JSON_PATH = "MapData";
-    private const float GROUND_HEIGHT = .98f;
-    private const float GROUND_WIDTH = .98f;
+    private const float GROUND_HEIGHT = .94f;
+    private const float GROUND_WIDTH = .94f;
 
     [SerializeField]
     private string jsonFileName;
 
     [Header("Temporal Setting")]
     [SerializeField]
-    private List<GameObject> groundPrefabs = null;
+    private List<GameObject> groundPrefabs;
+    [SerializeField]
+    private GameObject portal;
 
     public int[,] map;
 
@@ -42,7 +44,11 @@ public class MapCreater : MonoBehaviour
 
                 float posX = GROUND_WIDTH * j;
                 float posY = GROUND_HEIGHT * i;
-                var temp = Instantiate(groundPrefabs[0], new Vector2(posX, posY), Quaternion.identity);
+                var temp = Instantiate(groundPrefabs[0], new Vector3(posX, posY, 0) + transform.position, Quaternion.identity, transform);
+                
+                var portalPos = new Vector2(j, i);
+                if (portalPos == stageData.portalPosition)
+                    Instantiate(portal, temp.transform);
             }
         }
     }

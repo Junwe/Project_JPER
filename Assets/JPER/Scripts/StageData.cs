@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class StageData
 {
@@ -11,4 +12,5 @@ public class StageData
 
     //public List<string> groundNames;
     public List<Row> map; //int[,] map;
+    public Vector2 portalPosition;
 }
