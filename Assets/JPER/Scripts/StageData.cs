@@ -11,6 +11,6 @@ public class StageData
     }
 
     //public List<string> groundNames;
-    public List<Row> map; //int[,] map;
+    public List<Row> map;
     public Vector2 portalPosition;
 }
