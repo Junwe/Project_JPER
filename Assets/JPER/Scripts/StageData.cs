@@ -10,7 +10,16 @@ public class StageData
         public List<int> row;
     }
 
-    //public List<string> groundNames;
+    [System.Serializable]
+    public struct HuddleInfo
+    {
+        public int huddleIndex;
+        public Vector2 position;
+    }
+
+    public List<string> grounds;
     public List<Row> map;
     public Vector2 portalPosition;
+    public List<string> huddles;
+    public List<HuddleInfo> huddleInfos;
 }
