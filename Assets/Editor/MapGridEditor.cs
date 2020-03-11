@@ -8,10 +8,11 @@ public class MapGridEditor : Editor
 {
     Grid grid;
 
-    private List<GameObject> _objList = new List<GameObject>();
+    private int _selectIndex = 0;
 
     void OnEanble()
     {
+        grid = (Grid)target;
     }
     void OnSceneGUI()
     {
@@ -31,22 +32,37 @@ public class MapGridEditor : Editor
              Mathf.Floor(ray.origin.y / grid.height) * grid.height + grid.height / 2f, 0f);
             if (CheckCompareObject(createPos))
             {
-                GameObject createObject = (GameObject)PrefabUtility.InstantiatePrefab(grid.prefabsList);
+                GameObject createObject = (GameObject)PrefabUtility.InstantiatePrefab(grid.prefabsList[_selectIndex]);
                 createObject.transform.parent = grid.transform;
                 createObject.transform.position = createPos;
-                _objList.Add(createObject);
             }
         }
     }
 
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+        grid = (Grid)target;
+        EditorGUILayout.BeginHorizontal();
+        string[] options = new string[grid.prefabsList.Length];
+
+        for (int i = 0; i < options.Length; ++i)
+        {
+            if (grid.prefabsList[i] != null)
+                options[i] = grid.prefabsList[i].name;
+        }
+        _selectIndex = EditorGUILayout.Popup(_selectIndex, options);
+
+    }
+
     bool CheckCompareObject(Vector3 newPos)
     {
-        foreach (var obj in _objList)
+        Transform[] girdobjList = grid.GetComponentsInChildren<Transform>();
+        foreach (var obj in girdobjList)
         {
             if (obj.transform.position == newPos)
             {
-                _objList.Remove(obj);
-                DestroyImmediate(obj);
+                DestroyImmediate(obj.gameObject);
                 return false;
             }
         }

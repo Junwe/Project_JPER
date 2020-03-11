@@ -9,13 +9,15 @@ public class Grid : MonoBehaviour
 
     public Color color = Color.white;
 
-    public GameObject prefabsList;
+    public GameObject[] prefabsList;
 
     void OnDrawGizmos()
     {
         Vector3 pos = Camera.current.transform.position;
         Gizmos.color = color;
 
+        if (width <= 0 || height <= 0)
+            return;
         for (float y = pos.y - 540f; y < pos.y + 540f; y += height)
         {
             Gizmos.DrawLine(new Vector3(10000000.0f, Mathf.Floor(y / height) * height, 0f),
