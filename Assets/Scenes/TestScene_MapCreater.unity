@@ -1593,7 +1593,7 @@ GameObject:
   - component: {fileID: 1500769253}
   - component: {fileID: 1500769252}
   m_Layer: 0
-  m_Name: G_Player (1)
+  m_Name: G_Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1769,6 +1769,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1520185088}
   - component: {fileID: 1520185087}
+  - component: {fileID: 1520185089}
   m_Layer: 0
   m_Name: MapCreater
   m_TagString: Untagged
@@ -1800,12 +1801,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1520185086}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -8.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1520185089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520185086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c71d984b92be49d6865a872a268f26c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 1
+  height: 1
+  color: {r: 1, g: 1, b: 1, a: 1}
+  prefabsList: {fileID: 4191272751511515856, guid: fa9e5e54c129d104a912eff9d7155ef9,
+    type: 3}
 --- !u!1 &1545393358
 GameObject:
   m_ObjectHideFlags: 0
@@ -2029,7 +2047,7 @@ GameObject:
   - component: {fileID: 1704586940}
   - component: {fileID: 1704586939}
   m_Layer: 0
-  m_Name: Main Camera (1)
+  m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
