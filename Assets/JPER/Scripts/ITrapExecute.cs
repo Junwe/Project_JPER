@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ITrapExecute
 {
-    void Execute();
+    void Execute(PlayerMove targetPlayer);
 }
