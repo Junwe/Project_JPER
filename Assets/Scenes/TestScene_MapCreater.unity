@@ -1789,7 +1789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af37822ec4d0eb4ba6993d5baeb55f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonFileName: Stage_2
+  jsonFileName: Stage_1
   portal: {fileID: 2557959420757381635, guid: ae62603e90669d24d89e80d0163d9b2d, type: 3}
 --- !u!4 &1520185088
 Transform:
@@ -1799,7 +1799,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1520185086}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -4.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1817,8 +1817,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c71d984b92be49d6865a872a268f26c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 1
-  height: 1
+  width: 0.94
+  height: 0.94
   color: {r: 1, g: 1, b: 1, a: 1}
   prefabsList:
   - {fileID: 4191272751511515856, guid: fa9e5e54c129d104a912eff9d7155ef9, type: 3}

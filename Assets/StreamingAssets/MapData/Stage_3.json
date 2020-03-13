@@ -62,6 +62,6 @@
         {"row": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}
     ],
     "portalPosition": {"x": 20, "y": 58},
-    "huddles": [],
-    "huddleInfos": []
+    "huddles": ["SampleHuddle"],
+    "huddleInfos": [{"huddleIndex": 0, "x": 1, "y": 1}]
 }
