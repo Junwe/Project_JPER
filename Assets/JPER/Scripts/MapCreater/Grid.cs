@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
-    public float width = 32f;
-    public float height = 32f;
+        public float width = 1f;
+    public float height = 1f;
 
     public Color color = Color.white;
 
     public GameObject[] prefabsList;
+    public Transform parent;
 
     void OnDrawGizmos()
     {

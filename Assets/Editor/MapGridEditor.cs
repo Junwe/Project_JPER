@@ -8,6 +8,7 @@ public class MapGridEditor : Editor
 {
     Grid grid;
 
+    private int _objectIndex = 0;
     private int _selectIndex = 0;
 
     void OnEanble()
@@ -22,20 +23,55 @@ public class MapGridEditor : Editor
         var mousePosition = Event.current.mousePosition * EditorGUIUtility.pixelsPerPoint;
         mousePosition.y = Camera.current.pixelHeight - mousePosition.y;
         Ray ray = Camera.current.ScreenPointToRay(mousePosition);
-
-        if (Event.current.type == EventType.MouseDown)
+        
+        if (_selectIndex == 0)
         {
-            GUIUtility.hotControl = crtID;
-            e.Use();
-            grid = (Grid)target;
-            Vector3 createPos = new Vector3(Mathf.Floor(ray.origin.x / grid.width) * grid.width + grid.width / 2f,
-             Mathf.Floor(ray.origin.y / grid.height) * grid.height + grid.height / 2f, 0f);
-            if (CheckCompareObject(createPos))
+            if (Event.current.type == EventType.MouseDown)
             {
-                GameObject createObject = (GameObject)PrefabUtility.InstantiatePrefab(grid.prefabsList[_selectIndex]);
-                createObject.transform.parent = grid.transform;
-                createObject.transform.position = createPos;
+                GUIUtility.hotControl = crtID;
+                e.Use();
+                DrawObject(true, ray.origin);
             }
+            if (Event.current.type == EventType.MouseDrag)
+            {
+                DrawObject(false, ray.origin);
+            }
+        }
+        else if (_selectIndex == 1)
+        {
+            if (Event.current.type == EventType.MouseDown)
+            {
+                GUIUtility.hotControl = crtID;
+                e.Use();
+                DestoryObject(ray.origin);
+            }
+            if (Event.current.type == EventType.MouseDrag)
+            {
+                DestoryObject(ray.origin);
+            }
+        }
+    }
+
+    private void DrawObject(bool drag, Vector3 pos)
+    {
+        grid = (Grid)target;
+        Vector3 createPos = new Vector3(Mathf.Floor(pos.x / grid.width) * grid.width + grid.width / 2f,
+         Mathf.Floor(pos.y / grid.height) * grid.height + grid.height / 2f, 0f);
+        if (CheckCompareObject(createPos, drag))
+        {
+            GameObject createObject = (GameObject)PrefabUtility.InstantiatePrefab(grid.prefabsList[_objectIndex]);
+            createObject.transform.parent = grid.parent;
+            createObject.transform.position = createPos;
+        }
+    }
+
+    private void DestoryObject(Vector3 pos)
+    {
+        grid = (Grid)target;
+        Vector3 createPos = new Vector3(Mathf.Floor(pos.x / grid.width) * grid.width + grid.width / 2f,
+         Mathf.Floor(pos.y / grid.height) * grid.height + grid.height / 2f, 0f);
+        if (CheckCompareObject(createPos, true))
+        {
         }
     }
 
@@ -44,25 +80,30 @@ public class MapGridEditor : Editor
         base.OnInspectorGUI();
         grid = (Grid)target;
         EditorGUILayout.BeginHorizontal();
-        string[] options = new string[grid.prefabsList.Length];
+        string[] ObjectOptions = new string[grid.prefabsList.Length];
+        string[] selectOptions = { "그리기", "지우기" };
 
-        for (int i = 0; i < options.Length; ++i)
+        for (int i = 0; i < ObjectOptions.Length; ++i)
         {
             if (grid.prefabsList[i] != null)
-                options[i] = grid.prefabsList[i].name;
+                ObjectOptions[i] = grid.prefabsList[i].name;
         }
-        _selectIndex = EditorGUILayout.Popup(_selectIndex, options);
+        _objectIndex = EditorGUILayout.Popup(_objectIndex, ObjectOptions);
+        _selectIndex = EditorGUILayout.Popup(_selectIndex, selectOptions);
+
+        EditorGUILayout.EndHorizontal();
 
     }
 
-    bool CheckCompareObject(Vector3 newPos)
+    bool CheckCompareObject(Vector3 newPos, bool destoryObject)
     {
-        Transform[] girdobjList = grid.GetComponentsInChildren<Transform>();
+        Transform[] girdobjList = grid.parent.GetComponentsInChildren<Transform>();
         foreach (var obj in girdobjList)
         {
             if (obj.transform.position == newPos)
             {
-                DestroyImmediate(obj.gameObject);
+                if (destoryObject)
+                    DestroyImmediate(obj.gameObject);
                 return false;
             }
         }

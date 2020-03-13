@@ -1822,7 +1822,6 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   prefabsList:
   - {fileID: 4191272751511515856, guid: fa9e5e54c129d104a912eff9d7155ef9, type: 3}
-  - {fileID: 2557959420757381635, guid: ae62603e90669d24d89e80d0163d9b2d, type: 3}
 --- !u!1 &1545393358
 GameObject:
   m_ObjectHideFlags: 0
