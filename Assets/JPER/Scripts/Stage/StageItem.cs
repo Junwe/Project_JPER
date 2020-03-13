@@ -9,14 +9,17 @@ public class StageItem : MonoBehaviour
     public Text txtStage;
 
     private int _stageSceneCode;
+    private StageLevel _myLevel;
     public void SetStageItem(StageLevel level)
     {
         txtStage.text = level.stageName;
         _stageSceneCode = level.StageCode;
+        _myLevel = level;
     }
 
     public void ClickStageBtn()
     {
+        StageManager.SelectStage = _myLevel;
         SceneManager.LoadScene(_stageSceneCode);
     }
 }

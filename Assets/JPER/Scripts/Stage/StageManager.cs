@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
+    public static StageLevel SelectStage;
     public StageLevel[] stageLevels;
     public GameObject prefabStageUI;
     public Transform trStageParent;

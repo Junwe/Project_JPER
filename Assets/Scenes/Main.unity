@@ -232,6 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageLevels:
   - {fileID: 11400000, guid: 2e8df4db7edf64a7e9fee420c54f0126, type: 2}
+  - {fileID: 11400000, guid: b3408ce1a9f56443a8a1715545edd5af, type: 2}
   prefabStageUI: {fileID: 1081715870733702810, guid: 22d3a30ec657841a3923ab40f002e142,
     type: 3}
   trStageParent: {fileID: 1552906113}
