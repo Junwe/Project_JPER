@@ -24,6 +24,8 @@ public class MapGridEditor : Editor
         mousePosition.y = Camera.current.pixelHeight - mousePosition.y;
         Ray ray = Camera.current.ScreenPointToRay(mousePosition);
         
+
+        //Undo.RegisterCreatedObjectUndo(grid.parent,"create undo");
         if (_selectIndex == 0)
         {
             if (Event.current.type == EventType.MouseDown)

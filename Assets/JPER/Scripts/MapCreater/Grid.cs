@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
-        public float width = 1f;
+    public float width = 1f;
     public float height = 1f;
 
     public Color color = Color.white;
@@ -12,8 +12,13 @@ public class Grid : MonoBehaviour
     public GameObject[] prefabsList;
     public Transform parent;
 
+    public bool isGrid = true;
+
     void OnDrawGizmos()
     {
+        if (!isGrid)
+            return;
+            
         Vector3 pos = Camera.current.transform.position;
         Gizmos.color = color;
 
