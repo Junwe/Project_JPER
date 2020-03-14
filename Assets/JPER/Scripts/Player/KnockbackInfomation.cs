@@ -2,8 +2,8 @@
 {
     public const float DEFAULT_VERTICAL_SPEED = 0.3f;
     public const float DEFAULT_HORIZONTAL_SPEED = 0.3f;
-    public const float GRAVITY = 0.1f;                          // 중력 상수
-    public const float FRACTION = 0.1f;                         // 마찰력 상수
+    public const float GRAVITY = 0.01f;                          // 중력 상수
+    public const float FRACTION = 0.01f;                         // 마찰력 상수
 
     public float verticalSpeed = DEFAULT_VERTICAL_SPEED;        // 초기 수직 이동속도
     public float horizontalSpeed = DEFAULT_HORIZONTAL_SPEED;    // 초기 수평 이동속도

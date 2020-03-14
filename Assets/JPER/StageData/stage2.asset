@@ -16,3 +16,4 @@ MonoBehaviour:
     type: 3}
   stageName: stage2
   StageCode: 1
+  LimitX: 100

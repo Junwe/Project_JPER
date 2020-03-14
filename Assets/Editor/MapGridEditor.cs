@@ -13,6 +13,8 @@ public class MapGridEditor : Editor
     }
     void OnSceneGUI()
     {
+        grid = (Grid)target;
+
         int crtID = GUIUtility.GetControlID(FocusType.Passive);
         Event e = Event.current;
 
