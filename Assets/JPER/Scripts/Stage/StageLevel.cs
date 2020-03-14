@@ -7,6 +7,7 @@ public class StageLevel : ScriptableObject
     public GameObject stagePrefab;
     public string stageName;
     public int StageCode = 1;
+    public float LimitX = 100f;
 
 
     public bool IsClear()

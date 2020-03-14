@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public float MoveSpeed;     // 이동 속도
-    public float LimitX;        // 플레이어 맵 범위
     public float LimitY;        // 플레이어 맵 범위
 
     private JumpInfomation _jumpInfomation = new JumpInfomation();
@@ -89,7 +88,7 @@ public class PlayerMove : MonoBehaviour
 
         CheckHorizontalRaycast();
 
-        _posX = Mathf.Clamp(_posX, -LimitX, LimitX);
+        _posX = Mathf.Clamp(_posX, -StageManager.SelectStage.LimitX, StageManager.SelectStage.LimitX);
 
         _jumpInfomation.Gravity = Mathf.Clamp(_jumpInfomation.Gravity, -2f, 2f);
 

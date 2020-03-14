@@ -7,10 +7,6 @@ using UnityEditor;
 public class MapGridEditor : Editor
 {
     Grid grid;
-
-    private int _objectIndex = 0;
-    private int _selectIndex = 0;
-
     void OnEanble()
     {
         grid = (Grid)target;
@@ -23,23 +19,24 @@ public class MapGridEditor : Editor
         var mousePosition = Event.current.mousePosition * EditorGUIUtility.pixelsPerPoint;
         mousePosition.y = Camera.current.pixelHeight - mousePosition.y;
         Ray ray = Camera.current.ScreenPointToRay(mousePosition);
-        
 
-        //Undo.RegisterCreatedObjectUndo(grid.parent,"create undo");
-        if (_selectIndex == 0)
+        if (grid.SelectIndex == 0)
         {
-            if (Event.current.type == EventType.MouseDown)
+            if (Event.current.button == 0)
             {
-                GUIUtility.hotControl = crtID;
-                e.Use();
-                DrawObject(true, ray.origin);
-            }
-            if (Event.current.type == EventType.MouseDrag)
-            {
-                DrawObject(false, ray.origin);
+                if (Event.current.type == EventType.MouseDown)
+                {
+                    GUIUtility.hotControl = crtID;
+                    e.Use();
+                    DrawObject(true, ray.origin);
+                }
+                if (Event.current.type == EventType.MouseDrag)
+                {
+                    DrawObject(false, ray.origin);
+                }
             }
         }
-        else if (_selectIndex == 1)
+        else if (grid.SelectIndex == 1)
         {
             if (Event.current.type == EventType.MouseDown)
             {
@@ -61,9 +58,10 @@ public class MapGridEditor : Editor
          Mathf.Floor(pos.y / grid.height) * grid.height + grid.height / 2f, 0f);
         if (CheckCompareObject(createPos, drag))
         {
-            GameObject createObject = (GameObject)PrefabUtility.InstantiatePrefab(grid.prefabsList[_objectIndex]);
+            GameObject createObject = (GameObject)PrefabUtility.InstantiatePrefab(grid.prefabsList[grid.ObjectIndex]);
             createObject.transform.parent = grid.parent;
             createObject.transform.position = createPos;
+            Undo.RegisterCreatedObjectUndo(createObject, "create Object");
         }
     }
 
@@ -90,8 +88,8 @@ public class MapGridEditor : Editor
             if (grid.prefabsList[i] != null)
                 ObjectOptions[i] = grid.prefabsList[i].name;
         }
-        _objectIndex = EditorGUILayout.Popup(_objectIndex, ObjectOptions);
-        _selectIndex = EditorGUILayout.Popup(_selectIndex, selectOptions);
+        grid.ObjectIndex = EditorGUILayout.Popup(grid.ObjectIndex, ObjectOptions);
+        grid.SelectIndex = EditorGUILayout.Popup(grid.SelectIndex, selectOptions);
 
         EditorGUILayout.EndHorizontal();
 
@@ -105,7 +103,11 @@ public class MapGridEditor : Editor
             if (obj.transform.position == newPos)
             {
                 if (destoryObject)
-                    DestroyImmediate(obj.gameObject);
+                {
+                    Undo.DestroyObjectImmediate(obj.gameObject);
+                    //DestroyImmediate(obj.gameObject);
+
+                }
                 return false;
             }
         }

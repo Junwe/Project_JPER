@@ -14,6 +14,11 @@ public class Grid : MonoBehaviour
 
     public bool isGrid = true;
 
+    [HideInInspector]
+    public int ObjectIndex;
+    [HideInInspector]
+    public int SelectIndex;
+
     void OnDrawGizmos()
     {
         if (!isGrid)
