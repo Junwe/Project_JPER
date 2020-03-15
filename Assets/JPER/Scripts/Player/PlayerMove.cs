@@ -89,8 +89,7 @@ public class PlayerMove : MonoBehaviour
         CheckHorizontalRaycast();
 
         _posX = Mathf.Clamp(_posX, -StageManager.SelectStage.LimitX, StageManager.SelectStage.LimitX);
-
-        _jumpInfomation.Gravity = Mathf.Clamp(_jumpInfomation.Gravity, -2f, 2f);
+        _jumpInfomation.Gravity = Mathf.Clamp(_jumpInfomation.Gravity, -0.6f, 0.6f);
 
         gameObject.transform.position = new Vector3(_posX, _posY);
     }
