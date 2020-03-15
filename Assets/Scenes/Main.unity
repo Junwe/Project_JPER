@@ -234,6 +234,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2e8df4db7edf64a7e9fee420c54f0126, type: 2}
   - {fileID: 11400000, guid: b3408ce1a9f56443a8a1715545edd5af, type: 2}
   - {fileID: 11400000, guid: 2b40ff08dd1db9e40b2ad2fd2224c6a5, type: 2}
+  - {fileID: 11400000, guid: e7993941ea054ff4eaf7a6c7fb12f0fe, type: 2}
+  - {fileID: 11400000, guid: a6097732d192fa040b3a619d032e83c7, type: 2}
+  - {fileID: 11400000, guid: 5a28d12df11104032bf142ff2f052ae0, type: 2}
   prefabStageUI: {fileID: 1081715870733702810, guid: 22d3a30ec657841a3923ab40f002e142,
     type: 3}
   trStageParent: {fileID: 1552906113}

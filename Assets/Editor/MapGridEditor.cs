@@ -22,9 +22,9 @@ public class MapGridEditor : Editor
         mousePosition.y = Camera.current.pixelHeight - mousePosition.y;
         Ray ray = Camera.current.ScreenPointToRay(mousePosition);
 
-        if (grid.SelectIndex == 0)
+        if (Event.current.button == 0)
         {
-            if (Event.current.button == 0)
+            if (grid.SelectIndex == 0)
             {
                 if (Event.current.type == EventType.MouseDown)
                 {
@@ -37,18 +37,18 @@ public class MapGridEditor : Editor
                     DrawObject(false, ray.origin);
                 }
             }
-        }
-        else if (grid.SelectIndex == 1)
-        {
-            if (Event.current.type == EventType.MouseDown)
+            else if (grid.SelectIndex == 1)
             {
-                GUIUtility.hotControl = crtID;
-                e.Use();
-                DestoryObject(ray.origin);
-            }
-            if (Event.current.type == EventType.MouseDrag)
-            {
-                DestoryObject(ray.origin);
+                if (Event.current.type == EventType.MouseDown)
+                {
+                    GUIUtility.hotControl = crtID;
+                    e.Use();
+                    DestoryObject(ray.origin);
+                }
+                if (Event.current.type == EventType.MouseDrag)
+                {
+                    DestoryObject(ray.origin);
+                }
             }
         }
     }
