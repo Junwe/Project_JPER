@@ -29,7 +29,7 @@ public class Sound : MonoSingleton<Sound>
 
         //PlayBGMSound(SOUND.S_BGM);
 
-        SceneManager.sceneLoaded += offAllEffSound;
+        //SceneManager.sceneLoaded += offAllEffSound;
     }
 
     private void Start()

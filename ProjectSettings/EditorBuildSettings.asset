@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/InGameScene.unity
     guid: 7be6779ad1e72084b8a7ad8ca98782e8
+  - enabled: 1
+    path: Assets/Scenes/TestScene_MapCreater.unity
+    guid: 159e33db623ad8f40af2712d9082ce71
   m_configObjects: {}
