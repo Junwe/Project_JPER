@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9710a8a5be714445f9e7567a86654547, type: 3}
-  m_Name: stage4
+  m_Name: stage_ych_2
   m_EditorClassIdentifier: 
-  stagePrefab: {fileID: 945719150957352002, guid: 2d3e90dced7e0524086dbc8ccd9456d3,
+  stagePrefab: {fileID: 3675435138966691902, guid: 4572a04fc0c24324a88511d014fd7206,
     type: 3}
-  stageName: stage4
+  stageName: stage_ych_2
   StageCode: 1
-  LimitX: 35
+  LimitX: 100
