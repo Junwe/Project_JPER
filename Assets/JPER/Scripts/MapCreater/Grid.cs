@@ -41,9 +41,4 @@ public class Grid : MonoBehaviour
             new Vector3(Mathf.Floor(x / width) * width, -10000000, 0f));
         }
     }
-
-    public void DestoryObj(GameObject Destroy)
-    {
-        DestroyImmediate(Destroy);
-    }
 }
