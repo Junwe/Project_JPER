@@ -53,6 +53,8 @@ public class MovingTrapEditor : Editor
         
         GUILayout.EndHorizontal();
         Handles.EndGUI();
+
+        
     }
 
     public override void OnInspectorGUI()
