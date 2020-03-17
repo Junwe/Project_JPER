@@ -71,11 +71,11 @@ public class PlayerMove : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.matrix = Matrix4x4.TRS(overlapBoxTransform.position,
+        /*Gizmos.matrix = Matrix4x4.TRS(overlapBoxTransform.position,
                                       Quaternion.identity,
                                       overlapBoxTransform.localScale);
-        Gizmos.color = Color.red;
-        Gizmos.DrawCube(Vector3.zero, Vector3.one);
+        Gizmos.color = Color.red;*/
+        Gizmos.DrawCube(overlapBoxTransform.position, overlapBoxTransform.localScale);
     }
 #endif
 
@@ -89,7 +89,7 @@ public class PlayerMove : MonoBehaviour
         CheckHorizontalRaycast();
 
         _posX = Mathf.Clamp(_posX, -StageManager.SelectStage.LimitX, StageManager.SelectStage.LimitX);
-        _jumpInfomation.Gravity = Mathf.Clamp(_jumpInfomation.Gravity, -0.6f, 0.6f);
+        _jumpInfomation.Gravity = Mathf.Clamp(_jumpInfomation.Gravity, -0.4f, 0.4f);
 
         gameObject.transform.position = new Vector3(_posX, _posY);
     }
@@ -102,7 +102,7 @@ public class PlayerMove : MonoBehaviour
                 {
                     if (_posY > _jumpInfomation.BaseY) // basey위치로 좌표시키게 한다.
                     {
-                        if (_posY >= _jumpInfomation.Jump_accell)
+                        if (_posY >= _jumpInfomation.BaseY)
                         {
                             _posY -= _jumpInfomation.Gravity;
                         }
@@ -151,10 +151,9 @@ public class PlayerMove : MonoBehaviour
                                               overlapBoxTransform.localScale,
                                               0.0f,
                                               layermask);
-
         if (col != null)
         {
-            if (_jumpInfomation.JumpState == 2 && transform.position.y >= col.transform.position.y)
+            if (_jumpInfomation.JumpState == 2 && transform.position.y >= col.transform.position.y + 0.3f)
             {
                 _jumpInfomation.BaseY = col.transform.position.y + 0.4f;
                 _posY = col.transform.position.y + 0.4f;
@@ -164,7 +163,7 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            if (_jumpInfomation.JumpState == 0)
+            if (_jumpInfomation.JumpState == 0 || _jumpInfomation.JumpState == 2)
             {
                 _jumpInfomation.BaseY = LimitY;
                 _jumpInfomation.JumpState = 2;

@@ -1617,9 +1617,10 @@ MonoBehaviour:
   - {fileID: 3902487832023763624, guid: cb79570ea22d30d4b8e6fdbc507a0739, type: 3}
   - {fileID: 2557959420757381635, guid: ae62603e90669d24d89e80d0163d9b2d, type: 3}
   - {fileID: 4191272751511515856, guid: 06e9c40fea6ae2a4394558fd9d78031a, type: 3}
+  - {fileID: 4191272751511515856, guid: 86d6bf1cedf8a42129e0e874d60af773, type: 3}
   parent: {fileID: 0}
   isGrid: 1
-  ObjectIndex: 1
+  ObjectIndex: 2
   SelectIndex: 0
 --- !u!1 &1545393358
 GameObject:
@@ -2235,12 +2236,12 @@ PrefabInstance:
     - target: {fileID: 5740214824982816644, guid: dbd7e9e44935a5345900a195ddcc4c0c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.38
       objectReference: {fileID: 0}
     - target: {fileID: 5740214824982816644, guid: dbd7e9e44935a5345900a195ddcc4c0c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.15
       objectReference: {fileID: 0}
     - target: {fileID: 5740214824982816644, guid: dbd7e9e44935a5345900a195ddcc4c0c,
         type: 3}

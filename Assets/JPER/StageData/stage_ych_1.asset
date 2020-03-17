@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stagePrefab: {fileID: 5597103537077295798, guid: e66e9d040122c8e41b5368de3ab09e4a,
     type: 3}
+  stageBackGround: {fileID: 3152805971545500991, guid: e97651a7185b940b2aeb3d7b72fe2daf,
+    type: 3}
   stageName: stage_ych_1
   StageCode: 1
   LimitX: 100
