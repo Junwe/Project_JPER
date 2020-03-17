@@ -48,6 +48,7 @@ public class PlayerMove : MonoBehaviour
 #if UNITY_EDITOR
     private void Update()
     {
+        CheckHorizontalRaycast();
         if (KnuckbackFlag == false)
         {
             if (Input.GetKey(KeyCode.LeftArrow))
@@ -85,8 +86,6 @@ public class PlayerMove : MonoBehaviour
             KnockbackProcess();
         else
             jumpProcess();
-
-        CheckHorizontalRaycast();
 
         _posX = Mathf.Clamp(_posX, -StageManager.SelectStage.LimitX, StageManager.SelectStage.LimitX);
         _jumpInfomation.Gravity = Mathf.Clamp(_jumpInfomation.Gravity, -0.4f, 0.4f);
@@ -153,7 +152,7 @@ public class PlayerMove : MonoBehaviour
                                               layermask);
         if (col != null)
         {
-            if (_jumpInfomation.JumpState == 2 && transform.position.y >= col.transform.position.y + 0.3f)
+            if (_jumpInfomation.JumpState == 2 && overlapBoxTransform.transform.position.y >= col.transform.position.y + 0.1f)
             {
                 _jumpInfomation.BaseY = col.transform.position.y + 0.4f;
                 _posY = col.transform.position.y + 0.4f;
@@ -163,7 +162,7 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            if (_jumpInfomation.JumpState == 0 || _jumpInfomation.JumpState == 2)
+            if (_jumpInfomation.JumpState == 0)
             {
                 _jumpInfomation.BaseY = LimitY;
                 _jumpInfomation.JumpState = 2;
