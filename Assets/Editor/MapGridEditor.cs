@@ -127,7 +127,7 @@ public class MapGridEditor : Editor
         Transform[] girdobjList = grid.parent.GetComponentsInChildren<Transform>();
         foreach (var obj in girdobjList)
         {
-            if (obj != null || obj != grid.parent)
+            if (obj != null && obj != grid.parent)
                 Undo.DestroyObjectImmediate(obj.gameObject);
         }
     }
