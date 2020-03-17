@@ -13,6 +13,7 @@ public class CameraWalking : MonoBehaviour
     void Start()
     {
         //StartCoroutine(Walking());
+        LimitX = StageManager.SelectStage.LimitX;
     }
 
     // Update is called once per frame

@@ -9,7 +9,7 @@ public class DummyStageDataSetter : MonoBehaviour
     {
         StageManager.SelectStage = new StageLevel()
         {
-            LimitX = 100
+            LimitX = 10000
         };
     }
 }
