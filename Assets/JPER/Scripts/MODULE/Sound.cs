@@ -8,6 +8,7 @@ public enum SOUND
     S_BGM,
     S_JUMP,
     S_MOVE,
+    S_MOVE_2,
 }
 
 public class Sound : MonoSingleton<Sound>

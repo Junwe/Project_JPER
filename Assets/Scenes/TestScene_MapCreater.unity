@@ -1618,10 +1618,12 @@ MonoBehaviour:
   - {fileID: 2557959420757381635, guid: ae62603e90669d24d89e80d0163d9b2d, type: 3}
   - {fileID: 4191272751511515856, guid: 06e9c40fea6ae2a4394558fd9d78031a, type: 3}
   - {fileID: 4191272751511515856, guid: 86d6bf1cedf8a42129e0e874d60af773, type: 3}
+  - {fileID: 3902487832023763624, guid: 97243337440f14572b86c5d3332d0451, type: 3}
   parent: {fileID: 0}
   isGrid: 1
-  ObjectIndex: 4
+  ObjectIndex: 2
   SelectIndex: 0
+  IsGridMove: 1
 --- !u!1 &1545393358
 GameObject:
   m_ObjectHideFlags: 0

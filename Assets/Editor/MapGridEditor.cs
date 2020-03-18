@@ -64,7 +64,7 @@ public class MapGridEditor : Editor
          Mathf.Floor(pos.y / grid.height) * grid.height + grid.height / 2f, 0f);
         if (CheckCompareObject(createPos, drag))
         {
-            GameObject createObject = (GameObject)PrefabUtility.InstantiatePrefab(grid.prefabsList[grid.ObjectIndex]);
+            GameObject createObject = (GameObject)Instantiate(grid.prefabsList[grid.ObjectIndex]);
             createObject.transform.parent = grid.parent;
             createObject.transform.position = createPos;
             Undo.RegisterCreatedObjectUndo(createObject, "create Object");
