@@ -15,7 +15,7 @@ public class MovingTrap : MonoBehaviour
 
     public void StartMoving()
     {
-        if (points.Count > 1)
+        if (points.Count > 1 && movingTime > 0)
             StartCoroutine(Moving());
     }
 
