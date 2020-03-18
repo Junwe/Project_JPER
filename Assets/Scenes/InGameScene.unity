@@ -2400,6 +2400,11 @@ PrefabInstance:
       propertyPath: JumpBtn
       value: 
       objectReference: {fileID: 25815065}
+    - target: {fileID: 5740214824982816650, guid: dbd7e9e44935a5345900a195ddcc4c0c,
+        type: 3}
+      propertyPath: jumpText
+      value: 
+      objectReference: {fileID: 279162246}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbd7e9e44935a5345900a195ddcc4c0c, type: 3}
 --- !u!4 &1912580822 stripped
