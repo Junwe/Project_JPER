@@ -18,6 +18,8 @@ public class Grid : MonoBehaviour
     public int ObjectIndex;
     [HideInInspector]
     public int SelectIndex;
+    [HideInInspector]
+    public bool IsGridMove = false;
 
     void OnDrawGizmos()
     {

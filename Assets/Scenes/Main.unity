@@ -369,6 +369,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 507093519c66a694c86d11b14881dff2, type: 2}
   - {fileID: 11400000, guid: c73fe36ef372a0341b1035604df7ff3e, type: 2}
   - {fileID: 11400000, guid: b3c9c131036084d19b9e9d33c7e32b51, type: 2}
+  - {fileID: 11400000, guid: efbaa35f0cc0f4934963dfcf7e205a00, type: 2}
   prefabStageUI: {fileID: 1081715870733702810, guid: 22d3a30ec657841a3923ab40f002e142,
     type: 3}
   trStageParent: {fileID: 1552906113}
@@ -1235,10 +1236,10 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
+    m_Top: 26
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 36.87
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0

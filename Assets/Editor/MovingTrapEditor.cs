@@ -2,19 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-[CustomEditor(typeof(MovingTrap))]
+[CustomEditor(typeof(MovingTrap)),CanEditMultipleObjects]
 public class MovingTrapEditor : Editor
 {
     MovingTrap targetObject;
     Grid grid;
 
-    bool _isGridMove = false;
     void OnSceneGUI()
     {
         targetObject = (MovingTrap)target;
         grid = GameObject.Find("MapCreator").GetComponent<Grid>();
 
-        if (_isGridMove == false)
+        if (grid.IsGridMove == false)
         {
             for (int i = 0; i < targetObject.points.Count; i++)
             {
@@ -49,7 +48,7 @@ public class MovingTrapEditor : Editor
 
         GUILayout.BeginHorizontal();
         GUILayout.Box("그리그 모드");
-        _isGridMove = EditorGUILayout.Toggle(_isGridMove);
+        grid.IsGridMove = EditorGUILayout.Toggle(grid.IsGridMove);
         
         GUILayout.EndHorizontal();
         Handles.EndGUI();
@@ -60,7 +59,6 @@ public class MovingTrapEditor : Editor
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
-        grid = (Grid)EditorGUILayout.ObjectField(grid, typeof(Grid));
     }
 
     private Vector3 GetGirdPosition(Vector3 pos)
