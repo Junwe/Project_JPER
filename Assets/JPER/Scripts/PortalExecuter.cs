@@ -15,7 +15,7 @@ public class PortalExecuter : MonoBehaviour
     public void EntryPortal(AbstPortal newPortal)
     {
         prevButtonText = jumpText.text;
-        jumpText.text = "포탈 사용";
+        jumpText.text = "포탈";
         CurrentPortal = newPortal;
     }
 

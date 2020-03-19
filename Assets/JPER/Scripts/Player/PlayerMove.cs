@@ -13,7 +13,7 @@ public class PlayerMove : MonoBehaviour
     public JoyStickButton leftMoveBtn;
     public JoyStickButton RightMoveBtn;
 
-    public JoyStickButton JumpBtn;
+    public JoyStickButton ActionBtn;
     public Transform overlapBoxTransform;
 
     private PortalExecuter _portalExecuter = null;
@@ -31,7 +31,7 @@ public class PlayerMove : MonoBehaviour
 
         leftMoveBtn.SetUpEvent(UpMoveBtn);
         RightMoveBtn.SetUpEvent(UpMoveBtn);
-        JumpBtn.SetMoveEvent(OnPlayerAction);
+        ActionBtn.SetMoveEvent(OnPlayerAction);
 
         _playerPosition.PosX = transform.position.x;
         KnuckbackFlag = false;
@@ -88,7 +88,7 @@ public class PlayerMove : MonoBehaviour
             _jumpInfomation.JumpProcess(_playerPosition, _animator);
 
         _playerPosition.PosX = Mathf.Clamp(_playerPosition.PosX, -StageManager.SelectStage.LimitX, StageManager.SelectStage.LimitX);
-        _jumpInfomation.Gravity = Mathf.Clamp(_jumpInfomation.Gravity, -0.4f, 0.4f);
+        _jumpInfomation.Gravity = Mathf.Clamp(_jumpInfomation.Gravity, -0.35f, 0.35f);
 
         gameObject.transform.position = new Vector3(_playerPosition.PosX, _playerPosition.PosY);
     }
