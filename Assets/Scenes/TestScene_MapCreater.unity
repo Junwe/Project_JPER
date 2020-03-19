@@ -1621,9 +1621,9 @@ MonoBehaviour:
   - {fileID: 3902487832023763624, guid: 97243337440f14572b86c5d3332d0451, type: 3}
   parent: {fileID: 0}
   isGrid: 1
-  ObjectIndex: 2
+  ObjectIndex: 0
   SelectIndex: 0
-  IsGridMove: 1
+  IsGridMove: 0
 --- !u!1 &1545393358
 GameObject:
   m_ObjectHideFlags: 0

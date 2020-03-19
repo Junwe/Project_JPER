@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6034566936095984818}
   - component: {fileID: 4107710151673565058}
   - component: {fileID: 1373919918478291512}
+  - component: {fileID: 4980999163480005593}
   m_Layer: 0
   m_Name: G_Spike
   m_TagString: Untagged
@@ -117,5 +118,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbeadb988bfc7304c8d5f2350ad37652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VERTICAL_ACCEL: 0.1
+  HORIZONTAL_ACCEL: 0.1
+  knockbackDirection: 0
+--- !u!114 &4980999163480005593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3902487832023763624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a65c9cf6756d549a4b342ff0d9b00532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4191272751511515858}
   - component: {fileID: 4191272751511515857}
   - component: {fileID: 7844183329845517017}
+  - component: {fileID: 2648465008384574251}
   m_Layer: 8
   m_Name: G_MoveingGround
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4191272751511515856}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -4.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -120,3 +121,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: []
+  movingTime: 0
+  waitTime: 0
+  isMoveWithPlayer: 0
+--- !u!114 &2648465008384574251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4191272751511515856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a65c9cf6756d549a4b342ff0d9b00532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

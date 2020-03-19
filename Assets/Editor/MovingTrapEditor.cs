@@ -47,7 +47,7 @@ public class MovingTrapEditor : Editor
         }
 
         GUILayout.BeginHorizontal();
-        GUILayout.Box("그리그 모드");
+        GUILayout.Box("그리드 모드");
         grid.IsGridMove = EditorGUILayout.Toggle(grid.IsGridMove);
         
         GUILayout.EndHorizontal();

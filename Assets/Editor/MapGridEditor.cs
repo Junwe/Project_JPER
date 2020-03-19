@@ -25,7 +25,6 @@ public class MapGridEditor : Editor
         Handles.BeginGUI();
         DrawPainter();
         Handles.EndGUI();
-
         if (Event.current.button == 0)
         {
             if (grid.SelectIndex == 0)
@@ -100,7 +99,7 @@ public class MapGridEditor : Editor
         }
     }
 
-    
+
 
     public override void OnInspectorGUI()
     {
