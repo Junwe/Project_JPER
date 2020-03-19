@@ -20,6 +20,6 @@ public class StageItem : MonoBehaviour
     public void ClickStageBtn()
     {
         StageManager.SelectStage = _myLevel;
-        SceneManager.LoadScene(_stageSceneCode);
+        SceneFade.Instance.SceneLoad(_stageSceneCode);
     }
 }

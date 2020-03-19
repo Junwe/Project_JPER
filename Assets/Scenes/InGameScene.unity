@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 25815062}
   - component: {fileID: 25815065}
   m_Layer: 5
-  m_Name: B_Jump
+  m_Name: B_Action
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2397,7 +2397,7 @@ PrefabInstance:
       objectReference: {fileID: 2011586643}
     - target: {fileID: 5740214824982816651, guid: dbd7e9e44935a5345900a195ddcc4c0c,
         type: 3}
-      propertyPath: JumpBtn
+      propertyPath: ActionBtn
       value: 
       objectReference: {fileID: 25815065}
     - target: {fileID: 5740214824982816650, guid: dbd7e9e44935a5345900a195ddcc4c0c,

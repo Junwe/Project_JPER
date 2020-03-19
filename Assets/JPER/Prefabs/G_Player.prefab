@@ -197,7 +197,7 @@ MonoBehaviour:
   LimitY: -10
   leftMoveBtn: {fileID: 0}
   RightMoveBtn: {fileID: 0}
-  JumpBtn: {fileID: 0}
+  ActionBtn: {fileID: 0}
   overlapBoxTransform: {fileID: 5740214823807179306}
 --- !u!114 &5740214824982816650
 MonoBehaviour:
@@ -211,3 +211,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d958b1a61e74c4e95442b361ea39e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpText: {fileID: 0}

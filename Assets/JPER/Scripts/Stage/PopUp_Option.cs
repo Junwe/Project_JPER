@@ -19,7 +19,7 @@ public class PopUp_Option : MonoBehaviour
     public void ClickMain()
     {
         ClickExit();
-        SceneManager.LoadScene(0);
+       SceneFade.Instance.SceneLoad(0);
         // GolobalUI.Instance.SceneLoad(0);
         SceneManager.sceneLoaded += SetOptionPopUp;
     }
