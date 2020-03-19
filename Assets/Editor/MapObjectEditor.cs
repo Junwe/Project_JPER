@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
+using UnityEngine.SceneManagement;
 [CustomEditor(typeof(MapObject)), CanEditMultipleObjects]
 public class MapObjectEditor : Editor
 {
@@ -11,10 +11,13 @@ public class MapObjectEditor : Editor
 
     void OnSceneGUI()
     {
-        targetObject = (MapObject)target;
-        grid = GameObject.Find("MapCreator").GetComponent<Grid>();
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            targetObject = (MapObject)target;
+            grid = GameObject.Find("MapCreator").GetComponent<Grid>();
 
-        targetObject.transform.position = GetGirdPosition(targetObject.transform.position);
+            targetObject.transform.position = GetGirdPosition(targetObject.transform.position);
+        }
     }
     private Vector3 GetGirdPosition(Vector3 pos)
     {
