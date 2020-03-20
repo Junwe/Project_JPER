@@ -99,7 +99,7 @@ public class PlayerMove : MonoBehaviour
 
         if (col != null)
         {
-            if (_jumpInfomation.JumpState == 2 && overlapBoxTransform.transform.position.y >= col.transform.position.y + (col.bounds.size.y * 0.5f)) //0.3f)
+            if (_jumpInfomation.JumpState == 2 && overlapBoxTransform.transform.position.y >= col.transform.position.y + 0.3f)//(col.bounds.size.y * 0.5f))
             {
                 _jumpInfomation.BaseY = col.transform.position.y + 0.4f;
                 _playerPosition.PosY = col.transform.position.y + 0.4f;
