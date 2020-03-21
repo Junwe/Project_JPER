@@ -181,4 +181,10 @@ public class PlayerMove : MonoBehaviour
             _jumpInfomation.JumpState = 1;
         }
     }
+
+    public void UpdatePlayerPosition(Vector2 newPosition)
+    {
+        _playerPosition.PosX = newPosition.x;
+        _playerPosition.PosY = newPosition.y;
+    }
 }
