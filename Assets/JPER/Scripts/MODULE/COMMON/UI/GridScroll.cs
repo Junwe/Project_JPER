@@ -21,6 +21,8 @@ public class GridScroll : MonoBehaviour
     {
         if (_objStageList.Count - 1 > _currentSelectStageIndex)
         {
+            StopAllCoroutines();
+            SetObjectPosition();
             foreach (var obj in _objStageList)
             {
                 Vector3 endPos = new Vector3(obj.localPosition.x - StageDistance, StageStartPos.y, 0f);
@@ -34,6 +36,8 @@ public class GridScroll : MonoBehaviour
     {
         if (_currentSelectStageIndex > 0)
         {
+            StopAllCoroutines();
+            SetObjectPosition();
             foreach (var obj in _objStageList)
             {
                 Vector3 endPos = new Vector3(obj.localPosition.x + StageDistance, StageStartPos.y, 0f);
@@ -41,6 +45,17 @@ public class GridScroll : MonoBehaviour
                 AnimationCurve.EaseInOut(0f, 0f, 1f, 1f)));
             }
             _currentSelectStageIndex--;
+        }
+    }
+
+    private void SetObjectPosition()
+    {
+        int objIndex = 0;
+        for (int i = -_currentSelectStageIndex; i < _objStageList.Count - _currentSelectStageIndex; ++i)
+        {
+            Vector3 endPos = new Vector3(StageStartPos.x + (i * StageDistance), StageStartPos.y, 0f);
+            _objStageList[objIndex].localPosition = endPos;
+            objIndex++;
         }
     }
 }

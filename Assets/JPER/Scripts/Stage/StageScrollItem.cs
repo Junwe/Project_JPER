@@ -5,9 +5,16 @@ using UnityEngine;
 public class StageScrollItem : MonoBehaviour
 {
     public StageItem[] myStageList;
-    void Start()
+    void Awake()
     {
+        myStageList = GetComponentsInChildren<StageItem>();
+        for (int i = 0; i < myStageList.Length; ++i)
+        {
+            myStageList[i].gameObject.SetActive(false);
+        }
     }
+
+
 
     public void SetStageItem(int index, StageLevel level, int stageindex)
     {

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9710a8a5be714445f9e7567a86654547, type: 3}
+  m_Name: stage_ych_7
+  m_EditorClassIdentifier: 
+  stagePrefab: {fileID: 4719166089340727999, guid: 565d612a830844ac6942f21e2808f593,
+    type: 3}
+  stageBackGround: {fileID: 3152805971545500991, guid: e97651a7185b940b2aeb3d7b72fe2daf,
+    type: 3}
+  stageName: stage_ych_7
+  StageCode: 1
+  LimitX: 100
