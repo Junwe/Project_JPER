@@ -10,9 +10,9 @@ public class StageItem : MonoBehaviour
 
     private int _stageSceneCode;
     private StageLevel _myLevel;
-    public void SetStageItem(StageLevel level)
+    public void SetStageItem(StageLevel level,int stageindex)
     {
-        txtStage.text = level.stageName;
+        txtStage.text = stageindex.ToString();
         _stageSceneCode = level.StageCode;
         _myLevel = level;
     }

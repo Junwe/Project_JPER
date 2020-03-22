@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class MovingTrap : MonoBehaviour
 {
+    public enum MovingType
+    {
+        OneShot,
+        Loop,
+        OneDicrection
+    }
+
     public List<Vector3> points;
 
+    [SerializeField]
+    private MovingType movingType;
     [SerializeField]
     private float movingTime;
     [SerializeField]
@@ -36,13 +45,23 @@ public class MovingTrap : MonoBehaviour
         var trapTransform = transform;
         var waitSec = new WaitForSeconds(waitTime);
 
-        while (true)
+        while (movingType != MovingType.OneShot)
         {
             elapsedTime += Time.deltaTime * direction;
             if (elapsedTime >= movingTime || elapsedTime <= 0)
             {
-                elapsedTime = elapsedTime >= movingTime ? movingTime : 0;
-                direction *= -1;
+
+                switch (movingType)
+                {
+                    case MovingType.Loop:
+                        elapsedTime = elapsedTime >= movingTime ? movingTime : 0;
+                        direction *= -1;
+                        break;
+                    case MovingType.OneDicrection:
+                        elapsedTime = 0;
+                        direction = 1;
+                        break;
+                }
                 yield return waitSec;
             }
 

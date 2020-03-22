@@ -39,7 +39,7 @@ public class MovingTrapEditor : Editor
             if (GUILayout.Button("포인트 추가", GUILayout.Width(80f)))
             {
                 Undo.RecordObject(targetObject, "add points");
-                targetObject.points.Add(targetObject.transform.position);
+                targetObject.points.Add(new Vector3(targetObject.transform.position.x, targetObject.transform.position.y, targetObject.transform.position.z - 1f));
             }
             if (GUILayout.Button("포인트 없애기", GUILayout.Width(80f)))
             {
