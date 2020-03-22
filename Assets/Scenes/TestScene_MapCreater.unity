@@ -1620,9 +1620,10 @@ MonoBehaviour:
   - {fileID: 4191272751511515856, guid: 86d6bf1cedf8a42129e0e874d60af773, type: 3}
   - {fileID: 3902487832023763624, guid: 97243337440f14572b86c5d3332d0451, type: 3}
   - {fileID: 3481300608245713899, guid: c99203fdd99849a4fb6465eff2e9745a, type: 3}
-  parent: {fileID: 5299918159835351250}
+  - {fileID: 2554442622304322839, guid: c27d3e037bdd92d4b82d41ee21c937bd, type: 3}
+  parent: {fileID: 0}
   isGrid: 1
-  ObjectIndex: 6
+  ObjectIndex: 7
   SelectIndex: 0
   IsGridMove: 1
 --- !u!1 &1545393358
