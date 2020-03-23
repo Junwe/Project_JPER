@@ -2524,6 +2524,11 @@ PrefabInstance:
       propertyPath: points.Array.data[1].y
       value: 4.23
       objectReference: {fileID: 0}
+    - target: {fileID: 3325225816463359606, guid: c99203fdd99849a4fb6465eff2e9745a,
+        type: 3}
+      propertyPath: movingType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99203fdd99849a4fb6465eff2e9745a, type: 3}
 --- !u!4 &8816322551075770259 stripped
@@ -7269,6 +7274,11 @@ PrefabInstance:
       propertyPath: points.Array.data[1].y
       value: 62.51
       objectReference: {fileID: 0}
+    - target: {fileID: 3325225816463359606, guid: c99203fdd99849a4fb6465eff2e9745a,
+        type: 3}
+      propertyPath: movingType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99203fdd99849a4fb6465eff2e9745a, type: 3}
 --- !u!4 &8816322550512046386 stripped
@@ -9539,6 +9549,11 @@ PrefabInstance:
       propertyPath: points.Array.data[1].y
       value: 66.27
       objectReference: {fileID: 0}
+    - target: {fileID: 3325225816463359606, guid: c99203fdd99849a4fb6465eff2e9745a,
+        type: 3}
+      propertyPath: movingType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99203fdd99849a4fb6465eff2e9745a, type: 3}
 --- !u!4 &8816322550233328326 stripped
@@ -10459,6 +10474,11 @@ PrefabInstance:
       propertyPath: points.Array.data[1].y
       value: 28.67
       objectReference: {fileID: 0}
+    - target: {fileID: 3325225816463359606, guid: c99203fdd99849a4fb6465eff2e9745a,
+        type: 3}
+      propertyPath: movingType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99203fdd99849a4fb6465eff2e9745a, type: 3}
 --- !u!4 &8816322550313789535 stripped
@@ -10779,6 +10799,11 @@ PrefabInstance:
       propertyPath: points.Array.data[1].y
       value: 58.75
       objectReference: {fileID: 0}
+    - target: {fileID: 3325225816463359606, guid: c99203fdd99849a4fb6465eff2e9745a,
+        type: 3}
+      propertyPath: movingType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99203fdd99849a4fb6465eff2e9745a, type: 3}
 --- !u!4 &8816322550339284594 stripped
@@ -10948,6 +10973,11 @@ PrefabInstance:
         type: 3}
       propertyPath: points.Array.data[1].y
       value: 23.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325225816463359606, guid: c99203fdd99849a4fb6465eff2e9745a,
+        type: 3}
+      propertyPath: movingType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99203fdd99849a4fb6465eff2e9745a, type: 3}
@@ -12994,6 +13024,11 @@ PrefabInstance:
       propertyPath: points.Array.data[1].y
       value: 34.31
       objectReference: {fileID: 0}
+    - target: {fileID: 3325225816463359606, guid: c99203fdd99849a4fb6465eff2e9745a,
+        type: 3}
+      propertyPath: movingType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99203fdd99849a4fb6465eff2e9745a, type: 3}
 --- !u!4 &8816322552197011840 stripped
@@ -14964,6 +14999,11 @@ PrefabInstance:
       propertyPath: points.Array.data[1].y
       value: 81.31
       objectReference: {fileID: 0}
+    - target: {fileID: 3325225816463359606, guid: c99203fdd99849a4fb6465eff2e9745a,
+        type: 3}
+      propertyPath: movingType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99203fdd99849a4fb6465eff2e9745a, type: 3}
 --- !u!4 &8816322551801877966 stripped
@@ -16033,6 +16073,11 @@ PrefabInstance:
         type: 3}
       propertyPath: points.Array.data[1].y
       value: 77.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325225816463359606, guid: c99203fdd99849a4fb6465eff2e9745a,
+        type: 3}
+      propertyPath: movingType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99203fdd99849a4fb6465eff2e9745a, type: 3}
@@ -18079,6 +18124,11 @@ PrefabInstance:
       propertyPath: points.Array.data[1].y
       value: 39.95
       objectReference: {fileID: 0}
+    - target: {fileID: 3325225816463359606, guid: c99203fdd99849a4fb6465eff2e9745a,
+        type: 3}
+      propertyPath: movingType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99203fdd99849a4fb6465eff2e9745a, type: 3}
 --- !u!4 &8816322551505048390 stripped
@@ -19148,6 +19198,11 @@ PrefabInstance:
         type: 3}
       propertyPath: points.Array.data[1].y
       value: 47.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325225816463359606, guid: c99203fdd99849a4fb6465eff2e9745a,
+        type: 3}
+      propertyPath: movingType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99203fdd99849a4fb6465eff2e9745a, type: 3}
@@ -21494,6 +21549,11 @@ PrefabInstance:
       propertyPath: points.Array.data[1].y
       value: 17.39
       objectReference: {fileID: 0}
+    - target: {fileID: 3325225816463359606, guid: c99203fdd99849a4fb6465eff2e9745a,
+        type: 3}
+      propertyPath: movingType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99203fdd99849a4fb6465eff2e9745a, type: 3}
 --- !u!4 &8816322551225645125 stripped
@@ -21738,6 +21798,11 @@ PrefabInstance:
         type: 3}
       propertyPath: points.Array.data[1].y
       value: 73.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325225816463359606, guid: c99203fdd99849a4fb6465eff2e9745a,
+        type: 3}
+      propertyPath: movingType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99203fdd99849a4fb6465eff2e9745a, type: 3}
@@ -22134,6 +22199,11 @@ PrefabInstance:
       propertyPath: points.Array.data[1].y
       value: 70.03
       objectReference: {fileID: 0}
+    - target: {fileID: 3325225816463359606, guid: c99203fdd99849a4fb6465eff2e9745a,
+        type: 3}
+      propertyPath: movingType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99203fdd99849a4fb6465eff2e9745a, type: 3}
 --- !u!4 &8816322551301912940 stripped
@@ -22228,6 +22298,11 @@ PrefabInstance:
         type: 3}
       propertyPath: points.Array.data[1].y
       value: 54.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325225816463359606, guid: c99203fdd99849a4fb6465eff2e9745a,
+        type: 3}
+      propertyPath: movingType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99203fdd99849a4fb6465eff2e9745a, type: 3}
@@ -22698,6 +22773,11 @@ PrefabInstance:
         type: 3}
       propertyPath: points.Array.data[1].y
       value: 11.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325225816463359606, guid: c99203fdd99849a4fb6465eff2e9745a,
+        type: 3}
+      propertyPath: movingType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99203fdd99849a4fb6465eff2e9745a, type: 3}
@@ -23393,6 +23473,11 @@ PrefabInstance:
         type: 3}
       propertyPath: points.Array.data[1].y
       value: 51.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325225816463359606, guid: c99203fdd99849a4fb6465eff2e9745a,
+        type: 3}
+      propertyPath: movingType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99203fdd99849a4fb6465eff2e9745a, type: 3}
