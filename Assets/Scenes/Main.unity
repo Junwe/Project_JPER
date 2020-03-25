@@ -148,8 +148,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -311.5}
-  m_SizeDelta: {x: -17, y: -640}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -17, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4900166
 MonoBehaviour:
@@ -406,7 +406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StageDistance: 1675
-  StageStartPos: {x: 985, y: -190, z: 0}
+  StageStartPos: {x: 985, y: -500, z: 0}
 --- !u!1 &102461985
 GameObject:
   m_ObjectHideFlags: 0
@@ -2091,17 +2091,17 @@ PrefabInstance:
     - target: {fileID: 3579930412796333818, guid: fd382724014d74fc58c44a27f60777d0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 91
       objectReference: {fileID: 0}
     - target: {fileID: 3579930412796333818, guid: fd382724014d74fc58c44a27f60777d0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.050048828
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3579930412796333818, guid: fd382724014d74fc58c44a27f60777d0,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1695.71
+      value: 1101.7
       objectReference: {fileID: 0}
     - target: {fileID: 3579930412796333818, guid: fd382724014d74fc58c44a27f60777d0,
         type: 3}

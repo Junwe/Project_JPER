@@ -17,7 +17,7 @@ public class StageScrollItem : MonoBehaviour
 
     void Update()
     {
-        txtStageName.transform.localPosition = transform.localPosition + new Vector3(13f, 150f, 0f);
+        txtStageName.transform.localPosition = transform.localPosition + new Vector3(13f, 300f, 0f);
     }
     public void SetStageItem(int index, StageLevel level, int stageindex)
     {
