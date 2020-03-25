@@ -27,6 +27,8 @@ public class JumpInfomation
                             _playerPosition.PosY = BaseY;
                         }
                     }
+                    else
+                        _playerPosition.PosY = BaseY;
                     break;
                 }
             case 1: // up

@@ -1854,7 +1854,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -892.8, y: 474}
+  m_AnchoredPosition: {x: -853.9, y: 441.7}
   m_SizeDelta: {x: 134.4, y: 132}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1352264626
@@ -2406,6 +2406,16 @@ PrefabInstance:
       propertyPath: jumpText
       value: 
       objectReference: {fileID: 279162246}
+    - target: {fileID: 5740214823807179306, guid: dbd7e9e44935a5345900a195ddcc4c0c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5740214823807179306, guid: dbd7e9e44935a5345900a195ddcc4c0c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.104
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbd7e9e44935a5345900a195ddcc4c0c, type: 3}
 --- !u!4 &1912580822 stripped

@@ -66,6 +66,8 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
             OnPlayerAction();
+
+        //Debug.Log(_jumpInfomation.JumpState + "// KnuckbackFlag : " + KnuckbackFlag);
     }
 
     void OnDrawGizmos()
@@ -99,7 +101,7 @@ public class PlayerMove : MonoBehaviour
 
         if (col != null)
         {
-            if (_jumpInfomation.JumpState == 2 && overlapBoxTransform.transform.position.y >= col.transform.position.y + 0.3f)//(col.bounds.size.y * 0.5f))
+            if (_jumpInfomation.JumpState == 2 && overlapBoxTransform.transform.position.y >= col.transform.position.y + 0.2f)
             {
                 _jumpInfomation.BaseY = col.transform.position.y + 0.4f;
                 _playerPosition.PosY = col.transform.position.y + 0.4f;
@@ -157,6 +159,8 @@ public class PlayerMove : MonoBehaviour
         _playerPosition.PosX += knockbackInfomation.horizontalAcceleration * knockbackInfomation.direction;
         _playerPosition.PosY += knockbackInfomation.verticalAcceleration;
         knockbackInfomation.verticalAcceleration -= KnockbackInfomation.GRAVITY; // 올라가는 속도 점점 느려지게 수직 가속도 감소.
+
+        knockbackInfomation.verticalAcceleration = Mathf.Clamp(knockbackInfomation.verticalAcceleration, -0.35f, 10.35f);
 
         if (knockbackInfomation.isUp == true && knockbackInfomation.verticalAcceleration <= 0.0f)
         {
