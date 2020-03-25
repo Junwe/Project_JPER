@@ -1924,6 +1924,7 @@ MonoBehaviour:
   points:
   - {x: 14.57, y: 12.69, z: 0}
   - {x: 11.75, y: 12.69, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 1
   isMoveWithPlayer: 0
@@ -2367,6 +2368,7 @@ MonoBehaviour:
   points:
   - {x: 23.97, y: 6.11, z: 0}
   - {x: 21.15, y: 6.11, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 1
   isMoveWithPlayer: 0
@@ -2916,6 +2918,7 @@ MonoBehaviour:
   points:
   - {x: 23.97, y: 20.21, z: 0}
   - {x: 25.85, y: 20.21, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 1
   isMoveWithPlayer: 0
@@ -5138,6 +5141,7 @@ MonoBehaviour:
   points:
   - {x: 25.85, y: 12.69, z: 0}
   - {x: 23.03, y: 12.69, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 1
   isMoveWithPlayer: 0
@@ -8304,6 +8308,7 @@ MonoBehaviour:
   points:
   - {x: 32.43, y: 20.21, z: 0}
   - {x: 30.55, y: 20.21, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 1
   isMoveWithPlayer: 0
@@ -8959,6 +8964,7 @@ MonoBehaviour:
   points:
   - {x: 41.829998, y: 20.21, z: 0}
   - {x: 39.95, y: 20.21, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 1
   isMoveWithPlayer: 0
@@ -9084,6 +9090,7 @@ MonoBehaviour:
   points:
   - {x: 42.77, y: 20.21, z: 0}
   - {x: 44.65, y: 20.21, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 1
   isMoveWithPlayer: 0
@@ -9527,6 +9534,7 @@ MonoBehaviour:
   points:
   - {x: 33.37, y: 20.21, z: 0}
   - {x: 35.25, y: 20.21, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 1
   isMoveWithPlayer: 0
@@ -11454,6 +11462,7 @@ MonoBehaviour:
   points:
   - {x: 35.25, y: 6.11, z: 0}
   - {x: 32.43, y: 6.11, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 1
   isMoveWithPlayer: 0
@@ -12321,6 +12330,7 @@ MonoBehaviour:
   points:
   - {x: 15.51, y: 12.69, z: 0}
   - {x: 18.33, y: 12.69, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 1
   isMoveWithPlayer: 0
@@ -15493,6 +15503,7 @@ MonoBehaviour:
   points:
   - {x: 23.03, y: 20.21, z: 0}
   - {x: 21.15, y: 20.21, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 1
   isMoveWithPlayer: 0
@@ -15803,6 +15814,7 @@ MonoBehaviour:
   points:
   - {x: 26.789999, y: 12.69, z: 0}
   - {x: 29.61, y: 12.69, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 1
   isMoveWithPlayer: 0
@@ -16458,6 +16470,7 @@ MonoBehaviour:
   points:
   - {x: 36.19, y: 6.11, z: 0}
   - {x: 39.01, y: 6.11, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 1
   isMoveWithPlayer: 0
@@ -16795,6 +16808,7 @@ MonoBehaviour:
   points:
   - {x: 24.91, y: 6.11, z: 0}
   - {x: 27.73, y: 6.11, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 1
   isMoveWithPlayer: 0
@@ -17308,6 +17322,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5745016708146812012}
     m_Modifications:
+    - target: {fileID: 4191272751511515856, guid: fa9e5e54c129d104a912eff9d7155ef9,
+        type: 3}
+      propertyPath: m_Name
+      value: G_Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 4191272751511515859, guid: fa9e5e54c129d104a912eff9d7155ef9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17362,11 +17381,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4191272751511515856, guid: fa9e5e54c129d104a912eff9d7155ef9,
-        type: 3}
-      propertyPath: m_Name
-      value: G_Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa9e5e54c129d104a912eff9d7155ef9, type: 3}

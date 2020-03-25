@@ -3938,6 +3938,7 @@ MonoBehaviour:
   points:
   - {x: 2.35, y: 4.23, z: 0}
   - {x: -0.47, y: 4.23, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 0.5
   isMoveWithPlayer: 0
@@ -5971,6 +5972,7 @@ MonoBehaviour:
   points:
   - {x: 3.29, y: 4.23, z: 0}
   - {x: 6.11, y: 4.23, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 0.5
   isMoveWithPlayer: 0
@@ -6854,6 +6856,7 @@ MonoBehaviour:
   points:
   - {x: -1.41, y: 5.17, z: 0}
   - {x: -5.17, y: 5.17, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 0.5
   isMoveWithPlayer: 0
@@ -6995,6 +6998,7 @@ MonoBehaviour:
   points:
   - {x: -1.41, y: 10.81, z: 0}
   - {x: 0.47, y: 10.81, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 0.5
   isMoveWithPlayer: 0
@@ -7136,6 +7140,7 @@ MonoBehaviour:
   points:
   - {x: 6.11, y: 10.81, z: 0}
   - {x: 7.99, y: 10.81, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 0.5
   isMoveWithPlayer: 0
@@ -7277,6 +7282,7 @@ MonoBehaviour:
   points:
   - {x: 9.87, y: 5.17, z: 0}
   - {x: 7.05, y: 5.17, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 0.5
   isMoveWithPlayer: 0
@@ -7418,6 +7424,7 @@ MonoBehaviour:
   points:
   - {x: -13.63, y: 15.51, z: 0}
   - {x: -8.93, y: 15.51, z: 0}
+  movingType: 1
   movingTime: 2
   waitTime: 0.5
   isMoveWithPlayer: 0
@@ -7967,6 +7974,7 @@ MonoBehaviour:
   points:
   - {x: -6.11, y: 9.87, z: 0}
   - {x: -9.87, y: 9.87, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 1
   isMoveWithPlayer: 0
@@ -8108,6 +8116,7 @@ MonoBehaviour:
   points:
   - {x: 9.87, y: 19.27, z: 0}
   - {x: -11.75, y: 19.27, z: 0}
+  movingType: 1
   movingTime: 3
   waitTime: 1
   isMoveWithPlayer: 0
@@ -9081,6 +9090,7 @@ MonoBehaviour:
   points:
   - {x: -5.17, y: 9.87, z: 0}
   - {x: -2.35, y: 9.87, z: 0}
+  movingType: 1
   movingTime: 1
   waitTime: 1
   isMoveWithPlayer: 0
@@ -9328,6 +9338,7 @@ MonoBehaviour:
   points:
   - {x: -11.75, y: 19.27, z: 0}
   - {x: 9.87, y: 19.27, z: 0}
+  movingType: 1
   movingTime: 3.5
   waitTime: 1
   isMoveWithPlayer: 0
@@ -10162,6 +10173,7 @@ MonoBehaviour:
   points:
   - {x: -13.63, y: 17.39, z: 0}
   - {x: -7.99, y: 17.39, z: 0}
+  movingType: 1
   movingTime: 2
   waitTime: 0.5
   isMoveWithPlayer: 0
