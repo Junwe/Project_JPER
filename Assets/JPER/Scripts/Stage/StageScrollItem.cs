@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class StageScrollItem : MonoBehaviour
 {
     public StageItem[] myStageList;
+    public Text txtStageName;
     void Awake()
     {
         myStageList = GetComponentsInChildren<StageItem>();
@@ -14,8 +15,10 @@ public class StageScrollItem : MonoBehaviour
         }
     }
 
-
-
+    void Update()
+    {
+        txtStageName.transform.localPosition = transform.localPosition + new Vector3(13f, 150f, 0f);
+    }
     public void SetStageItem(int index, StageLevel level, int stageindex)
     {
         if (myStageList.Length == 0)
@@ -32,5 +35,7 @@ public class StageScrollItem : MonoBehaviour
             myStageList[index].gameObject.SetActive(true);
             myStageList[index].SetStageItem(level, stageindex);
         }
+
+        txtStageName.text = "STAGE " + (stageindex-4).ToString() + " - " + (stageindex).ToString();
     }
 }

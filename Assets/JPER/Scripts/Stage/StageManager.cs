@@ -17,8 +17,10 @@ public class StageManager : MonoBehaviour
         _gridScroll = GetComponent<GridScroll>();
         for (int i = 0; i < (stageLevels.Length / 5) + 1; ++i)
         {
-            StageScrollItem stage = Instantiate(prefabStageUI).GetComponent<StageScrollItem>();
-            stage.transform.parent = trStageParent;
+            GameObject stageObject = Instantiate(prefabStageUI);
+            StageScrollItem stage = stageObject.GetComponentInChildren<StageScrollItem>();
+            stageObject.transform.parent = trStageParent;
+            stageObject.transform.localPosition = Vector3.zero;
             _gridScroll.AddStageRectTransform(stage.GetComponent<RectTransform>());
             int index = 0;
             for (int j = i * 5; j < (i * 5) + 5; ++j)

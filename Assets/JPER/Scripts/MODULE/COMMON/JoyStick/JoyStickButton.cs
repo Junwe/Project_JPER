@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 
-public class JoyStickButton : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
+public class JoyStickButton : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private bool _isDraging = false;
     private List<UnityAction> _moveEventAction = new List<UnityAction>();
@@ -22,15 +22,15 @@ public class JoyStickButton : MonoBehaviour, IDragHandler, IPointerDownHandler, 
 
     void FixedUpdate()
     {
-         if(_isDraging)
-         {
-             Draging();
-         }
+        if (_isDraging)
+        {
+            Draging();
+        }
     }
 
     private void Draging()
     {
-        foreach(var action in _moveEventAction)
+        foreach (var action in _moveEventAction)
         {
             action();
         }
@@ -42,11 +42,11 @@ public class JoyStickButton : MonoBehaviour, IDragHandler, IPointerDownHandler, 
         _UpEventAction.Clear();
     }
 
-     public void OnDrag(PointerEventData eventData)
+    public void OnDrag(PointerEventData eventData)
     {
         if (_moveEventAction == null)
         {
-            Debug.LogError(gameObject.name + " : _moveEventAction is null"); 
+            Debug.LogError(gameObject.name + " : _moveEventAction is null");
             return;
         }
         _isDraging = true;
@@ -64,4 +64,22 @@ public class JoyStickButton : MonoBehaviour, IDragHandler, IPointerDownHandler, 
             action();
         }
     }
+
+    public void OnPointerEnter(PointerEventData data)
+    {
+#if !UNITY_EDITOR
+        _isDraging = true;
+#endif
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+#if !UNITY_EDITOR
+        _isDraging = false;
+        foreach (var action in _UpEventAction)
+        {
+            action();
+        }
+#endif
+    }
+
 }
