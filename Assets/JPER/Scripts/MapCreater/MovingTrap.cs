@@ -50,11 +50,12 @@ public class MovingTrap : MonoBehaviour
             elapsedTime += Time.deltaTime * direction;
             if (elapsedTime >= movingTime || elapsedTime <= 0)
             {
-
                 switch (movingType)
                 {
                     case MovingType.Loop:
                         elapsedTime = elapsedTime >= movingTime ? movingTime : 0;
+                        int index = direction < 0 ? 0 : points.Count - 1;
+                        trapTransform.position = points[index];
                         direction *= -1;
                         break;
                     case MovingType.OneDicrection:
