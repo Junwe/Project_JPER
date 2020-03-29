@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 public class PlayerMove : MonoBehaviour
 {
     public float MoveSpeed;     // 이동 속도
@@ -13,8 +14,12 @@ public class PlayerMove : MonoBehaviour
     public JoyStickButton leftMoveBtn;
     public JoyStickButton RightMoveBtn;
 
+    private JoyStickButton _currentPushButton;
+
     public JoyStickButton ActionBtn;
     public Transform overlapBoxTransform;
+
+    public GraphicRaycaster graphic;
 
     private PortalExecuter _portalExecuter = null;
 
@@ -24,7 +29,7 @@ public class PlayerMove : MonoBehaviour
 
     public bool KnuckbackFlag { get; private set; }
 
-    void Awake/*Start*/()
+    void Awake()
     {
         leftMoveBtn.SetMoveEvent(LeftMove);
         RightMoveBtn.SetMoveEvent(RightMove);
@@ -37,6 +42,8 @@ public class PlayerMove : MonoBehaviour
         KnuckbackFlag = false;
         _animator = GetComponent<Animator>();
         _portalExecuter = GetComponent<PortalExecuter>();
+
+        _currentPushButton = RightMoveBtn;
     }
 
     void UpMoveBtn()
@@ -44,9 +51,9 @@ public class PlayerMove : MonoBehaviour
         _animator.SetBool("move", false);
     }
 
-#if UNITY_EDITOR
     private void Update()
     {
+#if UNITY_EDITOR
         if (KnuckbackFlag == false)
         {
             if (Input.GetKey(KeyCode.LeftArrow))
@@ -67,14 +74,53 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
             OnPlayerAction();
 
-        //Debug.Log(_jumpInfomation.JumpState + "// KnuckbackFlag : " + KnuckbackFlag);
+#endif
+        MoveButtonRayCast();
+
     }
 
+#if UNITY_EDITOR
     void OnDrawGizmos()
     {
         Gizmos.DrawCube(overlapBoxTransform.position, overlapBoxTransform.localScale);
     }
 #endif
+    private void MoveButtonRayCast()
+    {
+        var ped = new PointerEventData(null);
+
+        ped.position = Input.mousePosition;
+        List<RaycastResult> results = new List<RaycastResult>();
+
+        graphic.Raycast(ped, results);
+
+        if (results.Count <= 0)
+        {
+            _currentPushButton.OnUp();
+            return;
+        }
+
+        if (SetMoveButton(results[0].gameObject, leftMoveBtn))
+            return;
+
+        if (SetMoveButton(results[0].gameObject, RightMoveBtn))
+            return;
+    }
+
+    private bool SetMoveButton(GameObject pushObject, JoyStickButton button)
+    {
+        if (pushObject.gameObject.Equals(button.gameObject))
+        {
+            if (!_currentPushButton.Equals(button))
+            {
+                _currentPushButton.OnUp();
+            }
+            _currentPushButton = button;
+            _currentPushButton.OnDown();
+            return true;
+        }
+        return false;
+    }
 
     private void FixedUpdate()
     {

@@ -294,7 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2467,7 +2467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2766,6 +2766,11 @@ PrefabInstance:
       propertyPath: ActionBtn
       value: 
       objectReference: {fileID: 2053518449}
+    - target: {fileID: 5740214824982816651, guid: dbd7e9e44935a5345900a195ddcc4c0c,
+        type: 3}
+      propertyPath: graphic
+      value: 
+      objectReference: {fileID: 1874253705}
     - target: {fileID: 5740214824982816650, guid: dbd7e9e44935a5345900a195ddcc4c0c,
         type: 3}
       propertyPath: jumpText
