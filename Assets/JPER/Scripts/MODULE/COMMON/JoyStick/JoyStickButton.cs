@@ -52,8 +52,6 @@ public class JoyStickButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     public void OnDown()
     {
         _isDraging = true;
-
-        _myButton.
     }
 
     public void OnUp()
