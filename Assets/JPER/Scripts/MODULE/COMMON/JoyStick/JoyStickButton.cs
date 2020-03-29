@@ -10,6 +10,13 @@ public class JoyStickButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     private bool _isDraging = false;
     private List<UnityAction> _moveEventAction = new List<UnityAction>();
     private List<UnityAction> _UpEventAction = new List<UnityAction>();
+
+    private Button _myButton;
+
+    void Awake()
+    {
+        _myButton = GetComponent<Button>();
+    }
     public void SetMoveEvent(UnityAction action)
     {
         _moveEventAction.Add(action);
@@ -45,6 +52,8 @@ public class JoyStickButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     public void OnDown()
     {
         _isDraging = true;
+
+        _myButton.
     }
 
     public void OnUp()

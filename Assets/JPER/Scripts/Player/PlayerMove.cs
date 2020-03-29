@@ -73,9 +73,14 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
             OnPlayerAction();
-
 #endif
         MoveButtonRayCast();
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (_currentPushButton != null)
+                _currentPushButton.OnUp();
+        }
 
     }
 
