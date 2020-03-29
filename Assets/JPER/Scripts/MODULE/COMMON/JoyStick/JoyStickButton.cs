@@ -5,7 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 
-public class JoyStickButton : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
+public class JoyStickButton : MonoBehaviour
+/*IPointerDownHandler*/, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private bool _isDraging = false;
     private List<UnityAction> _moveEventAction = new List<UnityAction>();
@@ -42,20 +43,10 @@ public class JoyStickButton : MonoBehaviour, IDragHandler, IPointerDownHandler, 
         _UpEventAction.Clear();
     }
 
-    public void OnDrag(PointerEventData eventData)
-    {
-        if (_moveEventAction == null)
-        {
-            Debug.LogError(gameObject.name + " : _moveEventAction is null");
-            return;
-        }
-        _isDraging = true;
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
+    /*public void OnPointerDown(PointerEventData eventData)
     {
         _isDraging = true;
-    }
+    }*/
     public void OnPointerUp(PointerEventData eventDate)
     {
         _isDraging = false;
@@ -67,19 +58,14 @@ public class JoyStickButton : MonoBehaviour, IDragHandler, IPointerDownHandler, 
 
     public void OnPointerEnter(PointerEventData data)
     {
-#if !UNITY_EDITOR
         _isDraging = true;
-#endif
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-#if !UNITY_EDITOR
         _isDraging = false;
         foreach (var action in _UpEventAction)
         {
             action();
         }
-#endif
     }
-
 }

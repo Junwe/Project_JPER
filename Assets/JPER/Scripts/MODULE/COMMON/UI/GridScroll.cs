@@ -7,14 +7,15 @@ public class GridScroll : MonoBehaviour
     public float StageDistance;
     public Vector3 StageStartPos;
     private int _currentSelectStageIndex = 0;
-    private List<RectTransform> _objStageList = new List<RectTransform>();
+    private List<Transform> _objStageList = new List<Transform>();
     private float _scrollSpeed = 0.5f;
 
-    public void AddStageRectTransform(RectTransform rect)
+    public void AddStageRectTransform(Transform rect)
     {
         _objStageList.Add(rect);
 
-        rect.transform.localPosition = new Vector3(StageStartPos.x + (StageDistance * (_objStageList.Count - 1)), StageStartPos.y, 0f);
+        rect.transform.parent.localPosition = new Vector3(StageStartPos.x + (StageDistance * (_objStageList.Count - 1)),
+        StageStartPos.y - 150f, 0f);
     }
 
     public void NextItem()
@@ -25,8 +26,8 @@ public class GridScroll : MonoBehaviour
             SetObjectPosition();
             foreach (var obj in _objStageList)
             {
-                Vector3 endPos = new Vector3(obj.localPosition.x - StageDistance, StageStartPos.y, 0f);
-                StartCoroutine(Tween.Instance.Move(obj, obj.localPosition, endPos, _scrollSpeed, 0f,
+                Vector3 endPos = new Vector3(obj.transform.parent.localPosition.x - StageDistance, StageStartPos.y - 150f, 0f);
+                StartCoroutine(Tween.Instance.Move(obj.transform.parent.gameObject, obj.transform.parent.localPosition, endPos, _scrollSpeed, 0f,
                 AnimationCurve.EaseInOut(0f, 0f, 1f, 1f)));
             }
             _currentSelectStageIndex++;
@@ -40,8 +41,8 @@ public class GridScroll : MonoBehaviour
             SetObjectPosition();
             foreach (var obj in _objStageList)
             {
-                Vector3 endPos = new Vector3(obj.localPosition.x + StageDistance, StageStartPos.y, 0f);
-                StartCoroutine(Tween.Instance.Move(obj, obj.localPosition, endPos, _scrollSpeed, 0f,
+                Vector3 endPos = new Vector3(obj.transform.parent.localPosition.x + StageDistance, StageStartPos.y - 150f, 0f);
+                StartCoroutine(Tween.Instance.Move(obj.transform.parent.gameObject, obj.transform.parent.localPosition, endPos, _scrollSpeed, 0f,
                 AnimationCurve.EaseInOut(0f, 0f, 1f, 1f)));
             }
             _currentSelectStageIndex--;
@@ -53,8 +54,8 @@ public class GridScroll : MonoBehaviour
         int objIndex = 0;
         for (int i = -_currentSelectStageIndex; i < _objStageList.Count - _currentSelectStageIndex; ++i)
         {
-            Vector3 endPos = new Vector3(StageStartPos.x + (i * StageDistance), StageStartPos.y, 0f);
-            _objStageList[objIndex].localPosition = endPos;
+            Vector3 endPos = new Vector3(StageStartPos.x + (i * StageDistance), StageStartPos.y - 150f, 0f);
+            _objStageList[objIndex].parent.localPosition = endPos;
             objIndex++;
         }
     }

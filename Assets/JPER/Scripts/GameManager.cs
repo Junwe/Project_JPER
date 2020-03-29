@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public UnityAds UnityAds;
     void Start()
     {
-        Instantiate(StageManager.SelectStage.stagePrefab);       
-        Instantiate(StageManager.SelectStage.stageBackGround);       
+        Instantiate(StageManager.SelectStage.stagePrefab);
+        Instantiate(StageManager.SelectStage.stageBackGround);
+    }
+
+    public void OnAdsPopUp()
+    {
+        PopUpManager.Instance.EnablePopUp("P_Ads");
+    }
+
+    public void DisableAdsPopUp()
+    {
+        PopUpManager.Instance.DisablePopUp("P_Ads");
     }
 }

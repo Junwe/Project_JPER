@@ -33,9 +33,12 @@ public class StageScrollItem : MonoBehaviour
         if (myStageList.Length > index && myStageList[index] != null)
         {
             myStageList[index].gameObject.SetActive(true);
-            myStageList[index].SetStageItem(level, stageindex);
+            myStageList[index].SetStageInfomation(level, stageindex);
         }
+    }
+    public void SetStageText(int minimum,int maximum)
+    {
+        txtStageName.text = "STAGE " + (minimum).ToString() + " - " + (maximum).ToString();
 
-        txtStageName.text = "STAGE " + (stageindex-4).ToString() + " - " + (stageindex).ToString();
     }
 }

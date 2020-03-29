@@ -10,11 +10,16 @@ public class StageItem : MonoBehaviour
 
     private int _stageSceneCode;
     private StageLevel _myLevel;
-    public void SetStageItem(StageLevel level,int stageindex)
+    public void SetStageInfomation(StageLevel level,int stageindex)
     {
         txtStage.text = stageindex.ToString();
         _stageSceneCode = level.StageCode;
         _myLevel = level;
+    }
+
+    public void SetStageButton(bool onoff)
+    {
+        btnStage.interactable = onoff;
     }
 
     public void ClickStageBtn()
