@@ -76,7 +76,7 @@ public class PlayerMove : MonoBehaviour
 #endif
         MoveButtonRayCast();
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.touchCount == 0)
         {
             if (_currentPushButton != null)
                 _currentPushButton.OnUp();
