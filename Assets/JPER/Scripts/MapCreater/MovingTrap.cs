@@ -6,15 +6,15 @@ public class MovingTrap : MonoBehaviour
 {
     public enum MovingType
     {
-        OneShot,
+        //OneShot,
         Loop,
         OneDicrection
     }
 
     public List<Vector3> points;
 
-    [SerializeField]
-    private MovingType movingType;
+    public bool playOneShot = false;
+    public MovingType movingType;
     [SerializeField]
     private float movingTime;
     [SerializeField]
@@ -45,7 +45,8 @@ public class MovingTrap : MonoBehaviour
         var trapTransform = transform;
         var waitSec = new WaitForSeconds(waitTime);
 
-        while (movingType != MovingType.OneShot)
+        //while (playOneShot == false/*movingType != MovingType.OneShot*/)
+        do
         {
             elapsedTime += Time.deltaTime * direction;
             if (elapsedTime >= movingTime || elapsedTime <= 0)
@@ -75,5 +76,6 @@ public class MovingTrap : MonoBehaviour
 
             yield return null;
         }
+        while (playOneShot == false/*movingType != MovingType.OneShot*/);
     }
 }

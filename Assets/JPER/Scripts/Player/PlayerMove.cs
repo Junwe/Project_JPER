@@ -24,7 +24,7 @@ public class PlayerMove : MonoBehaviour
 
     public bool KnuckbackFlag { get; private set; }
 
-    void Start()
+    void Awake/*Start*/()
     {
         leftMoveBtn.SetMoveEvent(LeftMove);
         RightMoveBtn.SetMoveEvent(RightMove);
