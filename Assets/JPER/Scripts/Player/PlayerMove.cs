@@ -73,7 +73,7 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
             OnPlayerAction();
-#endif
+#else
         MoveButtonRayCast();
 
         if (Input.touchCount == 0)
@@ -81,7 +81,7 @@ public class PlayerMove : MonoBehaviour
             if (_currentPushButton != null)
                 _currentPushButton.OnUp();
         }
-
+#endif
     }
 
 #if UNITY_EDITOR
