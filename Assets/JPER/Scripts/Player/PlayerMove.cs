@@ -3,8 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 public class PlayerMove : MonoBehaviour
 {
+    private struct PlayerPosition
+    {
+        public float PosX;
+        public float PosY;
+    }
+    public UnityEvent JumpEvent;
     public float MoveSpeed;     // 이동 속도
     public float LimitY;        // 플레이어 맵 범위
 
@@ -25,7 +32,9 @@ public class PlayerMove : MonoBehaviour
 
     // 넉백 데이터
     private KnockbackInfomation knockbackInfomation = new KnockbackInfomation();
-    private Animator _animator;
+    private PlayerAnimation _animation;
+
+    private Vector3 _lastPosition;
 
     public bool KnuckbackFlag { get; private set; }
 
@@ -40,15 +49,16 @@ public class PlayerMove : MonoBehaviour
 
         _playerPosition.PosX = transform.position.x;
         KnuckbackFlag = false;
-        _animator = GetComponent<Animator>();
         _portalExecuter = GetComponent<PortalExecuter>();
 
         _currentPushButton = RightMoveBtn;
+
+        _lastPosition = transform.localPosition;
     }
 
     void UpMoveBtn()
     {
-        _animator.SetBool("move", false);
+        _animation.Animator.SetBool("move", false);
     }
 
     private void Update()
@@ -73,6 +83,16 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
             OnPlayerAction();
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            _animation.Animator.SetTrigger("Dissovle");
+            _animation.IsDissovling = true;
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            _animation.Animator.SetTrigger("OffDissovle");
+        }
 #else
         MoveButtonRayCast();
 
@@ -129,12 +149,14 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_animation.IsDissovling) return;
+
         CheckHorizontalRaycast();
 
         if (KnuckbackFlag == true)
             KnockbackProcess();
         else
-            _jumpInfomation.JumpProcess(_playerPosition, _animator);
+            _jumpInfomation.JumpProcess(ref _playerPosition.PosX, ref _playerPosition.PosY, _animation.Animator);
 
         _playerPosition.PosX = Mathf.Clamp(_playerPosition.PosX, -StageManager.SelectStage.LimitX, StageManager.SelectStage.LimitX);
         _jumpInfomation.Gravity = Mathf.Clamp(_jumpInfomation.Gravity, -0.35f, 0.35f);
@@ -157,7 +179,7 @@ public class PlayerMove : MonoBehaviour
                 _jumpInfomation.BaseY = col.transform.position.y + 0.4f;
                 _playerPosition.PosY = col.transform.position.y + 0.4f;
                 _jumpInfomation.JumpState = 0;
-                _animator.SetBool("jump", false);
+                _animation.Animator.SetBool("jump", false);
             }
         }
         else
@@ -172,23 +194,35 @@ public class PlayerMove : MonoBehaviour
 
     public void LeftMove()
     {
-        _playerPosition.PosX += -1f * MoveSpeed * Time.deltaTime;
+        if (_animation.IsDissovling) return;
+
+        if (transform.localScale.x <= 0f)
+        {
+            _playerPosition.PosX += -1f * MoveSpeed * Time.deltaTime;
+        }
         transform.localScale = new Vector3(-1f, 1f, 1f);
-        _animator.SetBool("move", true);
+        _animation.Animator.SetBool("move", true);
 
         Sound.Instance.PlayEffSound(SOUND.S_MOVE, 1f, false, false);
     }
 
     public void RightMove()
     {
-        _playerPosition.PosX += 1f * MoveSpeed * Time.deltaTime;
+        if (_animation.IsDissovling) return;
+
+        if (transform.localScale.x >= 0f)
+        {
+            _playerPosition.PosX += 1f * MoveSpeed * Time.deltaTime;
+        }
         transform.localScale = new Vector3(1f, 1f, 1f);
-        _animator.SetBool("move", true);
+        _animation.Animator.SetBool("move", true);
         Sound.Instance.PlayEffSound(SOUND.S_MOVE, 1f, false, false);
     }
 
     public void OnPlayerAction()
     {
+        if (_animation.IsDissovling) return;
+
         if (_portalExecuter.CurrentPortal != null)
         {
             _portalExecuter.ExecutePortal();
@@ -197,9 +231,12 @@ public class PlayerMove : MonoBehaviour
 
         if (_jumpInfomation.JumpState == 0)
         {
+            _lastPosition = transform.localPosition;
+
+
             _jumpInfomation.JumpState = 1;
             _jumpInfomation.Gravity = _jumpInfomation.Jump_speed;
-            _animator.SetBool("jump", true);
+            _animation.Animator.SetBool("jump", true);
 
             Sound.Instance.PlayEffSound(SOUND.S_JUMP);
         }
@@ -237,9 +274,8 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    public void UpdatePlayerPosition(Vector2 newPosition)
+    public void SetPlayerAnimation(PlayerAnimation animation)
     {
-        _playerPosition.PosX = newPosition.x;
-        _playerPosition.PosY = newPosition.y;
+        _animation = animation; ;
     }
 }

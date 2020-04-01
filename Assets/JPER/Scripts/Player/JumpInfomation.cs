@@ -10,30 +10,30 @@ public class JumpInfomation
     public float Jump_speed = 0.2f;  // 점프속도
     public float Jump_accell = 0.01f; // 점프가속
 
-    public void JumpProcess(PlayerPosition _playerPosition, Animator _animator)
+    public void JumpProcess(ref float posx, ref float posy, Animator _animator)
     {
         switch (JumpState)
         {
             case 0: // 가만히 있는 상태
                 {
-                    if (_playerPosition.PosY > BaseY) // basey위치로 좌표시키게 한다.
+                    if (posy > BaseY) // basey위치로 좌표시키게 한다.
                     {
-                        if (_playerPosition.PosY >= BaseY)
+                        if (posy >= BaseY)
                         {
-                            _playerPosition.PosY -= Gravity;
+                            posy -= Gravity;
                         }
                         else
                         {
-                            _playerPosition.PosY = BaseY;
+                            posy= BaseY;
                         }
                     }
                     else
-                        _playerPosition.PosY = BaseY;
+                        posy = BaseY;
                     break;
                 }
             case 1: // up
                 {
-                    _playerPosition.PosY += Gravity;
+                    posy += Gravity;
                     if (Gravity <= 0.0f)
                     {
                         JumpState = 2;
@@ -46,8 +46,8 @@ public class JumpInfomation
                 }
             case 2: // down
                 {
-                    _playerPosition.PosY -= Gravity;
-                    if (_playerPosition.PosY > BaseY)
+                    posy -= Gravity;
+                    if (posy> BaseY)
                     {
                         Gravity += Jump_accell;   // 점프값이 점점 늘어나게
                     }
@@ -55,7 +55,7 @@ public class JumpInfomation
                     {
                         _animator.SetBool("jump", false);
                         JumpState = 0;
-                        _playerPosition.PosY = BaseY;
+                        posy = BaseY;
                     }
                     break;
                 }

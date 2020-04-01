@@ -40,6 +40,7 @@ Material:
     - Vector1_9EB7F13: 20
     - Vector1_FCE82100: 1
     - _EnableExternalAlpha: 0
+    - _fade: 1
     m_Colors:
     - Color_A1A11313: {r: 1.5292329, g: 1.909478, b: 4.9876513, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
