@@ -676,6 +676,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cf6887f593bcbd94680b93134a983870, type: 2}
   - {fileID: 11400000, guid: aa2693698b91a6142af0e625f61dd74c, type: 2}
   - {fileID: 11400000, guid: a0444e927d2864b379192af6ab0af5b0, type: 2}
+  - {fileID: 11400000, guid: 293e6cf6d04fb7042a36d9153a77f623, type: 2}
   prefabStageUI: {fileID: 4832918151514627037, guid: 3b0fb144cc68a4a67a5bec381311edef,
     type: 3}
   trStageParent: {fileID: 1552906113}
