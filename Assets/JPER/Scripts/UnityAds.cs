@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.Advertisements;
 public class UnityAds : MonoBehaviour
 {
+    public PlayerRewind Rewind;
+    void Awake()
+    {
+        Advertisement.Initialize("3526473", false);
+    }
     public void ShowRewardedAD()
     {
         if (Advertisement.IsReady("rewardedVideo"))
@@ -18,9 +23,11 @@ public class UnityAds : MonoBehaviour
         switch (result)
         {
             case ShowResult.Finished:
+                Rewind.StartRewind();
                 Debug.Log("Finished");
                 break;
             case ShowResult.Skipped:
+                Rewind.StartRewind();
                 Debug.Log("Skipped");
                 break;
             case ShowResult.Failed:

@@ -19,6 +19,5 @@ public class PlayerAnimation : MonoBehaviour
     private void OffDissovle()
     {
         IsDissovling = false;
-        Debug.Log("OffDissovle");
     }
 }

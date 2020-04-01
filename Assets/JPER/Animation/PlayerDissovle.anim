@@ -73,11 +73,11 @@ AnimationClip:
       - serializedVersion: 3
         time: 1
         value: {x: 0, y: 1.89, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
+        inSlope: {x: 0, y: -9.750705, z: 0}
+        outSlope: {x: 0, y: -9.750705, z: 0}
         tangentMode: 0
         weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        inWeight: {x: 0.33333334, y: 0.33344495, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -235,11 +235,11 @@ AnimationClip:
       - serializedVersion: 3
         time: 1
         value: 1.89
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        inSlope: -9.750705
+        outSlope: -9.750705
+        tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0.33344495
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -411,4 +411,11 @@ AnimationClip:
     script: {fileID: 0}
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 1.35
+    functionName: StartReSetPosition
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

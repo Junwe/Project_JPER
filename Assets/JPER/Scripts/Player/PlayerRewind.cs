@@ -4,16 +4,39 @@ using UnityEngine;
 
 public class PlayerRewind : MonoBehaviour
 {
-    
-    // Start is called before the first frame update
-    void Start()
+    private PlayerMove _trTarget;
+    private Vector3 _lastJumpStartPosition;
+
+    PlayerAnimation _animation;
+
+    void Awake()
     {
-        
+        _animation = GetComponent<PlayerAnimation>();
+
+        _trTarget = GetComponentInChildren<PlayerMove>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            StartRewind();
+        }
+    }
+    public void SetJumpPosition()
+    {
+        _lastJumpStartPosition = _trTarget.transform.localPosition;
+    }
+
+    public void StartRewind()
+    {
+        _animation.Animator.SetTrigger("Dissovle");
+        _animation.IsDissovling = true;
+    }
+
+    public void StartReSetPosition()
+    {
+        _trTarget.SetPlayerPosition(_lastJumpStartPosition.x, _lastJumpStartPosition.y);
+        _animation.Animator.SetTrigger("OffDissovle");
     }
 }

@@ -33,9 +33,6 @@ public class PlayerMove : MonoBehaviour
     // 넉백 데이터
     private KnockbackInfomation knockbackInfomation = new KnockbackInfomation();
     private PlayerAnimation _animation;
-
-    private Vector3 _lastPosition;
-
     public bool KnuckbackFlag { get; private set; }
 
     void Awake()
@@ -52,8 +49,6 @@ public class PlayerMove : MonoBehaviour
         _portalExecuter = GetComponent<PortalExecuter>();
 
         _currentPushButton = RightMoveBtn;
-
-        _lastPosition = transform.localPosition;
     }
 
     void UpMoveBtn()
@@ -83,16 +78,6 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
             OnPlayerAction();
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            _animation.Animator.SetTrigger("Dissovle");
-            _animation.IsDissovling = true;
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            _animation.Animator.SetTrigger("OffDissovle");
-        }
 #else
         MoveButtonRayCast();
 
@@ -231,9 +216,7 @@ public class PlayerMove : MonoBehaviour
 
         if (_jumpInfomation.JumpState == 0)
         {
-            _lastPosition = transform.localPosition;
-
-
+            JumpEvent.Invoke();
             _jumpInfomation.JumpState = 1;
             _jumpInfomation.Gravity = _jumpInfomation.Jump_speed;
             _animation.Animator.SetBool("jump", true);
@@ -262,6 +245,7 @@ public class PlayerMove : MonoBehaviour
 
     public void OnKnockback(int direction, float verticalAcceleration = KnockbackInfomation.DEFAULT_VERTICAL_SPEED, float horizontalAcceleration = KnockbackInfomation.DEFAULT_HORIZONTAL_SPEED)
     {
+        if (_animation.IsDissovling) return;
         if (KnuckbackFlag == false)
         {
             knockbackInfomation.direction = direction;
@@ -276,6 +260,15 @@ public class PlayerMove : MonoBehaviour
 
     public void SetPlayerAnimation(PlayerAnimation animation)
     {
-        _animation = animation; ;
+        _animation = animation;
+    }
+    public void SetPlayerPosition(float posX, float posY)
+    {
+        _playerPosition.PosX = posX;
+        _playerPosition.PosY = posY;
+
+        _jumpInfomation.JumpState = 2;
+
+        transform.localPosition = new Vector3(_playerPosition.PosX, _playerPosition.PosY);
     }
 }
