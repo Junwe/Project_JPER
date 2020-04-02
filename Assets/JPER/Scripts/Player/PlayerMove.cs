@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+
 public class PlayerMove : MonoBehaviour
 {
     private struct PlayerPosition
@@ -11,7 +12,10 @@ public class PlayerMove : MonoBehaviour
         public float PosX;
         public float PosY;
     }
+
     public UnityEvent JumpEvent;
+    public UnityEvent FallEvent;    // 땅으로 떨어졌을 때 호출.
+
     public float MoveSpeed;     // 이동 속도
     public float LimitY;        // 플레이어 맵 범위
 
@@ -31,9 +35,9 @@ public class PlayerMove : MonoBehaviour
     private PortalExecuter _portalExecuter = null;
 
     // 넉백 데이터
-    private KnockbackInfomation knockbackInfomation = new KnockbackInfomation();
     private PlayerAnimation _animation;
-    public bool KnuckbackFlag { get; private set; }
+
+    public KnockbackInfomation KnockbackInfomation { get; private set; } = null;
 
     void Awake()
     {
@@ -45,10 +49,11 @@ public class PlayerMove : MonoBehaviour
         ActionBtn.SetMoveEvent(OnPlayerAction);
 
         _playerPosition.PosX = transform.position.x;
-        KnuckbackFlag = false;
         _portalExecuter = GetComponent<PortalExecuter>();
 
         _currentPushButton = RightMoveBtn;
+
+        KnockbackInfomation = new KnockbackInfomation(this, _jumpInfomation);
     }
 
     void UpMoveBtn()
@@ -59,7 +64,7 @@ public class PlayerMove : MonoBehaviour
     private void Update()
     {
 #if UNITY_EDITOR
-        if (KnuckbackFlag == false)
+        if (KnockbackInfomation.KnuckbackFlag == false)
         {
             if (Input.GetKey(KeyCode.LeftArrow))
                 LeftMove();
@@ -136,10 +141,10 @@ public class PlayerMove : MonoBehaviour
     {
         if (_animation.IsDissovling) return;
 
-        CheckHorizontalRaycast();
+        CheckPlayerFootOverlapedToGround();
 
-        if (KnuckbackFlag == true)
-            KnockbackProcess();
+        if (KnockbackInfomation.KnuckbackFlag == true)
+            KnockbackInfomation.KnockbackProcess();
         else
             _jumpInfomation.JumpProcess(ref _playerPosition.PosX, ref _playerPosition.PosY, _animation.Animator);
 
@@ -149,7 +154,7 @@ public class PlayerMove : MonoBehaviour
         gameObject.transform.position = new Vector3(_playerPosition.PosX, _playerPosition.PosY);
     }
 
-    private void CheckHorizontalRaycast()
+    private void CheckPlayerFootOverlapedToGround()
     {
         int layermask = 1 << LayerMask.NameToLayer("wall");
         Collider2D col = Physics2D.OverlapBox(overlapBoxTransform.position,
@@ -225,39 +230,6 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    public void KnockbackProcess()
-    {
-        _playerPosition.PosX += knockbackInfomation.horizontalAcceleration * knockbackInfomation.direction;
-        _playerPosition.PosY += knockbackInfomation.verticalAcceleration;
-        knockbackInfomation.verticalAcceleration -= KnockbackInfomation.GRAVITY; // 올라가는 속도 점점 느려지게 수직 가속도 감소.
-
-        knockbackInfomation.verticalAcceleration = Mathf.Clamp(knockbackInfomation.verticalAcceleration, -0.35f, 10.35f);
-
-        if (knockbackInfomation.isUp == true && knockbackInfomation.verticalAcceleration <= 0.0f)
-        {
-            knockbackInfomation.isUp = false;
-            _jumpInfomation.JumpState = 2;
-        }
-
-        if (_jumpInfomation.JumpState == 0)
-            KnuckbackFlag = false;
-    }
-
-    public void OnKnockback(int direction, float verticalAcceleration = KnockbackInfomation.DEFAULT_VERTICAL_SPEED, float horizontalAcceleration = KnockbackInfomation.DEFAULT_HORIZONTAL_SPEED)
-    {
-        if (_animation.IsDissovling) return;
-        if (KnuckbackFlag == false)
-        {
-            knockbackInfomation.direction = direction;
-            knockbackInfomation.verticalAcceleration = verticalAcceleration;
-            knockbackInfomation.horizontalAcceleration = horizontalAcceleration;
-            knockbackInfomation.isUp = true;
-            KnuckbackFlag = true;
-
-            _jumpInfomation.JumpState = 1;
-        }
-    }
-
     public void SetPlayerAnimation(PlayerAnimation animation)
     {
         _animation = animation;
@@ -268,6 +240,14 @@ public class PlayerMove : MonoBehaviour
         _playerPosition.PosY = posY;
 
         _jumpInfomation.JumpState = 2;
+
+        transform.localPosition = new Vector3(_playerPosition.PosX, _playerPosition.PosY);
+    }
+
+    public void AddPlayerPosition(Vector2 posToAdd)
+    {
+        _playerPosition.PosX += posToAdd.x;
+        _playerPosition.PosY += posToAdd.y;
 
         transform.localPosition = new Vector3(_playerPosition.PosX, _playerPosition.PosY);
     }

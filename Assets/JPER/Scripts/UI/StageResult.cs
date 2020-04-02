@@ -5,4 +5,6 @@ using UnityEngine.UI;
 
 public class StageResult : MonoBehaviour
 {
+    [SerializeField]
+    private GameManager gameManager;
 }

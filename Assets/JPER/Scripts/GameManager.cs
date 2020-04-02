@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public PlayerActionCounter PlayerActionCounter = new PlayerActionCounter();
+    public PlayerActionCounter playerActionCounter = new PlayerActionCounter();
+
     void Start()
     {
         Instantiate(StageManager.SelectStage.stagePrefab);
@@ -25,18 +26,31 @@ public class GameManager : MonoBehaviour
 
     public void AddJumpCount()
     {
-        PlayerActionCounter.AddJumpCount();
+        playerActionCounter.AddJumpCount();
     }
+
+    public void AddFallCount()
+    {
+        playerActionCounter.AddFallCount();
+    }
+
     public void StopPlayTimer()
     {
         StopCoroutine(PlayTimer());
     }
+
     private IEnumerator PlayTimer()
     {
         while (true)
         {
-            PlayerActionCounter.AddPlayTime(Time.deltaTime);
+            playerActionCounter.AddPlayTime(Time.deltaTime);
             yield return null;
         }
+    }
+
+    public void GoToMainScene()
+    {
+        StageManager.SelectStage.SetStageClear();
+        SceneFade.Instance.SceneLoad(0);
     }
 }

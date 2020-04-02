@@ -6,7 +6,6 @@ public class MovingTrap : MonoBehaviour
 {
     public enum MovingType
     {
-        //OneShot,
         Loop,
         OneDicrection
     }
@@ -45,7 +44,6 @@ public class MovingTrap : MonoBehaviour
         var trapTransform = transform;
         var waitSec = new WaitForSeconds(waitTime);
 
-        //while (playOneShot == false/*movingType != MovingType.OneShot*/)
         do
         {
             elapsedTime += Time.deltaTime * direction;
@@ -62,6 +60,7 @@ public class MovingTrap : MonoBehaviour
                     case MovingType.OneDicrection:
                         elapsedTime = 0;
                         direction = 1;
+                        trapTransform.position = points[points.Count - 1];
                         break;
                 }
                 yield return waitSec;
@@ -76,6 +75,6 @@ public class MovingTrap : MonoBehaviour
 
             yield return null;
         }
-        while (playOneShot == false/*movingType != MovingType.OneShot*/);
+        while (playOneShot == false);
     }
 }

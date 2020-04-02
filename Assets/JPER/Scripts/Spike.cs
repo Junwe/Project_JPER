@@ -26,25 +26,25 @@ public class Spike : MonoBehaviour, ITrapExecute
             case KnockbackType.Random:
                 {
                     int direction = Random.Range(-1, 1) < 0 ? -1 : 1;
-                    targetPlayer.OnKnockback(direction, VERTICAL_ACCEL, HORIZONTAL_ACCEL);
+                    targetPlayer.KnockbackInfomation.OnKnockback(direction, VERTICAL_ACCEL, HORIZONTAL_ACCEL);
                     break;
                 }
             case KnockbackType.Relation:
                 {
                     int direction = transform.position.x - targetPlayer.transform.position.x > 0 ? -1 : 1;
-                    targetPlayer.OnKnockback(direction, VERTICAL_ACCEL, HORIZONTAL_ACCEL);
+                    targetPlayer.KnockbackInfomation.OnKnockback(direction, VERTICAL_ACCEL, HORIZONTAL_ACCEL);
                     break;
                 }
             case KnockbackType.Left:
                 {
                     int direction = -1;
-                    targetPlayer.OnKnockback(direction, VERTICAL_ACCEL, HORIZONTAL_ACCEL);
+                    targetPlayer.KnockbackInfomation.OnKnockback(direction, VERTICAL_ACCEL, HORIZONTAL_ACCEL);
                     break;
                 }
             case KnockbackType.Right:
                 {
                     int direction = 1;
-                    targetPlayer.OnKnockback(direction, VERTICAL_ACCEL, HORIZONTAL_ACCEL);
+                    targetPlayer.KnockbackInfomation.OnKnockback(direction, VERTICAL_ACCEL, HORIZONTAL_ACCEL);
                     break;
                 }
         }
@@ -61,7 +61,7 @@ public class Spike : MonoBehaviour, ITrapExecute
     private void OnTriggerStay2D(Collider2D collision)
     {
         var player = collision.GetComponent<PlayerMove>();
-        if (player != null && player.KnuckbackFlag == false)
+        if (player != null && player.KnockbackInfomation.KnuckbackFlag == false)
             Execute(player);
     }
 }
