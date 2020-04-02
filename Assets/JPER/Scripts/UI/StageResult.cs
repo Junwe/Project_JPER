@@ -5,6 +5,4 @@ using UnityEngine.UI;
 
 public class StageResult : MonoBehaviour
 {
-    [SerializeField]
-    private PlayerActionCounter playerActionCounter;
 }
