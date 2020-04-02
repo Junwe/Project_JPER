@@ -10,7 +10,7 @@ public class POPUP_Base : MonoBehaviour, IPopUp
     public TweenScale _openTween;
     public GameObject obj
     {
-        get { return gameObject;}
+        get { return gameObject; }
     }
 
     string _disableEvent;
@@ -25,6 +25,8 @@ public class POPUP_Base : MonoBehaviour, IPopUp
     {
         PopUpManager.Instance.AddPop(gameObject.name, this);
         gameObject.transform.localScale = Vector3.zero;
+        if (_openTween == null)
+            _openTween = GetComponent<TweenScale>();
     }
 
     public virtual void Enable()

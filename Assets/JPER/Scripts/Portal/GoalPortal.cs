@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GoalPortal : AbstPortal
 {
-    private GameManager gameManager;
-
     public override void UsePortal(PortalExecuter calledExecuter)
     {
         StageManager.SelectStage.SetStageClear();
@@ -18,9 +16,7 @@ public class GoalPortal : AbstPortal
 
     private void Start()
     {
-        gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-
-        if (gameManager == null)
-            Debug.LogError("GoalPortal.Start() : Game manager is not founded.");
+        GameManager.Instance.OnResultPopUp();
+        // SceneFade.Instance.SceneLoad(0);
     }
 }

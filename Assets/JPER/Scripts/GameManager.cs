@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoDestorySingleton<GameManager>
 {
     public PlayerActionCounter playerActionCounter = new PlayerActionCounter();
 
@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour
         Instantiate(StageManager.SelectStage.stageBackGround);
 
         StartCoroutine(PlayTimer());
+    }
+
+    public void OnResultPopUp()
+    {
+        PopUpManager.Instance.EnablePopUp("P_GameResult","PlayReulst");
     }
 
     public void OnAdsPopUp()
