@@ -12,11 +12,11 @@ public class GoalPortal : AbstPortal
 
         // TODO
         // gameManager 통해 게임 중지 및 결과 UI 출력.
+        GameManager.Instance.OnResultPopUp();
     }
 
     private void Start()
     {
-        GameManager.Instance.OnResultPopUp();
         // SceneFade.Instance.SceneLoad(0);
     }
 }
