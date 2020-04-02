@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public PlayerActionCounter PlayerActionCounter;
+    public PlayerActionCounter PlayerActionCounter = new PlayerActionCounter();
     void Start()
     {
         Instantiate(StageManager.SelectStage.stagePrefab);
@@ -23,7 +23,11 @@ public class GameManager : MonoBehaviour
         PopUpManager.Instance.DisablePopUp("P_Ads");
     }
 
-        public void StopPlayTimer()
+    public void AddJumpCount()
+    {
+        PlayerActionCounter.AddJumpCount();
+    }
+    public void StopPlayTimer()
     {
         StopCoroutine(PlayTimer());
     }
