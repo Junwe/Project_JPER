@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class StageResult : MonoBehaviour
 {
     [SerializeField]
-    private GameManager gameManager;
     ParticleSystem[] _reulstParticleList;
 
     public void PlayReulst()
