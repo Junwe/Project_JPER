@@ -7,12 +7,18 @@ public class StageResult : MonoBehaviour
 {
     [SerializeField]
     ParticleSystem[] _reulstParticleList;
+    [SerializeField]
+    ParticleSystem[] _paperParticleList;
 
     public void PlayReulst()
     {
         foreach (var particle in _reulstParticleList)
         {
-            StartCoroutine(PlayFireWork(Random.Range(0f, 1.5f), particle));
+            StartCoroutine(PlayFireWork(Random.Range(0f, 3.5f), particle));
+        }
+        foreach(var particle in _paperParticleList)
+        {
+            particle.Play();
         }
     }
 
