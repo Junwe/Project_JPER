@@ -9,6 +9,8 @@ public class StageResult : MonoBehaviour
     ParticleSystem[] _reulstParticleList;
     [SerializeField]
     private Transform dataRowParent;
+    [SerializeField]
+    ParticleSystem[] _paperParticleList;
 
     private PlayerActionCounter playerActionCounter = null;
     private List<PlayerRecordDataRow> playerRecordDataRows = null;
@@ -17,7 +19,11 @@ public class StageResult : MonoBehaviour
     {
         foreach (var particle in _reulstParticleList)
         {
-            StartCoroutine(PlayFireWork(Random.Range(0f, 1.5f), particle));
+            StartCoroutine(PlayFireWork(Random.Range(0f, 3.5f), particle));
+        }
+        foreach(var particle in _paperParticleList)
+        {
+            particle.Play();
         }
 
         for (int i = 0; i < playerRecordDataRows.Count; ++i)
