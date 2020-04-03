@@ -17,6 +17,7 @@ public class GameManager : MonoDestorySingleton<GameManager>
     public void OnResultPopUp()
     {
         PopUpManager.Instance.EnablePopUp("P_GameResult","PlayReulst");
+        StopPlayTimer();
     }
 
     public void OnAdsPopUp()
