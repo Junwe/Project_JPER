@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1551,7 +1551,7 @@ MonoBehaviour:
   - {fileID: 2554442622304322839, guid: c27d3e037bdd92d4b82d41ee21c937bd, type: 3}
   parent: {fileID: 0}
   isGrid: 1
-  ObjectIndex: 2
+  ObjectIndex: 7
   SelectIndex: 0
   IsGridMove: 1
 --- !u!1 &1545393358

@@ -21,6 +21,16 @@ public class MovingTrap : MonoBehaviour
     [SerializeField]
     private bool isMoveWithPlayer;
 
+    public void ValueCopy(MovingTrap moving)
+    {
+        points = moving.points;
+        playOneShot = moving.playOneShot;
+        movingType = moving.movingType;
+        movingTime = moving.movingTime;
+        waitTime = moving.waitTime;
+        isMoveWithPlayer = moving.isMoveWithPlayer;
+    }
+
     public void StartMoving()
     {
         if (points.Count > 1 && movingTime > 0)

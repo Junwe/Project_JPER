@@ -19,6 +19,13 @@ public class Spike : MonoBehaviour, ITrapExecute
     [SerializeField]
     private KnockbackType knockbackDirection;
 
+    public void ValueCopy(Spike spike)
+    {
+        VERTICAL_ACCEL = spike.VERTICAL_ACCEL;
+        HORIZONTAL_ACCEL = spike.HORIZONTAL_ACCEL;
+        knockbackDirection = spike.knockbackDirection;
+    }
+
     public void Execute(PlayerMove targetPlayer)
     {
         switch (knockbackDirection)
