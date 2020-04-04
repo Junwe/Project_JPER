@@ -14,6 +14,9 @@ public class MovingTrap : MonoBehaviour
 
     public bool playOneShot = false;
     public MovingType movingType;
+
+    [SerializeField]
+    private float startTime = 0;
     [SerializeField]
     private float movingTime;
     [SerializeField]
@@ -53,6 +56,9 @@ public class MovingTrap : MonoBehaviour
         int direction = 1; // 1 또는 -1 만 사용.
         var trapTransform = transform;
         var waitSec = new WaitForSeconds(waitTime);
+
+        if(startTime > 0)
+            yield return new WaitForSeconds(startTime);
 
         do
         {
