@@ -12,16 +12,13 @@ public class PlayerRecordDataRow : MonoBehaviour
     [SerializeField]
     private Text dataValueText;
 
-    private PlayerActionCounter playerActionCounter = null;
-
     public void UpdateDataValue()
     {
-        dataValueText.text = playerActionCounter.GetValueString(recordDataType);
+        dataValueText.text = GameManager.Instance.playerActionCounter.GetValueString(recordDataType);
     }
 
     private void Start()
     {
         dataNameText.text = recordDataType.ToString() + " : ";
-        playerActionCounter = GameManager.Instance.playerActionCounter;
     }
 }

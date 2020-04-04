@@ -12,7 +12,6 @@ public class StageResult : MonoBehaviour
     [SerializeField]
     ParticleSystem[] _paperParticleList;
 
-    private PlayerActionCounter playerActionCounter = null;
     private List<PlayerRecordDataRow> playerRecordDataRows = null;
 
     public void PlayReulst()
@@ -38,7 +37,6 @@ public class StageResult : MonoBehaviour
 
     private void Start()
     {
-        playerActionCounter = GameManager.Instance.playerActionCounter;
         playerRecordDataRows = new List<PlayerRecordDataRow>(dataRowParent.childCount);
         for (int i = 0; i < dataRowParent.childCount; ++i)
             playerRecordDataRows.Add(dataRowParent.GetChild(i).GetComponent<PlayerRecordDataRow>());

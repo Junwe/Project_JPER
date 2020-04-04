@@ -43,7 +43,7 @@ public class PlayerActionCounter
         switch (dataType)
         {
             case RecordDataType.PlayTime:
-                return PlayTime.ToString();
+                return (Mathf.Floor(PlayTime * 100f) / 100f).ToString() + "s";
             case RecordDataType.FallCount:
                 return FallCount.ToString();
             case RecordDataType.JumpCount:
