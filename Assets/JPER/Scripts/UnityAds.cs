@@ -20,6 +20,7 @@ public class UnityAds : MonoBehaviour
 
     private void HandleShowResult(ShowResult result)
     {
+        PopUpManager.Instance.DisablePopUp("P_Ads");
         switch (result)
         {
             case ShowResult.Finished:
