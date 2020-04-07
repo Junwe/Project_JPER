@@ -47,8 +47,6 @@ public class PlayerMove : MonoBehaviour
         leftMoveBtn.SetUpEvent(UpMoveBtn);
         RightMoveBtn.SetUpEvent(UpMoveBtn);
         ActionBtn.SetMoveEvent(OnPlayerAction);
-
-        _playerPosition.PosX = transform.position.x;
         _portalExecuter = GetComponent<PortalExecuter>();
 
         _currentPushButton = RightMoveBtn;
@@ -92,6 +90,9 @@ public class PlayerMove : MonoBehaviour
                 _currentPushButton.OnUp();
         }
 #endif
+
+
+        CheckPlayerFootOverlapedToGround();
     }
 
 #if UNITY_EDITOR
@@ -141,8 +142,6 @@ public class PlayerMove : MonoBehaviour
     {
         if (_animation.IsDissovling) return;
 
-        CheckPlayerFootOverlapedToGround();
-
         if (KnockbackInfomation.KnuckbackFlag == true)
             KnockbackInfomation.KnockbackProcess();
         else
@@ -164,7 +163,7 @@ public class PlayerMove : MonoBehaviour
 
         if (col != null)
         {
-            if (_jumpInfomation.JumpState == 2 && overlapBoxTransform.transform.position.y >= col.transform.position.y + 0.25f)
+            if (_jumpInfomation.JumpState == 2 && overlapBoxTransform.transform.position.y >= col.transform.position.y + 0.3f)
             {
                 _jumpInfomation.BaseY = col.transform.position.y + 0.4f;
                 _playerPosition.PosY = col.transform.position.y + 0.4f;
@@ -234,7 +233,7 @@ public class PlayerMove : MonoBehaviour
     {
         _animation = animation;
     }
-    public void SetPlayerPosition(float posX, float posY)
+    public void SetPlayerLocalPosition(float posX, float posY)
     {
         _playerPosition.PosX = posX;
         _playerPosition.PosY = posY;
@@ -243,6 +242,18 @@ public class PlayerMove : MonoBehaviour
 
         transform.localPosition = new Vector3(_playerPosition.PosX, _playerPosition.PosY);
     }
+
+    public void SetPlayerPosition(float posX, float posY)
+    {
+        _playerPosition.PosX = posX;
+        _playerPosition.PosY = posY;
+
+        _jumpInfomation.JumpState = 2;
+
+        transform.position = new Vector3(_playerPosition.PosX, _playerPosition.PosY);
+    }
+
+
 
     public void AddPlayerPosition(Vector2 posToAdd)
     {

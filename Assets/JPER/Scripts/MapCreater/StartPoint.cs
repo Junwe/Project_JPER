@@ -10,7 +10,7 @@ public class StartPoint : MonoBehaviour
     void Start()
     {
         var playerMove = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
-        playerMove.transform.position = transform.position;
+        playerMove.SetPlayerPosition(transform.position.x,transform.position.y);
     }
 
 #if UNITY_EDITOR

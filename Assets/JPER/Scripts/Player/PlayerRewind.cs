@@ -36,7 +36,7 @@ public class PlayerRewind : MonoBehaviour
 
     public void StartReSetPosition()
     {
-        _trTarget.SetPlayerPosition(_lastJumpStartPosition.x, _lastJumpStartPosition.y);
+        _trTarget.SetPlayerLocalPosition(_lastJumpStartPosition.x, _lastJumpStartPosition.y);
         _animation.Animator.SetTrigger("OffDissovle");
     }
 }
