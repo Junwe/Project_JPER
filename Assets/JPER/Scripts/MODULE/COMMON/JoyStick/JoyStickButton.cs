@@ -7,15 +7,19 @@ using UnityEngine.Events;
 
 public class JoyStickButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    [SerializeField]
+    bool _isActiveAlpha = false;
     private bool _isDraging = false;
     private List<UnityAction> _moveEventAction = new List<UnityAction>();
     private List<UnityAction> _UpEventAction = new List<UnityAction>();
 
     private Button _myButton;
+    private Image _myImage;
 
     void Awake()
     {
         _myButton = GetComponent<Button>();
+        _myImage = GetComponent<Image>();
     }
     public void SetMoveEvent(UnityAction action)
     {
@@ -66,6 +70,8 @@ public class JoyStickButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     public void OnPointerDown(PointerEventData eventData)
     {
         _isDraging = true;
+        if (_isActiveAlpha)
+            _myImage.SetAlpha(1f);
     }
     public void OnPointerUp(PointerEventData eventDate)
     {
@@ -74,5 +80,7 @@ public class JoyStickButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         {
             action();
         }
+        if (_isActiveAlpha)
+            _myImage.SetAlpha(0.5f);
     }
 }
