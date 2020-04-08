@@ -13,7 +13,8 @@ public class CameraWalking : MonoBehaviour
     void Start()
     {
         //StartCoroutine(Walking());
-        LimitX = StageManager.SelectStage.LimitX;
+        if (StageManager.SelectStage != null)
+            LimitX = StageManager.SelectStage.LimitX;
     }
 
     // Update is called once per frame
@@ -24,12 +25,12 @@ public class CameraWalking : MonoBehaviour
         //transform.localPosition = new Vector3(Target.localPosition.x, Target.localPosition.y, -10f);
         transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, Time.deltaTime * _moveSpeed);
         transform.localPosition = new Vector3(Mathf.Clamp(transform.localPosition.x, -LimitX, LimitX), transform.localPosition.y, -10f);
-        
+
     }
 
     IEnumerator Walking()
     {
-        while(true)
+        while (true)
         {
             yield return new WaitForEndOfFrame();
         }
