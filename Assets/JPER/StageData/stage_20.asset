@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9710a8a5be714445f9e7567a86654547, type: 3}
-  m_Name: stage_ych_9
+  m_Name: stage_20
   m_EditorClassIdentifier: 
-  stagePrefab: {fileID: 7155457062529463770, guid: 427d6c09be110fa40914bc5446ac3bc5,
+  stagePrefab: {fileID: 3462500162464869887, guid: f43af9be54a41411c9d6f42d5d7f3e20,
     type: 3}
   stageBackGround: {fileID: 3152805971545500991, guid: e97651a7185b940b2aeb3d7b72fe2daf,
     type: 3}
-  stageName: stage_ych_9
+  stageName: stage_20
   StageCode: 1
   LimitX: 100

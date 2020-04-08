@@ -19,7 +19,8 @@ public class StageManager : MonoBehaviour
         Application.targetFrameRate = 45;
 
         _gridScroll = GetComponent<GridScroll>();
-        for (int i = 0; i < (stageLevels.Length / 5) + 1; ++i)
+        int PageNum = (stageLevels.Length % 5) == 0 ? 0 : 1;
+        for (int i = 0; i < (stageLevels.Length / 5) + PageNum; ++i)
         {
             GameObject stageObject = Instantiate(prefabStageUI);
             StageScrollItem stage = stageObject.GetComponentInChildren<StageScrollItem>();
