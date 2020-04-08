@@ -17,22 +17,12 @@ public class MovingTrapEditor : Editor
             targetObject = (MovingTrap)target;
             grid = GameObject.Find("MapCreator").GetComponent<Grid>();
 
-            if (grid.IsGridMove == false)
+            for (int i = 0; i < targetObject.points.Count; i++)
             {
-                for (int i = 0; i < targetObject.points.Count; i++)
-                {
-                    targetObject.points[i] = Handles.PositionHandle(targetObject.points[i], Quaternion.identity);
-                }
+                targetObject.points[i] = GetGirdPosition(targetObject.points[i]);
+                targetObject.points[i] = Handles.PositionHandle(targetObject.points[i], Quaternion.identity);
             }
-            else
-            {
-                for (int i = 0; i < targetObject.points.Count; i++)
-                {
-                    targetObject.points[i] = Handles.PositionHandle(targetObject.points[i], Quaternion.identity);
 
-                    targetObject.points[i] = GetGirdPosition(targetObject.points[i]);
-                }
-            }
             Handles.DrawAAPolyLine(targetObject.points.ToArray());
 
             Handles.BeginGUI();
@@ -51,13 +41,13 @@ public class MovingTrapEditor : Editor
             }
 
             GUILayout.BeginHorizontal();
-            GUILayout.Box("그리드 모드");
-            grid.IsGridMove = EditorGUILayout.Toggle(grid.IsGridMove);
+            //GUILayout.Box("그리드 모드");
+            //grid.IsGridMove = EditorGUILayout.Toggle(grid.IsGridMove);
 
             GUILayout.EndHorizontal();
             Handles.EndGUI();
 
-            SetDirty();
+            EditorUtility.SetDirty(targetObject);
         }
 
     }
@@ -70,6 +60,6 @@ public class MovingTrapEditor : Editor
     private Vector3 GetGirdPosition(Vector3 pos)
     {
         return new Vector3(Mathf.Floor(pos.x / grid.width) * grid.width + grid.width / 2f,
-         Mathf.Floor(pos.y / grid.height) * grid.height + grid.height / 2f, 0f);
+         Mathf.Floor(pos.y / grid.height) * grid.height + grid.height / 2f, -1f);
     }
 }

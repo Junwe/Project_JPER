@@ -8,15 +8,17 @@ public class GameManager : MonoDestorySingleton<GameManager>
 
     void Start()
     {
-        Instantiate(StageManager.SelectStage.stagePrefab);
-        Instantiate(StageManager.SelectStage.stageBackGround);
-
+        if (StageManager.SelectStage.stagePrefab != null)
+        {
+            Instantiate(StageManager.SelectStage.stagePrefab);
+            Instantiate(StageManager.SelectStage.stageBackGround);
+        }
         StartCoroutine(PlayTimer());
     }
 
     public void OnResultPopUp()
     {
-        PopUpManager.Instance.EnablePopUp("P_GameResult","PlayReulst");
+        PopUpManager.Instance.EnablePopUp("P_GameResult", "PlayReulst");
         StopPlayTimer();
     }
 
