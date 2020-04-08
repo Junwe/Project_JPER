@@ -16,6 +16,8 @@ public class StageManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 45;
+
         _gridScroll = GetComponent<GridScroll>();
         for (int i = 0; i < (stageLevels.Length / 5) + 1; ++i)
         {

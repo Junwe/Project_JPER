@@ -90,8 +90,6 @@ public class PlayerMove : MonoBehaviour
                 _currentPushButton.OnUp();
         }
 #endif
-
-
         CheckPlayerFootOverlapedToGround();
     }
 
@@ -163,12 +161,13 @@ public class PlayerMove : MonoBehaviour
 
         if (col != null)
         {
-            if (_jumpInfomation.JumpState == 2 && overlapBoxTransform.transform.position.y >= col.transform.position.y + 0.3f)
+            if (_jumpInfomation.JumpState == 2 && _playerPosition.PosY >= col.transform.position.y)
             {
                 _jumpInfomation.BaseY = col.transform.position.y + 0.4f;
                 _playerPosition.PosY = col.transform.position.y + 0.4f;
                 _jumpInfomation.JumpState = 0;
                 _animation.Animator.SetBool("jump", false);
+                FallEvent.Invoke();
             }
         }
         else
@@ -248,12 +247,10 @@ public class PlayerMove : MonoBehaviour
         _playerPosition.PosX = posX;
         _playerPosition.PosY = posY;
 
-        _jumpInfomation.JumpState = 2;
+        _jumpInfomation.BaseY = posY;
 
         transform.position = new Vector3(_playerPosition.PosX, _playerPosition.PosY);
     }
-
-
 
     public void AddPlayerPosition(Vector2 posToAdd)
     {

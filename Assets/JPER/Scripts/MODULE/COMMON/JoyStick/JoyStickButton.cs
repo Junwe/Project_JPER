@@ -56,6 +56,8 @@ public class JoyStickButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     public void OnDown()
     {
         _isDraging = true;
+        if (_isActiveAlpha)
+            _myImage.SetAlpha(1f);
     }
 
     public void OnUp()
@@ -65,6 +67,8 @@ public class JoyStickButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         {
             action();
         }
+        if (_isActiveAlpha)
+            _myImage.SetAlpha(0.5f);
     }
 
     public void OnPointerDown(PointerEventData eventData)

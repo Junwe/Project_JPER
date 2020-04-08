@@ -7,7 +7,7 @@ public class StartPoint : MonoBehaviour
     private const string ICON_FILE_NAME = "StartPoint.png";
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         var playerMove = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
         playerMove.SetPlayerPosition(transform.position.x,transform.position.y);

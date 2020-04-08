@@ -28,6 +28,14 @@ public class PlayerRewind : MonoBehaviour
         _lastJumpStartPosition = _trTarget.transform.localPosition;
     }
 
+    public void CheckRewindExcute()
+    {
+        if(Mathf.Abs(_lastJumpStartPosition.y - _trTarget.transform.localPosition.y) >= 15f)
+        {
+            GameManager.Instance.OnAdsPopUp();
+        }
+    }
+
     public void StartRewind()
     {
         _animation.Animator.SetTrigger("Dissovle");
