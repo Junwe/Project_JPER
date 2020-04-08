@@ -37,7 +37,13 @@ public class GameManager : MonoDestorySingleton<GameManager>
 
     public void AddFallCount()
     {
+
         playerActionCounter.AddFallCount();
+    }
+
+    public void AddMoveDistacne(float distance)
+    {
+        playerActionCounter.AddMoveDisctcne(distance);
     }
 
     public void StopPlayTimer()

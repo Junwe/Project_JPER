@@ -190,8 +190,9 @@ public class PlayerMove : MonoBehaviour
         }
         transform.localScale = new Vector3(-1f, 1f, 1f);
         _animation.Animator.SetBool("move", true);
-
         Sound.Instance.PlayEffSound(SOUND.S_MOVE, 1f, false, false);
+
+        GameManager.Instance.AddMoveDistacne(MoveSpeed * Time.deltaTime);
     }
 
     public void RightMove()
@@ -205,6 +206,8 @@ public class PlayerMove : MonoBehaviour
         transform.localScale = new Vector3(1f, 1f, 1f);
         _animation.Animator.SetBool("move", true);
         Sound.Instance.PlayEffSound(SOUND.S_MOVE, 1f, false, false);
+
+        GameManager.Instance.AddMoveDistacne(MoveSpeed * Time.deltaTime);
     }
 
     public void OnPlayerAction()

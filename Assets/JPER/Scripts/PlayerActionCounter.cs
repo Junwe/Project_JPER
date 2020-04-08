@@ -33,6 +33,11 @@ public class PlayerActionCounter
         PlayTime += time;
     }
 
+    public void AddMoveDisctcne(float distance)
+    {
+        MovedDistance += distance;
+    }
+
     public void IncreasMovedDistance(float distancePerFrame)
     {
         MovedDistance += distancePerFrame;

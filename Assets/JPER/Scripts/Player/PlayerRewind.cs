@@ -6,6 +6,7 @@ public class PlayerRewind : MonoBehaviour
 {
     private PlayerMove _trTarget;
     private Vector3 _lastJumpStartPosition;
+    private int _dropCount = 0;
 
     PlayerAnimation _animation;
 
@@ -30,9 +31,18 @@ public class PlayerRewind : MonoBehaviour
 
     public void CheckRewindExcute()
     {
-        if(Mathf.Abs(_lastJumpStartPosition.y - _trTarget.transform.localPosition.y) >= 15f)
+        if (Mathf.Abs(_lastJumpStartPosition.y - _trTarget.transform.localPosition.y) >= 15f)
         {
-            GameManager.Instance.OnAdsPopUp();
+            _dropCount++;
+            if (_dropCount >= 3)
+            {
+                GameManager.Instance.OnAdsPopUp();
+                _dropCount = 0;
+            }
+        }
+        if (Mathf.Abs(_lastJumpStartPosition.y - _trTarget.transform.localPosition.y) >= 5f)
+        {
+            GameManager.Instance.AddFallCount();
         }
     }
 
