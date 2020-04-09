@@ -14,13 +14,18 @@ public class StageResult : MonoBehaviour
 
     private List<PlayerRecordDataRow> playerRecordDataRows = null;
 
+    [SerializeField]
+    GameObject _objDataUI;
+    [SerializeField]
+    Transform _trDataParent;
+
     public void PlayReulst()
     {
         foreach (var particle in _reulstParticleList)
         {
             StartCoroutine(PlayFireWork(Random.Range(0f, 3.5f), particle));
         }
-        foreach(var particle in _paperParticleList)
+        foreach (var particle in _paperParticleList)
         {
             particle.Play();
         }
@@ -37,6 +42,13 @@ public class StageResult : MonoBehaviour
 
     private void Start()
     {
+        foreach (PlayerActionCounter.RecordDataType data in System.Enum.GetValues(typeof(PlayerActionCounter.RecordDataType)))
+        {
+            GameObject dataobj = Instantiate(_objDataUI, _trDataParent);
+            dataobj.GetComponent<PlayerRecordDataRow>().SetType(data);
+        }
+
+
         playerRecordDataRows = new List<PlayerRecordDataRow>(dataRowParent.childCount);
         for (int i = 0; i < dataRowParent.childCount; ++i)
             playerRecordDataRows.Add(dataRowParent.GetChild(i).GetComponent<PlayerRecordDataRow>());

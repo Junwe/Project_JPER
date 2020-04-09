@@ -18,13 +18,13 @@ public class GameManager : MonoDestorySingleton<GameManager>
 
     public void OnResultPopUp()
     {
-        PopUpManager.Instance.EnablePopUp("P_GameResult", "PlayReulst");
+        PopUpManager.Instance.EnablePopUp("P_GameResult", "PlayReulst", " ", false);
         StopPlayTimer();
     }
 
     public void OnAdsPopUp()
     {
-        PopUpManager.Instance.EnablePopUp("P_Ads");
+        PopUpManager.Instance.EnablePopUp("P_Ads", " ", " ", false);
     }
 
     public void DisableAdsPopUp()

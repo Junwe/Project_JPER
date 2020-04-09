@@ -21,4 +21,9 @@ public class PlayerRecordDataRow : MonoBehaviour
     {
         dataNameText.text = recordDataType.ToString() + " : ";
     }
+
+    public void SetType(PlayerActionCounter.RecordDataType type)
+    {
+        recordDataType = type;
+    }
 }
