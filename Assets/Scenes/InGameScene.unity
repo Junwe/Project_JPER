@@ -1383,7 +1383,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5046.0005, y: 15327.482}
+  m_AnchoredPosition: {x: -11101.199, y: 43822.105}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &587197491
@@ -4863,6 +4863,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: G_PlayerRoot
       objectReference: {fileID: 0}
+    - target: {fileID: 6299549959118817489, guid: 29dc80ace2a9d4f26aa0ed3e9f8df6c1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.07
+      objectReference: {fileID: 0}
     - target: {fileID: 6299549960306685296, guid: 29dc80ace2a9d4f26aa0ed3e9f8df6c1,
         type: 3}
       propertyPath: JumpEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -4898,6 +4903,16 @@ PrefabInstance:
       propertyPath: jumpText
       value: 
       objectReference: {fileID: 279162246}
+    - target: {fileID: 6299549960306685309, guid: 29dc80ace2a9d4f26aa0ed3e9f8df6c1,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6299549960306685309, guid: 29dc80ace2a9d4f26aa0ed3e9f8df6c1,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29dc80ace2a9d4f26aa0ed3e9f8df6c1, type: 3}
 --- !u!198 &1784878697112696879 stripped

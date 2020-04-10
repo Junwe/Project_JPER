@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 652711417416240578}
   m_Layer: 0
-  m_Name: B_Stage_YCH_6
+  m_Name: G_Stage_YCH_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

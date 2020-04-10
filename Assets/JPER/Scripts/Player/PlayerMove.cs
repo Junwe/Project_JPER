@@ -91,13 +91,12 @@ public class PlayerMove : MonoBehaviour
                 _currentPushButton.OnUp();
         }
 #endif
-        CheckPlayerFootOverlapedToGround();
     }
 
 #if UNITY_EDITOR
     void OnDrawGizmos()
     {
-        Gizmos.DrawCube(overlapBoxTransform.position, overlapBoxTransform.localScale);
+        Gizmos.DrawWireCube(overlapBoxTransform.position, overlapBoxTransform.localScale);
     }
 #endif
     private void MoveButtonRayCast()
@@ -149,7 +148,9 @@ public class PlayerMove : MonoBehaviour
         _playerPosition.PosX = Mathf.Clamp(_playerPosition.PosX, -StageManager.SelectStage.LimitX, StageManager.SelectStage.LimitX);
         _jumpInfomation.Gravity = Mathf.Clamp(_jumpInfomation.Gravity, -0.35f, 0.35f);
 
+
         gameObject.transform.position = new Vector3(_playerPosition.PosX, _playerPosition.PosY);
+        CheckPlayerFootOverlapedToGround();
     }
 
     private void CheckPlayerFootOverlapedToGround()
@@ -162,10 +163,10 @@ public class PlayerMove : MonoBehaviour
 
         if (col != null)
         {
-            if (_jumpInfomation.JumpState == 2 && _playerPosition.PosY >= col.transform.position.y)
+            if (_jumpInfomation.JumpState == 2 && _playerPosition.PosY >= col.transform.position.y + 0.4f)
             {
-                _jumpInfomation.BaseY = col.transform.position.y + 0.4f;
-                _playerPosition.PosY = col.transform.position.y + 0.4f;
+                _jumpInfomation.BaseY = col.transform.position.y + 0.4f + 1.5f;
+                _playerPosition.PosY = col.transform.position.y + 0.4f + 1.5f;
                 _jumpInfomation.JumpState = 0;
                 _animation.Animator.SetBool("jump", false);
                 FallEvent.Invoke();
@@ -261,6 +262,6 @@ public class PlayerMove : MonoBehaviour
         _playerPosition.PosX += posToAdd.x;
         _playerPosition.PosY += posToAdd.y;
 
-        transform.localPosition = new Vector3(_playerPosition.PosX, _playerPosition.PosY);
+        //transform.localPosition = new Vector3(_playerPosition.PosX, _playerPosition.PosY);
     }
 }

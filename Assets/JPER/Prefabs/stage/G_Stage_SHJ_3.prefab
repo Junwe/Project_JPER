@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 407411510010015286}
   m_Layer: 0
-  m_Name: B_Stage_SHJ_3
+  m_Name: G_Stage_SHJ_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5746,12 +5746,12 @@ PrefabInstance:
     - target: {fileID: 3895103975420868785, guid: c27d3e037bdd92d4b82d41ee21c937bd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.36
+      value: 1.07
       objectReference: {fileID: 0}
     - target: {fileID: 3895103975420868785, guid: c27d3e037bdd92d4b82d41ee21c937bd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.2
+      value: -3.99
       objectReference: {fileID: 0}
     - target: {fileID: 3895103975420868785, guid: c27d3e037bdd92d4b82d41ee21c937bd,
         type: 3}

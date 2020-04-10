@@ -34,7 +34,7 @@ public class KnockbackInfomation
         playerMove.AddPlayerPosition(new Vector2(horizontalAcceleration * direction, verticalAcceleration));
         verticalAcceleration -= GRAVITY; // 올라가는 속도 점점 느려지게 수직 가속도 감소.
 
-        verticalAcceleration = Mathf.Clamp(verticalAcceleration, -0.35f, 10.35f);
+        verticalAcceleration = Mathf.Clamp(verticalAcceleration, -0.35f, 0.35f);
 
         if (isUp == true && verticalAcceleration <= 0.0f)
         {
@@ -57,7 +57,7 @@ public class KnockbackInfomation
         isUp = true;
         KnuckbackFlag = true;
 
-        jumpInfomation.JumpState = 1;
+        jumpInfomation.JumpState = 2;
         _knockEvent.Invoke();
     }
 }
