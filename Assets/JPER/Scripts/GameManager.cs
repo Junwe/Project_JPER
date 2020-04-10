@@ -20,6 +20,7 @@ public class GameManager : MonoDestorySingleton<GameManager>
     {
         PopUpManager.Instance.EnablePopUp("P_GameResult", "PlayReulst", " ", false);
         StopPlayTimer();
+        Sound.Instance.PlayEffSound(SOUND.S_CLEAR);
     }
 
     public void OnAdsPopUp()
@@ -39,8 +40,12 @@ public class GameManager : MonoDestorySingleton<GameManager>
 
     public void AddFallCount()
     {
-
         playerActionCounter.AddFallCount();
+    }
+
+    public void AddHitCount()
+    {
+        playerActionCounter.AddHitCount();
     }
 
     public void AddMoveDistacne(float distance)

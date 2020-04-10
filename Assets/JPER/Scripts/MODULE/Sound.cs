@@ -9,6 +9,8 @@ public enum SOUND
     S_JUMP,
     S_MOVE,
     S_MOVE_2,
+    S_CLEAR,
+    S_FIREWORK,
 }
 
 public class Sound : MonoSingleton<Sound>

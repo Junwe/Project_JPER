@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using UnityEngine.Events;
 public class KnockbackInfomation
 {
     // TODO
@@ -18,11 +18,13 @@ public class KnockbackInfomation
 
     private PlayerMove playerMove = null;
     private JumpInfomation jumpInfomation = null;
+    private UnityEvent _knockEvent;
 
-    public KnockbackInfomation(PlayerMove playerMove, JumpInfomation jumpInfomation)
+    public KnockbackInfomation(PlayerMove playerMove, JumpInfomation jumpInfomation,UnityEvent knockEvent)
     {
         this.playerMove = playerMove;
         this.jumpInfomation = jumpInfomation;
+        this._knockEvent = knockEvent;
     }
 
     public bool KnuckbackFlag { get; private set; } = false;
@@ -56,5 +58,6 @@ public class KnockbackInfomation
         KnuckbackFlag = true;
 
         jumpInfomation.JumpState = 1;
+        _knockEvent.Invoke();
     }
 }

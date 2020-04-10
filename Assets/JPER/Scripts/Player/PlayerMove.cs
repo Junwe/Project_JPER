@@ -15,6 +15,7 @@ public class PlayerMove : MonoBehaviour
 
     public UnityEvent JumpEvent;
     public UnityEvent FallEvent;    // 땅으로 떨어졌을 때 호출.
+    public UnityEvent HitEvent;
 
     public float MoveSpeed;     // 이동 속도
     public float LimitY;        // 플레이어 맵 범위
@@ -51,7 +52,7 @@ public class PlayerMove : MonoBehaviour
 
         _currentPushButton = RightMoveBtn;
 
-        KnockbackInfomation = new KnockbackInfomation(this, _jumpInfomation);
+        KnockbackInfomation = new KnockbackInfomation(this, _jumpInfomation, HitEvent);
     }
 
     void UpMoveBtn()

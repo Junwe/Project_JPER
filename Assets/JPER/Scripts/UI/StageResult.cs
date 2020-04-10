@@ -38,14 +38,18 @@ public class StageResult : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         particle.Play();
+        Sound.Instance.PlayEffSound(SOUND.S_FIREWORK);
     }
 
     private void Start()
     {
         foreach (PlayerActionCounter.RecordDataType data in System.Enum.GetValues(typeof(PlayerActionCounter.RecordDataType)))
         {
-            GameObject dataobj = Instantiate(_objDataUI, _trDataParent);
-            dataobj.GetComponent<PlayerRecordDataRow>().SetType(data);
+            if (data != PlayerActionCounter.RecordDataType.None)
+            {
+                GameObject dataobj = Instantiate(_objDataUI, _trDataParent);
+                dataobj.GetComponent<PlayerRecordDataRow>().SetType(data);
+            }
         }
 
 

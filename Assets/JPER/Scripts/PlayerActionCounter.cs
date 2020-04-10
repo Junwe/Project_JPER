@@ -10,13 +10,16 @@ public class PlayerActionCounter
         PlayTime,
         FallCount,
         JumpCount,
-        MovedDistance
+        MovedDistance,
+        HitCount
     }
 
     public float PlayTime { get; private set; } = 0;
     public int FallCount { get; private set; } = 0;
     public int JumpCount { get; private set; } = 0;
     public float MovedDistance { get; private set; } = 0;
+
+    public int HitCount { get; private set; } = 0;
 
     public void AddFallCount()
     {
@@ -41,6 +44,11 @@ public class PlayerActionCounter
     public void IncreasMovedDistance(float distancePerFrame)
     {
         MovedDistance += distancePerFrame;
+    }
+
+    public void AddHitCount()
+    {
+        HitCount++;
     }
 
     public string GetValueString(RecordDataType dataType)
