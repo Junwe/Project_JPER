@@ -22,6 +22,7 @@ public class SceneFade : MonoSingleton<SceneFade>
 
     public void SceneLoad(object scene)
     {
+        Debug.Log("SceneLoad");
         if (imgFade == null)
         {
             CreateFade();

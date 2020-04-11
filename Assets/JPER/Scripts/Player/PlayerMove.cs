@@ -165,8 +165,8 @@ public class PlayerMove : MonoBehaviour
         {
             if (_jumpInfomation.JumpState == 2 && _playerPosition.PosY >= col.transform.position.y + 0.4f)
             {
-                _jumpInfomation.BaseY = col.transform.position.y + 0.4f + 1.5f;
-                _playerPosition.PosY = col.transform.position.y + 0.4f + 1.5f;
+                _jumpInfomation.BaseY = col.transform.position.y + 0.4f + 0.3f;
+                _playerPosition.PosY = col.transform.position.y + 0.4f + 0.3f;
                 _jumpInfomation.JumpState = 0;
                 _animation.Animator.SetBool("jump", false);
                 FallEvent.Invoke();

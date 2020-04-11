@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1542861750303634299}
   - component: {fileID: 3325225816463359606}
   - component: {fileID: 2207075507192879154}
+  - component: {fileID: 5979823276608857830}
   m_Layer: 0
   m_Name: G_MovingVerticalSpike
   m_TagString: Untagged
@@ -142,6 +143,7 @@ MonoBehaviour:
   points: []
   playOneShot: 0
   movingType: 0
+  startTime: 0
   movingTime: 1.5
   waitTime: 3
   isMoveWithPlayer: 0
@@ -157,6 +159,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a65c9cf6756d549a4b342ff0d9b00532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5979823276608857830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3481300608245713899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c11ac627751424b08838cb1c890c2c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _start: 0
+  _end: 1800
+  _time: 0
+  _delay: 0
+  _startDleay: 0
+  _curve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _isAwake: 1
+  _isLoop: 1
 --- !u!1 &6695167491220933812
 GameObject:
   m_ObjectHideFlags: 0

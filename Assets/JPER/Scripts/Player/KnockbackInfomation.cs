@@ -57,7 +57,7 @@ public class KnockbackInfomation
         isUp = true;
         KnuckbackFlag = true;
 
-        jumpInfomation.JumpState = 2;
+        jumpInfomation.JumpState = 1;
         _knockEvent.Invoke();
     }
 }
