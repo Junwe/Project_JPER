@@ -283,6 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9848f6b0bfb2807488b95b6f8c7521a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isRayCastButton: 0
   _isActiveAlpha: 0
 --- !u!1 &51700424
 GameObject:
@@ -366,7 +367,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 453966526}
   m_Direction: 2
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.4803695
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1187,6 +1188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9848f6b0bfb2807488b95b6f8c7521a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isRayCastButton: 1
   _isActiveAlpha: 1
 --- !u!1 &453966525
 GameObject:
@@ -1383,7 +1385,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -22706.99, y: 83878.93}
+  m_AnchoredPosition: {x: -23716.19, y: 85627.26}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &587197491
@@ -4101,6 +4103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9848f6b0bfb2807488b95b6f8c7521a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isRayCastButton: 1
   _isActiveAlpha: 1
 --- !u!1 &2053518446
 GameObject:
@@ -4181,6 +4184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9848f6b0bfb2807488b95b6f8c7521a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isRayCastButton: 0
   _isActiveAlpha: 0
 --- !u!114 &2053518450
 MonoBehaviour:
