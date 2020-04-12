@@ -7,9 +7,8 @@ public class DummyStageDataSetter : MonoBehaviour
 {
     private void Start()
     {
-        StageManager.SelectStage = new StageLevel()
-        {
-            LimitX = 10000
-        };
+        var temp = ScriptableObject.CreateInstance<StageLevel>();
+        temp.LimitX = 1000f;
+        StageManager.SelectStage = temp;
     }
 }

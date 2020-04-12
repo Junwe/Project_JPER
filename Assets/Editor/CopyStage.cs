@@ -79,16 +79,16 @@ public class CopyStage : EditorWindow
             createedObject.transform.parent = rootObject.transform;
             createedObject.transform.position = orgObject.transform.position;
 
-            Spike spike = createedObject.GetComponent<Spike>();
-            MovingTrap moving = createedObject.GetComponent<MovingTrap>();
+            Trap spike = createedObject.GetComponent<Trap>();
+            MovingMapObject moving = createedObject.GetComponent<MovingMapObject>();
 
             if (spike != null)
             {
-                spike.ValueCopy(orgObject.GetComponent<Spike>());
+                spike.ValueCopy(orgObject.GetComponent<Trap>());
             }
             if (moving != null)
             {
-                moving.ValueCopy(orgObject.GetComponent<MovingTrap>());
+                moving.ValueCopy(orgObject.GetComponent<MovingMapObject>());
             }
         }
 

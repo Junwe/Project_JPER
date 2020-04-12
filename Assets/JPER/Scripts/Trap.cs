@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class Spike : MonoBehaviour, ITrapExecute
+public class Trap : MonoBehaviour, ITrapExecute
 {
-    public float VERTICAL_ACCEL = .1f;
-    public float HORIZONTAL_ACCEL = .1f;
+    public float verticalAccel = .1f;
+    public float horizontalAccel = .1f;
 
     public enum KnockbackType
     {
@@ -19,10 +19,10 @@ public class Spike : MonoBehaviour, ITrapExecute
     [SerializeField]
     private KnockbackType knockbackDirection;
 
-    public void ValueCopy(Spike spike)
+    public void ValueCopy(Trap spike)
     {
-        VERTICAL_ACCEL = spike.VERTICAL_ACCEL;
-        HORIZONTAL_ACCEL = spike.HORIZONTAL_ACCEL;
+        verticalAccel = spike.verticalAccel;
+        horizontalAccel = spike.horizontalAccel;
         knockbackDirection = spike.knockbackDirection;
     }
 
@@ -33,29 +33,28 @@ public class Spike : MonoBehaviour, ITrapExecute
             case KnockbackType.Random:
                 {
                     int direction = Random.Range(-1, 1) < 0 ? -1 : 1;
-                    targetPlayer.KnockbackInfomation.OnKnockback(direction, VERTICAL_ACCEL, HORIZONTAL_ACCEL);
+                    targetPlayer.KnockbackInfomation.OnKnockback(direction, verticalAccel, horizontalAccel);
                     break;
                 }
             case KnockbackType.Relation:
                 {
                     int direction = transform.position.x - targetPlayer.transform.position.x > 0 ? -1 : 1;
-                    targetPlayer.KnockbackInfomation.OnKnockback(direction, VERTICAL_ACCEL, HORIZONTAL_ACCEL);
+                    targetPlayer.KnockbackInfomation.OnKnockback(direction, verticalAccel, horizontalAccel);
                     break;
                 }
             case KnockbackType.Left:
                 {
                     int direction = -1;
-                    targetPlayer.KnockbackInfomation.OnKnockback(direction, VERTICAL_ACCEL, HORIZONTAL_ACCEL);
+                    targetPlayer.KnockbackInfomation.OnKnockback(direction, verticalAccel, horizontalAccel);
                     break;
                 }
             case KnockbackType.Right:
                 {
                     int direction = 1;
-                    targetPlayer.KnockbackInfomation.OnKnockback(direction, VERTICAL_ACCEL, HORIZONTAL_ACCEL);
+                    targetPlayer.KnockbackInfomation.OnKnockback(direction, verticalAccel, horizontalAccel);
                     break;
                 }
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
