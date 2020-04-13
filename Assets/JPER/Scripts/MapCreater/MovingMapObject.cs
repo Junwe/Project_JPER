@@ -50,7 +50,7 @@ public class MovingMapObject : MonoBehaviour
     private void Start()
     {
         collisionRef = GetComponent<Collider2D>();
-        if (collisionRef != null)
+        if (collisionRef == null)
             Debug.LogWarning("MovingMapObject.Start() : ["+name+"]Faild to GetComponent<Collider2D>().");
 
         StartMoving();
