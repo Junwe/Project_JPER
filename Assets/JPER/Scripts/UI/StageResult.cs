@@ -18,9 +18,12 @@ public class StageResult : MonoBehaviour
     GameObject _objDataUI;
     [SerializeField]
     Transform _trDataParent;
+    [SerializeField]
+    Button _btnAction;
 
     public void PlayReulst()
     {
+        _btnAction.enabled = false;
         foreach (var particle in _reulstParticleList)
         {
             StartCoroutine(PlayFireWork(Random.Range(0f, 3.5f), particle));

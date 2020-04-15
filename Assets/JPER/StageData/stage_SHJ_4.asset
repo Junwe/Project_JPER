@@ -18,4 +18,5 @@ MonoBehaviour:
     type: 3}
   stageName: stage_SHJ_4
   StageCode: 1
-  LimitX: 100
+  LimitMinX: -14.8
+  LimitMaxX: 18.01

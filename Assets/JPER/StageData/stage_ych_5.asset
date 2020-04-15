@@ -18,4 +18,5 @@ MonoBehaviour:
     type: 3}
   stageName: stage_ych_5
   StageCode: 1
-  LimitX: 100
+  LimitMinX: -30.1
+  LimitMaxX: 53.76

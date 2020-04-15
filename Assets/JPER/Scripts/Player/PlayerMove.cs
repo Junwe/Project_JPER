@@ -142,7 +142,7 @@ public class PlayerMove : MonoBehaviour
         else
             _jumpInfomation.JumpProcess(ref _playerPosition.PosX, ref _playerPosition.PosY, _animation.Animator);
 
-        _playerPosition.PosX = Mathf.Clamp(_playerPosition.PosX, -StageManager.SelectStage.LimitX, StageManager.SelectStage.LimitX);
+        _playerPosition.PosX = Mathf.Clamp(_playerPosition.PosX, StageManager.SelectStage.LimitMinX, StageManager.SelectStage.LimitMaxX);
         _jumpInfomation.Gravity = Mathf.Clamp(_jumpInfomation.Gravity, -0.35f, 0.35f);
 
 

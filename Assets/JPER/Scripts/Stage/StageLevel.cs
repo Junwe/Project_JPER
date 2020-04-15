@@ -8,7 +8,8 @@ public class StageLevel : ScriptableObject
     public GameObject stageBackGround;
     public string stageName;
     public int StageCode = 1;
-    public float LimitX = 100f;
+    public float LimitMinX = -100f;
+    public float LimitMaxX = 100f;
 
 
     public bool IsClear()
