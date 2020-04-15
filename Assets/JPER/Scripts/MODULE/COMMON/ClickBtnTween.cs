@@ -30,5 +30,6 @@ public class ClickBtnTween : MonoBehaviour,IPointerDownHandler, IPointerUpHandle
     public void OnPointerUp(PointerEventData eventDate)
     {
         _clickTween.ReversePlay();
+        Sound.Instance.PlayEffSound(SOUND.S_BTN);
     }
 }

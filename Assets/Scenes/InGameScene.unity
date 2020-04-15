@@ -283,6 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9848f6b0bfb2807488b95b6f8c7521a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isRayCastButton: 0
   _isActiveAlpha: 0
 --- !u!1 &51700424
 GameObject:
@@ -1187,6 +1188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9848f6b0bfb2807488b95b6f8c7521a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isRayCastButton: 1
   _isActiveAlpha: 1
 --- !u!1 &453966525
 GameObject:
@@ -1383,7 +1385,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -11101.199, y: 43822.105}
+  m_AnchoredPosition: {x: -14633.396, y: 54999.902}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &587197491
@@ -2845,6 +2847,7 @@ GameObject:
   - component: {fileID: 1352264628}
   - component: {fileID: 1352264627}
   - component: {fileID: 1352264626}
+  - component: {fileID: 1352264629}
   m_Layer: 5
   m_Name: B_Option
   m_TagString: Untagged
@@ -2962,6 +2965,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352264624}
   m_CullTransparentMesh: 0
+--- !u!114 &1352264629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352264624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38973451a2c457d458185038964e4330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scale: 1
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1447447741
 GameObject:
   m_ObjectHideFlags: 0
@@ -3511,6 +3551,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b8c5f4194b7614eb7a7b5713889748d0, type: 3}
   - {fileID: 8300000, guid: 49fbfbbb13ca54eedbc6f1152229012e, type: 3}
   - {fileID: 8300000, guid: 84be4dfc0256c4d84b2e76f702b84dbf, type: 3}
+  - {fileID: 8300000, guid: 0d93263590a91514ca0d6800241d1898, type: 3}
 --- !u!4 &1549073948
 Transform:
   m_ObjectHideFlags: 0
@@ -4101,6 +4142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9848f6b0bfb2807488b95b6f8c7521a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isRayCastButton: 1
   _isActiveAlpha: 1
 --- !u!1 &2053518446
 GameObject:
@@ -4181,6 +4223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9848f6b0bfb2807488b95b6f8c7521a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isRayCastButton: 0
   _isActiveAlpha: 0
 --- !u!114 &2053518450
 MonoBehaviour:
