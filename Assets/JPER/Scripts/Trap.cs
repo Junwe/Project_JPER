@@ -61,9 +61,6 @@ public class Trap : MonoBehaviour, ITrapExecute
     {
         var player = collision.GetComponent<PlayerMove>();
         if (player != null && player.KnockbackInfomation.KnockbackFlag == false)
-        {
-            Debug.Log("Trap.OnTriggerStay2D() : [" + GetInstanceID() + "] Invoke from OnTriggerStay2D().");
             Execute(player);
-        }
     }
 }

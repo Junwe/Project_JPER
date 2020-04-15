@@ -26,7 +26,6 @@ public class KnockbackInfomation
 
     public void KnockbackProcess()
     {
-        Debug.Log("KnockbackInfomation.KnockbackProcess() : Invoked.");
         playerMove.AddPlayerPosition(new Vector2(horizontalAcceleration * direction, verticalAcceleration));
         verticalAcceleration -= GRAVITY; // 올라가는 속도 점점 느려지게 수직 가속도 감소.
 
@@ -38,7 +37,6 @@ public class KnockbackInfomation
         if (jumpInfomation.JumpState == JumpInfomation.JumpStateType.None)
         {
             KnockbackFlag = false;
-            Debug.Log("KnockbackInfomation.KnockbackProcess() : KnockbackFlag is False.");
         }
     }
 
@@ -52,7 +50,6 @@ public class KnockbackInfomation
         this.horizontalAcceleration = horizontalAcceleration;
         //isUp = true;
         KnockbackFlag = true;
-        Debug.Log("KnockbackInfomation.OnKnockback() : KnockbackFlag is True.");
 
         jumpInfomation.JumpState = JumpInfomation.JumpStateType.Up;
         _knockEvent.Invoke();
