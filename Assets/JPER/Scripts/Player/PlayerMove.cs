@@ -63,13 +63,10 @@ public class PlayerMove : MonoBehaviour
     private void Update()
     {
 #if UNITY_EDITOR
-        if (KnockbackInfomation.KnuckbackFlag == false)
-        {
-            if (Input.GetKey(KeyCode.LeftArrow))
-                LeftMove();
-            else if (Input.GetKey(KeyCode.RightArrow))
-                RightMove();
-        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+            LeftMove();
+        else if (Input.GetKey(KeyCode.RightArrow))
+            RightMove();
 
         if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
@@ -140,7 +137,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (_animation.IsDissovling) return;
 
-        if (KnockbackInfomation.KnuckbackFlag == true)
+        if (KnockbackInfomation.KnockbackFlag == true)
             KnockbackInfomation.KnockbackProcess();
         else
             _jumpInfomation.JumpProcess(ref _playerPosition.PosX, ref _playerPosition.PosY, _animation.Animator);
@@ -163,28 +160,28 @@ public class PlayerMove : MonoBehaviour
 
         if (col != null)
         {
-            if (_jumpInfomation.JumpState == 2 && _playerPosition.PosY >= col.transform.position.y + 0.4f)
+            if (_jumpInfomation.JumpState == JumpInfomation.JumpStateType.Down && _playerPosition.PosY >= col.transform.position.y + 0.4f)
             {
                 _jumpInfomation.BaseY = col.transform.position.y + 0.4f + 1.5f;
                 _playerPosition.PosY = col.transform.position.y + 0.4f + 1.5f;
-                _jumpInfomation.JumpState = 0;
+                _jumpInfomation.JumpState = JumpInfomation.JumpStateType.None;
                 _animation.Animator.SetBool("jump", false);
                 FallEvent.Invoke();
             }
         }
         else
         {
-            if (_jumpInfomation.JumpState == 0)
+            if (_jumpInfomation.JumpState == JumpInfomation.JumpStateType.None)
             {
                 _jumpInfomation.BaseY = LimitY;
-                _jumpInfomation.JumpState = 2;
+                _jumpInfomation.JumpState = JumpInfomation.JumpStateType.Down;
             }
         }
     }
 
     public void LeftMove()
     {
-        if (_animation.IsDissovling) return;
+        if (KnockbackInfomation.KnockbackFlag == true || _animation.IsDissovling) return;
 
         if (transform.localScale.x <= 0f)
         {
@@ -199,7 +196,7 @@ public class PlayerMove : MonoBehaviour
 
     public void RightMove()
     {
-        if (_animation.IsDissovling) return;
+        if (KnockbackInfomation.KnockbackFlag == true || _animation.IsDissovling) return;
 
         if (transform.localScale.x >= 0f)
         {
@@ -214,7 +211,7 @@ public class PlayerMove : MonoBehaviour
 
     public void OnPlayerAction()
     {
-        if (_animation.IsDissovling) return;
+        if (KnockbackInfomation.KnockbackFlag == true || _animation.IsDissovling) return;
 
         if (_portalExecuter.CurrentPortal != null)
         {
@@ -222,10 +219,10 @@ public class PlayerMove : MonoBehaviour
             return;
         }
 
-        if (_jumpInfomation.JumpState == 0)
+        if (_jumpInfomation.JumpState == JumpInfomation.JumpStateType.None)
         {
             JumpEvent.Invoke();
-            _jumpInfomation.JumpState = 1;
+            _jumpInfomation.JumpState = JumpInfomation.JumpStateType.Up;
             _jumpInfomation.Gravity = _jumpInfomation.Jump_speed;
             _animation.Animator.SetBool("jump", true);
 
@@ -242,7 +239,7 @@ public class PlayerMove : MonoBehaviour
         _playerPosition.PosX = posX;
         _playerPosition.PosY = posY;
 
-        _jumpInfomation.JumpState = 2;
+        _jumpInfomation.JumpState = JumpInfomation.JumpStateType.Down;
 
         transform.localPosition = new Vector3(_playerPosition.PosX, _playerPosition.PosY);
     }
