@@ -1555,8 +1555,8 @@ MonoBehaviour:
   - {fileID: 2554442622304322839, guid: c27d3e037bdd92d4b82d41ee21c937bd, type: 3}
   - {fileID: 3481300608245713899, guid: 9eda5542fbddc374385163b4b8d71b8a, type: 3}
   parent: {fileID: 0}
-  isGrid: 1
-  ObjectIndex: 9
+  isGrid: 0
+  ObjectIndex: 0
   SelectIndex: 0
   IsGridMove: 1
 --- !u!1 &1545393358
