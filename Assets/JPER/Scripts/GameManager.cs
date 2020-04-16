@@ -5,7 +5,8 @@ using UnityEngine;
 public class GameManager : MonoDestorySingleton<GameManager>
 {
     public PlayerActionCounter playerActionCounter = new PlayerActionCounter();
-
+    [SerializeField]
+    private TutorialManager _tutorialManager;
     void Start()
     {
         if (StageManager.SelectStage.stagePrefab != null)
@@ -14,6 +15,12 @@ public class GameManager : MonoDestorySingleton<GameManager>
             Instantiate(StageManager.SelectStage.stageBackGround);
         }
         StartCoroutine(PlayTimer());
+
+        if (PlayerPrefs.GetInt("tutorial", 0) == 0)
+        {
+            _tutorialManager.StartTutorial();
+            PlayerPrefs.SetInt("tutorial", 1);
+        }
     }
 
     public void OnResultPopUp()

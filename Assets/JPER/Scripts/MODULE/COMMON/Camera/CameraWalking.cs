@@ -9,6 +9,8 @@ public class CameraWalking : MonoBehaviour
     private float _moveSpeed = 4f;
 
     private float LimitX = 30.49f;
+
+    private bool _isTarget = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,12 +22,10 @@ public class CameraWalking : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(_isTarget == false) return;
         Vector3 targetPos = Target.transform.localPosition;
         targetPos = new Vector3(targetPos.x, targetPos.y, -10f);
-        //transform.localPosition = new Vector3(Target.localPosition.x, Target.localPosition.y, -10f);
         transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, Time.deltaTime * _moveSpeed);
-        //transform.localPosition = new Vector3(Mathf.Clamp(transform.localPosition.x, -LimitX, LimitX), transform.localPosition.y, -10f);
-
     }
 
     IEnumerator Walking()
