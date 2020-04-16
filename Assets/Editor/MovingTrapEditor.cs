@@ -50,8 +50,13 @@ public class MovingTrapEditor : Editor
                     targetObject.points.RemoveAt(targetObject.points.Count - 1);
                 }
             }
+            if (GUILayout.Button("포인트 위치 초기화", GUILayout.Width(115f)))
+            {
+                for(int i = 0; i < targetObject.points.Count; ++i)
+                    targetObject.points[i].point = targetObject.transform.position;
+            }
 
-            GUILayout.BeginHorizontal();
+                GUILayout.BeginHorizontal();
             //GUILayout.Box("그리드 모드");
             //grid.IsGridMove = EditorGUILayout.Toggle(grid.IsGridMove);
 
