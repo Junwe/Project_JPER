@@ -29,6 +29,7 @@ public class MovingTrapEditor : Editor
                 }
 
                 Handles.DrawAAPolyLine(polyLinePoints.ToArray());
+                EditorUtility.SetDirty(targetObject);
             }
 
             Handles.BeginGUI();
@@ -56,8 +57,6 @@ public class MovingTrapEditor : Editor
 
             GUILayout.EndHorizontal();
             Handles.EndGUI();
-
-            EditorUtility.SetDirty(targetObject);
         }
 
     }
