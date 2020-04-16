@@ -10,6 +10,7 @@ public class MovingMapObject : MonoBehaviour
         OneDicrection
     }
 
+    [HideInInspector]
     public List<MovingPointData> points;
 
     public bool playOneShot = false;
