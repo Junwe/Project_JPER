@@ -16,7 +16,7 @@ public class GameManager : MonoDestorySingleton<GameManager>
         }
         StartCoroutine(PlayTimer());
 
-        //if (PlayerPrefs.GetInt("tutorial", 0) == 0)
+        if (PlayerPrefs.GetInt("tutorial", 0) == 0)
         {
             _tutorialManager.StartTutorial();
             PlayerPrefs.SetInt("tutorial", 1);
