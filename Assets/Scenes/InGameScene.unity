@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1472,7 +1472,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -46927.83, y: 244601.25}
+  m_AnchoredPosition: {x: -52983.047, y: 311229.4}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &587197491
@@ -1608,8 +1608,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 831176854}
+  - {fileID: 1630446616}
   m_Father: {fileID: 1065943595}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2531,7 +2532,6 @@ RectTransform:
   - {fileID: 709224477}
   - {fileID: 413494274}
   - {fileID: 1199967800}
-  - {fileID: 1630446616}
   - {fileID: 743911690}
   m_Father: {fileID: 1874253708}
   m_RootOrder: 7
@@ -4029,12 +4029,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630446615}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1065943595}
-  m_RootOrder: 3
+  m_Father: {fileID: 743911690}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5401,6 +5401,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 519420031, guid: 29dc80ace2a9d4f26aa0ed3e9f8df6c1, type: 3}
+      propertyPath: orthographic size
+      value: 10.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 519420031, guid: 29dc80ace2a9d4f26aa0ed3e9f8df6c1, type: 3}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 519420031, guid: 29dc80ace2a9d4f26aa0ed3e9f8df6c1, type: 3}
+      propertyPath: m_HDR
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 519420033, guid: 29dc80ace2a9d4f26aa0ed3e9f8df6c1, type: 3}
+      propertyPath: m_CameraOutput
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1588611788491481617, guid: 29dc80ace2a9d4f26aa0ed3e9f8df6c1,
         type: 3}
       propertyPath: m_LocalPosition.x

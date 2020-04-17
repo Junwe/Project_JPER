@@ -51,15 +51,23 @@ public class TutorialManager : MonoBehaviour
 
         SetTutorialMsg("포탈에 가면 클리어입니다!", 2);
         CameraWalking.Target = _trPotal;
+        CameraWalking.SetCameraSize(5f, 1f);
+        _trPlayer.GetComponentInParent<Animator>().enabled = false;
         while (_step == TUTORIALSTEP.CLEAR)
         {
-            
+
             yield return new WaitForEndOfFrame();
         }
-
+        Invoke("EnablePlayerAnimation",1f);
         CameraWalking.Target = _trPlayer;
+        CameraWalking.SetCameraSize(10.8f, 1f);
         objTutorialButton.gameObject.SetActive(false);
         tsTutorialMsg.gameObject.SetActive(false);
+    }
+
+    private void EnablePlayerAnimation()
+    {
+        _trPlayer.GetComponentInParent<Animator>().enabled = true;
     }
     private void SetTutorialMsg(string msg, int pos)
     {

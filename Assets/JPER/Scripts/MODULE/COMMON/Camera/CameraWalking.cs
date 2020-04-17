@@ -11,9 +11,11 @@ public class CameraWalking : MonoBehaviour
     private float LimitX = 30.49f;
 
     private bool _isTarget = true;
+    private Camera _thisCamera;
     // Start is called before the first frame update
     void Start()
     {
+        _thisCamera = GetComponent<Camera>();
         //StartCoroutine(Walking());
         // if (StageManager.SelectStage != null)
         //     LimitX = StageManager.SelectStage.LimitX;
@@ -22,7 +24,7 @@ public class CameraWalking : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(_isTarget == false) return;
+        if (_isTarget == false) return;
         Vector3 targetPos = Target.transform.localPosition;
         targetPos = new Vector3(targetPos.x, targetPos.y, -10f);
         transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, Time.deltaTime * _moveSpeed);
@@ -34,5 +36,10 @@ public class CameraWalking : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
+    }
+
+    public void SetCameraSize(float size, float time)
+    {
+        StartCoroutine(Tween.Instance.CameraSize(_thisCamera, _thisCamera.orthographicSize, size, time, 0f, AnimationCurve.EaseInOut(0f, 0f, 1f, 1f)));
     }
 }

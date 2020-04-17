@@ -379,7 +379,8 @@ public class Tween : MonoSingleton<Tween>
         while (t < 1.0f)
         {
             t = Mathf.Clamp01(t + Time.unscaledDeltaTime / time);
-            camera.orthographicSize = Mathf.Lerp(Startsize, Endsize, animationCurve.Evaluate(t));
+            camera.orthographicSize = Startsize + (Endsize - Startsize) * animationCurve.Evaluate(t);
+            Debug.Log(camera.orthographicSize);
             yield return null;
         }
         t = 0f;
@@ -462,7 +463,7 @@ public class Tween : MonoSingleton<Tween>
         yield return new WaitForSecondsRealtime(DelayMove);
         while (true)
         {
-            obj.transform.localEulerAngles += new Vector3(0f,0f,roationSpeed * Time.deltaTime);
+            obj.transform.localEulerAngles += new Vector3(0f, 0f, roationSpeed * Time.deltaTime);
             yield return null;
         }
     }
