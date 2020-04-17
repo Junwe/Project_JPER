@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Advertisements;
 
 public class PlayerRewind : MonoBehaviour
 {
@@ -36,7 +37,10 @@ public class PlayerRewind : MonoBehaviour
             _dropCount++;
             if (_dropCount >= 3)
             {
-                GameManager.Instance.OnAdsPopUp();
+                if (Advertisement.IsReady("rewardedVideo"))
+                {
+                    GameManager.Instance.OnAdsPopUp();
+                }
                 _dropCount = 0;
             }
         }
