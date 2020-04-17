@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5591568669655060598}
   m_Layer: 0
-  m_Name: G_Stage_3
+  m_Name: G_Stage_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9311,7 +9311,7 @@ PrefabInstance:
     - target: {fileID: 3895103975420868785, guid: c27d3e037bdd92d4b82d41ee21c937bd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.41
+      value: 23.81
       objectReference: {fileID: 0}
     - target: {fileID: 3895103975420868785, guid: c27d3e037bdd92d4b82d41ee21c937bd,
         type: 3}
