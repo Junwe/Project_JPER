@@ -19,7 +19,7 @@ public class PlayerRecordDataRow : MonoBehaviour
 
     private void Start()
     {
-        dataNameText.text = recordDataType.ToString() + " : ";
+        dataNameText.text = GameManager.Instance.playerActionCounter.GetNameString(recordDataType) + " : ";
     }
 
     public void SetType(PlayerActionCounter.RecordDataType type)

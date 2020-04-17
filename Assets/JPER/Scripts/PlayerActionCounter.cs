@@ -69,4 +69,23 @@ public class PlayerActionCounter
 
         return null;
     }
+
+    public string GetNameString(RecordDataType dataType)
+    {
+        switch (dataType)
+        {
+            case RecordDataType.PlayTime:
+                return "게임 시간";
+            case RecordDataType.FallCount:
+                return "떨어진 횟수";
+            case RecordDataType.JumpCount:
+                return "점프 횟수";
+            case RecordDataType.MovedDistance:
+                return "움직인 거리";
+            case RecordDataType.HitCount:
+                return "장애물 맞은 횟수";
+        }
+
+        return null;
+    }
 }
