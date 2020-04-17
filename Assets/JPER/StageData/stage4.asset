@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9710a8a5be714445f9e7567a86654547, type: 3}
-  m_Name: stage4
+  m_Name: stage1
   m_EditorClassIdentifier: 
-  stagePrefab: {fileID: 945719150957352002, guid: 67f63ddf156ae440b99d34faa022488a,
+  stagePrefab: {fileID: 2650655929686212685, guid: fc5665c596607714687b437d3e8d7962,
     type: 3}
   stageBackGround: {fileID: 3152805971545500991, guid: e97651a7185b940b2aeb3d7b72fe2daf,
     type: 3}
-  stageName: stage4
+  stageName: stage1
   StageCode: 1
-  LimitMinX: -32.7
-  LimitMaxX: 42.24
+  LimitMinX: -19
+  LimitMaxX: 19

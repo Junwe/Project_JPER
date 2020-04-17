@@ -12,6 +12,7 @@ public class TutorialManager : MonoBehaviour
     }
     public Text txtTutorial;
     public TweenScale tsTutorialMsg;
+    //public TweenMovePingPong tmTutorialMsgRoot;
 
     public Transform[] trMsgPositionList;
     public GameObject objTutorialButton;
@@ -29,6 +30,7 @@ public class TutorialManager : MonoBehaviour
 
         tsTutorialMsg.gameObject.SetActive(true);
         objTutorialButton.gameObject.SetActive(true);
+        //tmTutorialMsgRoot.StartTween();
         StartCoroutine(TutorialRutin());
     }
     IEnumerator TutorialRutin()
