@@ -57,7 +57,7 @@ public class TutorialManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         SetCameraTarget(true);
-        SetTutorialMsg("화이팅 :)", 2);
+        SetTutorialMsg("화이팅이에요! :)", 2);
         while (_step == TUTORIALSTEP.GAMESTART)
         {
             yield return new WaitForEndOfFrame();

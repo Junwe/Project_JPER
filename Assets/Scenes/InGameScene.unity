@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1203,7 +1203,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1175, y: 16434.078}
+  m_AnchoredPosition: {x: 1175, y: 225770.14}
   m_SizeDelta: {x: -2338, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &587197491
@@ -1509,8 +1509,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3, y: 13}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -4, y: 10}
+  m_SizeDelta: {x: -97.9, y: -30.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &798075030
 MonoBehaviour:
@@ -1532,7 +1532,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 72f203047b8890b4890045ea8639de9e, type: 3}
-    m_FontSize: 26
+    m_FontSize: 23
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 0
@@ -1543,7 +1543,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HOME
+  m_Text: "\uBA54\uC778\uC73C\uB85C"
 --- !u!222 &798075031
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4498,7 +4498,6 @@ MonoBehaviour:
     type: 3}
   _trDataParent: {fileID: 587197490}
   _btnAction: {fileID: 2053518450}
-  _scrollResultData: {fileID: 1163158492}
 --- !u!114 &2142574619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4936,26 +4935,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 519420031, guid: 29dc80ace2a9d4f26aa0ed3e9f8df6c1, type: 3}
-      propertyPath: orthographic size
-      value: 10.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 519420031, guid: 29dc80ace2a9d4f26aa0ed3e9f8df6c1, type: 3}
-      propertyPath: orthographic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 519420031, guid: 29dc80ace2a9d4f26aa0ed3e9f8df6c1, type: 3}
-      propertyPath: m_HDR
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 519420033, guid: 29dc80ace2a9d4f26aa0ed3e9f8df6c1, type: 3}
-      propertyPath: m_CameraOutput
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1588611788491481617, guid: 29dc80ace2a9d4f26aa0ed3e9f8df6c1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.035
       objectReference: {fileID: 0}
     - target: {fileID: 1588611788491481617, guid: 29dc80ace2a9d4f26aa0ed3e9f8df6c1,
         type: 3}
