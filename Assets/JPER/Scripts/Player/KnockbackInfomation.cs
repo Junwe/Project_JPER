@@ -52,6 +52,8 @@ public class KnockbackInfomation
         KnockbackFlag = true;
 
         jumpInfomation.JumpState = JumpInfomation.JumpStateType.Up;
+
+        playerMove.particleDust.Stop();
         _knockEvent.Invoke();
     }
 }

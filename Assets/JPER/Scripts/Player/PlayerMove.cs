@@ -19,6 +19,7 @@ public class PlayerMove : MonoBehaviour
 
     public float MoveSpeed;     // 이동 속도
     public float LimitY;        // 플레이어 맵 범위
+    public ParticleSystem particleDust;
 
     private JumpInfomation _jumpInfomation = new JumpInfomation();
     private PlayerPosition _playerPosition = new PlayerPosition();
@@ -59,6 +60,7 @@ public class PlayerMove : MonoBehaviour
     void UpMoveBtn()
     {
         _animation.Animator.SetBool("move", false);
+        particleDust.Stop();
     }
 
     private void Update()
@@ -198,6 +200,11 @@ public class PlayerMove : MonoBehaviour
         Sound.Instance.PlayEffSound(SOUND.S_MOVE, 1f, false, false);
 
         GameManager.Instance.AddMoveDistacne(MoveSpeed * Time.deltaTime);
+
+        if (!particleDust.isPlaying && _jumpInfomation.JumpState == JumpInfomation.JumpStateType.None)
+        {
+            particleDust.Play();
+        }
     }
 
     public void RightMove()
@@ -213,6 +220,11 @@ public class PlayerMove : MonoBehaviour
         Sound.Instance.PlayEffSound(SOUND.S_MOVE, 1f, false, false);
 
         GameManager.Instance.AddMoveDistacne(MoveSpeed * Time.deltaTime);
+
+        if (!particleDust.isPlaying && _jumpInfomation.JumpState == JumpInfomation.JumpStateType.None)
+        {
+            particleDust.Play();
+        }
     }
 
     public void OnPlayerAction()
@@ -233,6 +245,7 @@ public class PlayerMove : MonoBehaviour
             _animation.Animator.SetBool("jump", true);
 
             Sound.Instance.PlayEffSound(SOUND.S_JUMP);
+            particleDust.Stop();
         }
     }
 
