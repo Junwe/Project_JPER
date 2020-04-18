@@ -8,7 +8,8 @@ public class TutorialManager : MonoBehaviour
     {
         MOVE,
         JUIMP,
-        CLEAR
+        CLEAR,
+        GAMESTART,
     }
     public Text txtTutorial;
     public TweenScale tsTutorialMsg;
@@ -48,23 +49,38 @@ public class TutorialManager : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
-
+        SetCameraTarget(false);
         SetTutorialMsg("포탈에 가면 클리어입니다!", 2);
-        CameraWalking.Target = _trPotal;
-        CameraWalking.SetCameraSize(5f, 1f);
-        _trPlayer.GetComponentInParent<Animator>().enabled = false;
         while (_step == TUTORIALSTEP.CLEAR)
         {
 
             yield return new WaitForEndOfFrame();
         }
-        Invoke("EnablePlayerAnimation",1f);
-        CameraWalking.Target = _trPlayer;
-        CameraWalking.SetCameraSize(10.8f, 1f);
+        SetCameraTarget(true);
+        SetTutorialMsg("화이팅 :)", 2);
+        while (_step == TUTORIALSTEP.GAMESTART)
+        {
+            yield return new WaitForEndOfFrame();
+        }
         objTutorialButton.gameObject.SetActive(false);
         tsTutorialMsg.gameObject.SetActive(false);
     }
 
+    private void SetCameraTarget(bool player)
+    {
+        if (player)
+        {
+            Invoke("EnablePlayerAnimation", 1f);
+            CameraWalking.Target = _trPlayer;
+            CameraWalking.SetCameraSize(10.8f, 1f);
+        }
+        else
+        {
+            CameraWalking.Target = _trPotal;
+            CameraWalking.SetCameraSize(5f, 1f);
+            _trPlayer.GetComponentInParent<Animator>().enabled = false;
+        }
+    }
     private void EnablePlayerAnimation()
     {
         _trPlayer.GetComponentInParent<Animator>().enabled = true;
