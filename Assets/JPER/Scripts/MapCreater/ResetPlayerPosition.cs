@@ -7,7 +7,7 @@ public class ResetPlayerPosition : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var rewind = collision.gameObject.GetComponent<PlayerRewind>();
+        var rewind = collision.transform.parent.gameObject.GetComponent<PlayerRewind>();
         if (rewind != null)
             rewind.StartRewind(goToStartPoint: true);
     }
