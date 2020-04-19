@@ -5,6 +5,9 @@ using UnityEngine.Advertisements;
 
 public class PlayerRewind : MonoBehaviour
 {
+    [SerializeField]
+    private float immotalModeTime = 2.5f;
+
     private PlayerMove _trTarget;
     private Vector3 _lastJumpStartPosition;
     private int _dropCount = 0;
@@ -13,12 +16,17 @@ public class PlayerRewind : MonoBehaviour
 
     private GameObject startPointObject = null;
 
+    private BoxCollider2D playerCollider = null;
+    private WaitForSeconds waitForSecondsCache = null;
+
     void Awake()
     {
         _animation = GetComponent<PlayerAnimation>();
 
         _trTarget = GetComponentInChildren<PlayerMove>();
 
+        playerCollider = GameObject.FindWithTag("Player").GetComponent<BoxCollider2D>();
+        waitForSecondsCache = new WaitForSeconds(immotalModeTime);
     }
 
     void Start()
@@ -82,11 +90,26 @@ public class PlayerRewind : MonoBehaviour
     public void StartReSetPosition()
     {
         if (_animation.isResetToStartPoint == false)
+        {
             _trTarget.SetPlayerLocalPosition(_lastJumpStartPosition.x, _lastJumpStartPosition.y);
+
+            StopCoroutine(ImmortalMode());
+            StartCoroutine(ImmortalMode());
+        }
         else if (startPointObject != null && _animation.isResetToStartPoint == true)
             _trTarget.SetPlayerPosition(startPointObject.transform.position.x, startPointObject.transform.position.y);
 
         _animation.Animator.SetTrigger("OffDissovle");
         _animation.isResetToStartPoint = false;
+    }
+
+    private IEnumerator ImmortalMode()
+    {
+        if (playerCollider == null)
+            yield break;
+
+        playerCollider.enabled = false;
+        yield return waitForSecondsCache;
+        playerCollider.enabled = true;
     }
 }
