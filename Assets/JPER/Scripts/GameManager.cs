@@ -7,7 +7,7 @@ public class GameManager : MonoDestorySingleton<GameManager>
     public PlayerActionCounter playerActionCounter = new PlayerActionCounter();
     [SerializeField]
     private TutorialManager _tutorialManager;
-    void Start()
+    void Awake()
     {
         if (StageManager.SelectStage.stagePrefab != null)
         {

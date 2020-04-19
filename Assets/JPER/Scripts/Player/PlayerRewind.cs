@@ -19,10 +19,15 @@ public class PlayerRewind : MonoBehaviour
 
         _trTarget = GetComponentInChildren<PlayerMove>();
 
+    }
+
+    void Start()
+    {
         startPointObject = GameObject.FindWithTag("StartPoint");
         if (startPointObject != null)
             _trTarget.SetPlayerPosition(startPointObject.transform.position.x, startPointObject.transform.position.y);
     }
+
 
     void Update()
     {
