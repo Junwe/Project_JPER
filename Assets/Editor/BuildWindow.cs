@@ -18,9 +18,14 @@ public class BuildWindow : EditorWindow
         GUILayout.BeginVertical();
         GUILayout.Label("Build Window", EditorStyles.boldLabel);
         _buildInfo = (BulidInfomation)EditorGUILayout.ObjectField("info", _buildInfo, typeof(BulidInfomation));
-        _buildMessge = EditorGUILayout.TextField("BuildMessage", _buildMessge, GUILayout.Height(100f));
+        EditorGUILayout.LabelField("BuildMessage");
+        _buildMessge = EditorGUILayout.TextArea(_buildMessge, GUILayout.Height(100f)); //EditorGUILayout.TextField("BuildMessage", _buildMessge, GUILayout.Height(100f));
         if (GUILayout.Button("안드로이드 빌드!"))
         {
+            byte[] b = System.Text.Encoding.Default.GetBytes(_buildMessge);
+            string encodiedString = System.Text.Encoding.UTF8.GetString(b);
+            Debug.Log("BuildWindow.OnGUI() : Message : " + encodiedString);
+
             _buildInfo.AndroidBuild(_buildMessge);
         }
         GUILayout.EndVertical();

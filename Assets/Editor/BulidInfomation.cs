@@ -119,7 +119,10 @@ public class BulidInfomation : ScriptableObject
         BuildPipeline.BuildPlayer(scenes, path + "/" + fileName, BuildTarget.Android, BuildOptions.None);
         System.Diagnostics.Process.Start(path);
 
-        SendMessageToDiscore(fileName, path + "/" + fileName, Ver, message);
+        byte[] b = System.Text.Encoding.Default.GetBytes(message);
+        string encodiedString = System.Text.Encoding.Unicode.GetString(b);
+
+        SendMessageToDiscore(fileName, path + "/" + fileName, Ver, /*message*/encodiedString);
     }
     public string GetCurrentDate()
     {
