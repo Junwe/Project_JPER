@@ -18,5 +18,5 @@ MonoBehaviour:
     type: 3}
   stageName: stage1
   StageCode: 1
-  LimitMinX: -19
-  LimitMaxX: 19
+  LimitMinX: -27.73
+  LimitMaxX: 28.67

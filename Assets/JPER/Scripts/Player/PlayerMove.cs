@@ -39,7 +39,7 @@ public class PlayerMove : MonoBehaviour
     // 넉백 데이터
     private PlayerAnimation _animation;
 
-    private GameObject startPointObject = null;
+    //private GameObject startPointObject = null;
     public KnockbackInfomation KnockbackInfomation { get; private set; } = null;
 
     void Awake()
@@ -55,9 +55,6 @@ public class PlayerMove : MonoBehaviour
         _currentPushButton = RightMoveBtn;
 
         KnockbackInfomation = new KnockbackInfomation(this, _jumpInfomation, HitEvent);
-
-        startPointObject = GameObject.FindWithTag("StartPoint");
-        ResetPlayerPosition();
     }
 
     void UpMoveBtn()
@@ -141,7 +138,12 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_animation.IsDissovling) return;
+        if (_animation.IsDissovling)
+        {
+            gameObject.transform.position = new Vector3(_playerPosition.PosX, _playerPosition.PosY);
+            CheckPlayerFootOverlapedToGround();
+            return;
+        }
 
         if (KnockbackInfomation.KnockbackFlag == true)
             KnockbackInfomation.KnockbackProcess();
@@ -278,14 +280,5 @@ public class PlayerMove : MonoBehaviour
         _playerPosition.PosY += posToAdd.y;
 
         //transform.localPosition = new Vector3(_playerPosition.PosX, _playerPosition.PosY);
-    }
-
-    public void ResetPlayerPosition()
-    {
-        if (startPointObject == null)
-            return;
-
-        _playerPosition.PosX = startPointObject.transform.position.x;
-        _playerPosition.PosY = startPointObject.transform.position.y;
     }
 }
