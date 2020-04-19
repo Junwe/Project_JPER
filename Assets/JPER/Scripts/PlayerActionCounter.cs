@@ -62,7 +62,7 @@ public class PlayerActionCounter
             case RecordDataType.JumpCount:
                 return JumpCount.ToString();
             case RecordDataType.MovedDistance:
-                return MovedDistance.ToString("{#.#}") + "M";
+                return MovedDistance.ToString("#.#") + "M";
             case RecordDataType.HitCount:
                 return HitCount.ToString();
         }

@@ -11,15 +11,16 @@ public class StageResult : MonoBehaviour
     private Transform dataRowParent;
     [SerializeField]
     ParticleSystem[] _paperParticleList;
-
-    private List<PlayerRecordDataRow> playerRecordDataRows = null;
-
     [SerializeField]
     GameObject _objDataUI;
     [SerializeField]
     Transform _trDataParent;
     [SerializeField]
     Button _btnAction;
+    [SerializeField]
+    private ScrollRect scrollRect;
+
+    private List<PlayerRecordDataRow> playerRecordDataRows = null;
 
     public void PlayReulst()
     {
@@ -55,6 +56,7 @@ public class StageResult : MonoBehaviour
             }
         }
 
+        //scrollRect.verticalScrollbar.value = 0;//normalizedPosition = new Vector2(0.5f, 0.5f);
 
         playerRecordDataRows = new List<PlayerRecordDataRow>(dataRowParent.childCount);
         for (int i = 0; i < dataRowParent.childCount; ++i)
