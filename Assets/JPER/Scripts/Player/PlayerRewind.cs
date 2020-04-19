@@ -71,6 +71,9 @@ public class PlayerRewind : MonoBehaviour
 
     public void StartRewind(bool goToStartPoint = false)
     {
+        if (_animation.IsDissovling)
+            return;
+            
         _animation.Animator.SetTrigger("Dissovle");
         _animation.IsDissovling = true;
         _animation.isResetToStartPoint = goToStartPoint;
