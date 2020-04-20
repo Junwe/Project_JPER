@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class StageResult : MonoBehaviour
 {
+    [Range(0f, 1f)]
+    public float scrollPos = 0;
+
     [SerializeField]
     ParticleSystem[] _reulstParticleList;
     [SerializeField]
@@ -36,6 +39,24 @@ public class StageResult : MonoBehaviour
 
         for (int i = 0; i < playerRecordDataRows.Count; ++i)
             playerRecordDataRows[i].UpdateDataValue();
+
+        StartCoroutine(SetScrollRectVerticalPosition());
+    }
+
+    private IEnumerator SetScrollRectVerticalPosition()
+    {
+        var transformRef = transform;
+        //var temp = scrollRect.velocity;
+        scrollRect.verticalNormalizedPosition = 0;
+
+        while (transform.localScale.x < 0.975f)
+        {
+            scrollRect.verticalNormalizedPosition = transform.localScale.x;
+            yield return null;
+        }
+
+        scrollRect.verticalNormalizedPosition = 1;
+        //scrollRect.velocity = new Vector2(0, 1); //temp;
     }
 
     private IEnumerator PlayFireWork(float delay, ParticleSystem particle)
@@ -56,10 +77,15 @@ public class StageResult : MonoBehaviour
             }
         }
 
-        //scrollRect.verticalScrollbar.value = 0;//normalizedPosition = new Vector2(0.5f, 0.5f);
-
         playerRecordDataRows = new List<PlayerRecordDataRow>(dataRowParent.childCount);
         for (int i = 0; i < dataRowParent.childCount; ++i)
             playerRecordDataRows.Add(dataRowParent.GetChild(i).GetComponent<PlayerRecordDataRow>());
     }
+
+#if UNITY_EDITOR
+    private void Update()
+    {
+        //scrollRect.verticalNormalizedPosition = scrollPos;
+    }
+#endif
 }
