@@ -140,8 +140,8 @@ public class PlayerMove : MonoBehaviour
     {
         if (_animation.IsDissovling)
         {
-            gameObject.transform.position = new Vector3(_playerPosition.PosX, _playerPosition.PosY);
-            CheckPlayerFootOverlapedToGround();
+            //gameObject.transform.position = new Vector3(_playerPosition.PosX, _playerPosition.PosY);
+            //CheckPlayerFootOverlapedToGround();
             return;
         }
 

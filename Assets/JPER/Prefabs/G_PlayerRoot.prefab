@@ -5106,6 +5106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDissovling: 0
+  isResetToStartPoint: 0
 --- !u!114 &3412792264423102385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5118,6 +5119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f8f6fc3305444c6ba4f221f57b6b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MatDissovle: {fileID: 2100000, guid: 1f4108f1e82074350bd7340131183cec, type: 2}
+  MatHDR: {fileID: 2100000, guid: 59ac95a5cafd84578a4ad02a54cb71ba, type: 2}
+  immotalModeTime: 2.5
 --- !u!1 &5345282100037206407
 GameObject:
   m_ObjectHideFlags: 0
@@ -10159,7 +10163,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3412792264423102385}
-        m_MethodName: CheckRewindExcute
+        m_MethodName: CheckRewindExcuteCount
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
