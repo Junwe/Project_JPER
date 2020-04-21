@@ -101,24 +101,29 @@ public class PlayerMove : MonoBehaviour
 #endif
     private void MoveButtonRayCast()
     {
-        var ped = new PointerEventData(null);
-
-        ped.position = Input.mousePosition;
-        List<RaycastResult> results = new List<RaycastResult>();
-
-        graphic.Raycast(ped, results);
-
-        if (results.Count <= 0)
+        for (int i = 0; i < Input.touchCount; ++i)
         {
-            _currentPushButton.OnUp();
-            return;
+            var ped = new PointerEventData(EventSystem.current);
+            ped.position = new Vector2(Input.GetTouch(i).position.x, Input.GetTouch(i).position.y);
+            List<RaycastResult> results = new List<RaycastResult>();
+
+            graphic.Raycast(ped, results);
+
+            if (results.Count <= 0)
+            {
+                _currentPushButton.OnUp();
+                return;
+            }
+
+            for (int j = 0; j < results.Count; ++j)
+            {
+                if (SetMoveButton(results[j].gameObject, leftMoveBtn))
+                    return;
+
+                if (SetMoveButton(results[j].gameObject, RightMoveBtn))
+                    return;
+            }
         }
-
-        if (SetMoveButton(results[0].gameObject, leftMoveBtn))
-            return;
-
-        if (SetMoveButton(results[0].gameObject, RightMoveBtn))
-            return;
     }
 
     private bool SetMoveButton(GameObject pushObject, JoyStickButton button)
