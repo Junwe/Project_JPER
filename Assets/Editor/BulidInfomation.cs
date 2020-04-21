@@ -120,9 +120,9 @@ public class BulidInfomation : ScriptableObject
         System.Diagnostics.Process.Start(path);
 
         byte[] b = System.Text.Encoding.Default.GetBytes(message);
-        string encodiedString = System.Text.Encoding.Unicode.GetString(b);
+        //string encodiedString = System.Text.Encoding.Unicode.GetString(b);
 
-        SendMessageToDiscore(fileName, path + "/" + fileName, Ver, /*message*/encodiedString);
+        SendMessageToDiscore(fileName, path + "/" + fileName, Ver, message);
     }
     public string GetCurrentDate()
     {

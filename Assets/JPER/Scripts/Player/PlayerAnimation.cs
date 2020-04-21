@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     public bool IsDissovling = false;
-    public bool isResetToStartPoint = false;
     private Animator _animator;
 
     public Animator Animator => _animator;

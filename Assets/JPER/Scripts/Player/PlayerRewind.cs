@@ -22,6 +22,8 @@ public class PlayerRewind : MonoBehaviour
     private WaitForSeconds _waitForSecondsCache = null;
     private SpriteRenderer _sprPlayer;
 
+    private bool _isResetToStartPoint = false;
+
     void Awake()
     {
         _animation = GetComponent<PlayerAnimation>();
@@ -58,7 +60,7 @@ public class PlayerRewind : MonoBehaviour
 
     public void SetJumpPosition()
     {
-        _lastJumpStartPosition = _trTarget.transform.localPosition;
+        _lastJumpStartPosition = _trTarget.transform.position;
     }
 
     public void CheckRewindExcute()
@@ -88,27 +90,33 @@ public class PlayerRewind : MonoBehaviour
 
         _animation.Animator.SetTrigger("Dissovle");
         _animation.IsDissovling = true;
-        _animation.isResetToStartPoint = goToStartPoint;
+        _isResetToStartPoint = goToStartPoint;
+    }
+
+    public void StartAppear()
+    {
+        _animation.Animator.SetTrigger("OffDissovle");
     }
 
     public void StartReSetPosition()
     {
-        if (_animation.isResetToStartPoint == false)
+        if (_isResetToStartPoint == false)
         {
-            _trTarget.SetPlayerLocalPosition(_lastJumpStartPosition.x, _lastJumpStartPosition.y + 0.2f);
+            _trTarget.SetPlayerPosition(_lastJumpStartPosition.x, _lastJumpStartPosition.y + 0.2f);
             _playerCollider.enabled = false;
         }
-        else if (_startPointObject != null && _animation.isResetToStartPoint == true)
-            _trTarget.SetPlayerLocalPosition(_startPointObject.transform.position.x, _startPointObject.transform.position.y);
+        else if (_startPointObject != null && _isResetToStartPoint == true)
+            _trTarget.SetPlayerPosition(_startPointObject.transform.position.x, _startPointObject.transform.position.y);
 
-        _animation.Animator.SetTrigger("OffDissovle");
-        _animation.isResetToStartPoint = false;
     }
 
     public void SetImmortalMode()
     {
-        StopCoroutine(ImmortalMode());
-        StartCoroutine(ImmortalMode());
+        if (_isResetToStartPoint == false)
+        {
+            StopCoroutine(ImmortalMode());
+            StartCoroutine(ImmortalMode());
+        }
     }
 
     private IEnumerator ImmortalMode()
