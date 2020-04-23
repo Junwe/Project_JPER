@@ -79,6 +79,7 @@ public class JoyStickButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         if (_isRayCastButton) return;
         
         _isDraging = true;
+        Draging();
         if (_isActiveAlpha)
             _myImage.SetAlpha(1f);
     }
