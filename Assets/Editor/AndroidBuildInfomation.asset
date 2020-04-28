@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: AndroidBuildInfomation
   m_EditorClassIdentifier: 
   path: /Users/shj/Desktop/UnityProject/Project_JPER
-  ver: 1.0.0.2
-  verCode: 10012
+  ver: 1.0.0.3
+  verCode: 10013
   pass: shj9505
   appName: JPER
   batFilePath: python3 /Users/shj/Desktop/UnityProject/Project_JPER/JPER_Bot/PGBot/main.py

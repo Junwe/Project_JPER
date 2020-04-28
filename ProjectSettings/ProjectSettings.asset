@@ -119,7 +119,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.0.0.2
+  bundleVersion: 1.0.0.3
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -166,7 +166,7 @@ PlayerSettings:
     Android: com.shj.JPER
     Standalone: com.shj,JPER
   buildNumber: {}
-  AndroidBundleVersionCode: 10012
+  AndroidBundleVersionCode: 10013
   AndroidMinSdkVersion: 19
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1

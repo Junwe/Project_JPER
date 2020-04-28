@@ -184,12 +184,22 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
+            if(_jumpInfomation.JumpState == JumpInfomation.JumpStateType.Down)
+            {
+                SetFalling();
+            }
             if (_jumpInfomation.JumpState == JumpInfomation.JumpStateType.None)
             {
-                _jumpInfomation.BaseY = LimitY;
-                _jumpInfomation.JumpState = JumpInfomation.JumpStateType.Down;
+                Debug.Log("CheckPlayerFootOverlapedToGround");
+                Invoke("SetFalling", 0.125f);
             }
         }
+    }
+
+    private void SetFalling()
+    {
+        _jumpInfomation.BaseY = LimitY;
+        _jumpInfomation.JumpState = JumpInfomation.JumpStateType.Down;
     }
 
     public void LeftMove()
@@ -244,6 +254,7 @@ public class PlayerMove : MonoBehaviour
 
         if (_jumpInfomation.JumpState == JumpInfomation.JumpStateType.None)
         {
+            CancelInvoke();
             JumpEvent.Invoke();
             _jumpInfomation.JumpState = JumpInfomation.JumpStateType.Up;
             _jumpInfomation.Gravity = _jumpInfomation.Jump_speed;
