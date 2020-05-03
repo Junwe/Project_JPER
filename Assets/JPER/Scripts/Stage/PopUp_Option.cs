@@ -24,6 +24,11 @@ public class PopUp_Option : MonoBehaviour
         SceneManager.sceneLoaded += SetOptionPopUp;
     }
 
+    public void ClickQuit()
+    {
+        Application.Quit();
+    }
+
     public void ActiveMainBtn(bool active)
     {
         objMainBtn.SetActive(active);
