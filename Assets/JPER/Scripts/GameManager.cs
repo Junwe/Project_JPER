@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoDestorySingleton<GameManager>
 {
+    public PlayerMove PlayerMove;
     public PlayerActionCounter playerActionCounter = new PlayerActionCounter();
     [SerializeField]
     private TutorialManager _tutorialManager;
@@ -11,8 +12,23 @@ public class GameManager : MonoDestorySingleton<GameManager>
     {
         if (StageManager.SelectStage.stagePrefab != null)
         {
-            Instantiate(StageManager.SelectStage.stagePrefab);
+            Transform stage = Instantiate(StageManager.SelectStage.stagePrefab).GetComponent<Transform>();
             Instantiate(StageManager.SelectStage.stageBackGround);
+
+            Transform[] childs = stage.GetComponentsInChildren<Transform>();
+
+            foreach (var obj in childs)
+            {
+                if (obj.name.Contains("G_Ground"))
+                {
+                    if (obj.transform.position.y + 0.35f <= PlayerMove.LimitY)
+                    {
+                        PlayerMove.LimitY = obj.transform.position.y + 0.35f;
+                    }
+                }
+                else
+                    continue;
+            }
         }
         StartCoroutine(PlayTimer());
 

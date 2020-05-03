@@ -1557,8 +1557,8 @@ MonoBehaviour:
   - {fileID: 9207378352947363600, guid: 7a5881fc2643f2842aeb58deaaf7c429, type: 3}
   parent: {fileID: 0}
   isGrid: 1
-  ObjectIndex: 9
-  SelectIndex: 1
+  ObjectIndex: 0
+  SelectIndex: 0
   IsGridMove: 1
 --- !u!1 &1545393358
 GameObject:

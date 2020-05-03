@@ -173,7 +173,7 @@ public class PlayerMove : MonoBehaviour
 
         if (col != null)
         {
-            if (_jumpInfomation.JumpState == JumpInfomation.JumpStateType.Down && _playerPosition.PosY >= col.transform.position.y + 0.4f)
+            if (_jumpInfomation.JumpState == JumpInfomation.JumpStateType.Down && _playerPosition.PosY >= col.transform.position.y + 0.35f)
             {
                 _jumpInfomation.BaseY = col.transform.position.y + 0.4f + 0.3f;
                 _playerPosition.PosY = col.transform.position.y + 0.4f + 0.3f;
